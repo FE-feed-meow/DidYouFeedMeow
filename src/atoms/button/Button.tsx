@@ -1,9 +1,35 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
 
-const Button = () => {
-  return (
-    <div>Button</div>
-  )
+interface BtnProps {
+  bgColor: string;
+  hoverBgColor?: string;
+  onClick?: () => void;
+  children?: React.ReactNode;
 }
 
-export default Button
+const Basic = styled.button<BtnProps>`
+  width: 275px;
+  height: 44px;
+  font-size: 16px;
+  border-radius: 25px;
+  background: ${(props) => props.bgColor};
+  color: var(--background-color);
+  &:hover {
+    background: ${(props) => props.hoverBgColor};
+  }
+`;
+
+const Button = ({ bgColor, hoverBgColor, onClick, children }: BtnProps) => {
+  return (
+    <Basic
+      onClick={onClick ?? onClick}
+      bgColor={bgColor}
+      hoverBgColor={hoverBgColor ?? hoverBgColor}
+    >
+      {children}
+    </Basic>
+  );
+};
+
+export default Button;
