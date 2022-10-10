@@ -6,7 +6,7 @@ import Image from "../../atoms/image/Image";
 import Inputs from "../../atoms/inputs/Inputs";
 import { MiddleWrap } from "../../styles/commonStyle";
 
-const H2 = styled.h2`
+export const H2 = styled.h2`
   font-size: 28px;
   font-family: "Shinb7Regular";
   margin: 30px 0 60px 0;
