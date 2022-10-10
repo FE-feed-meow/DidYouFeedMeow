@@ -54,6 +54,10 @@ a {
   height: 1px;
   overflow: hidden;
 }
+
+.btn {
+  cursor: pointer;
+}
 `;
 
 export default GlobalStyles;

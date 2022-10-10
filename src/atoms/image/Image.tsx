@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface ImageProps {
+  className?: string;
   marginTop?: number;
   marginBottom?: number;
   width?: number;
@@ -18,6 +19,7 @@ const Img = styled.img<ImageProps>`
 `;
 
 const Image = ({
+  className,
   marginTop,
   marginBottom,
   width,
@@ -27,6 +29,7 @@ const Image = ({
 }: ImageProps): JSX.Element => {
   return (
     <Img
+      className={className ?? className}
       marginTop={marginTop ?? marginTop}
       marginBottom={marginBottom ?? marginBottom}
       width={width ?? width}
