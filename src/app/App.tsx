@@ -1,8 +1,15 @@
-import React from 'react'
+import React from "react";
+import GlobalStyles from "./style";
+import { AllWrap } from "../styles/commonStyle";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <>
+      <GlobalStyles />
+      <AllWrap>
+        <div />
+      </AllWrap>
+    </>
+  );
+};
 export default App;
