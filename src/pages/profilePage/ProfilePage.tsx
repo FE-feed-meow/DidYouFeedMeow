@@ -13,7 +13,7 @@ const ColumnFlexBox = styled.div`
   flex-direction: column;
 `;
 
-const RowFlexBox = styled.div`
+export const RowFlexBox = styled.div`
   display: flex;
   justify-content: space-between;
 `;
