@@ -40,13 +40,13 @@ export default Inputs;
 
 const Wrap = styled.div``;
 
-const Label = styled.label`
+export const Label = styled.label`
   font-family: "Shinb7Regular";
   font-size: 16px;
   margin-bottom: 8px;
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   display: block;
   width: ${(props) => props.width}px;
   height: 30px;

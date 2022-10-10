@@ -9,7 +9,7 @@ import { MiddleWrap } from "../../styles/commonStyle";
 export const H2 = styled.h2`
   font-size: 28px;
   font-family: "Shinb7Regular";
-  margin: 30px 0 60px 0;
+  margin: 30px 0;
 `;
 
 const Join = styled.button`
@@ -30,7 +30,7 @@ const LoginPage = () => {
         alt=""
         src="assets/images/logo.svg"
       />
-      <H2>로그인</H2>
+      <H2 style={{ marginBottom: 60 }}>로그인</H2>
       <Inputs label="이메일" type="text" width={275} />
       <Inputs label="비밀번호" type="text" width={275} />
       <Button marginTop={12} bgColor="var(--disabled-button-color)">
