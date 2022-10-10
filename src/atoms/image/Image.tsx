@@ -4,8 +4,8 @@ import styled from "styled-components";
 interface ImageProps {
   marginTop?: number;
   marginBottom?: number;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   src: string;
   alt: string;
 }
@@ -29,8 +29,8 @@ const Image = ({
     <Img
       marginTop={marginTop ?? marginTop}
       marginBottom={marginBottom ?? marginBottom}
-      width={width}
-      height={height}
+      width={width ?? width}
+      height={height ?? height}
       src={src}
       alt={alt}
     />
