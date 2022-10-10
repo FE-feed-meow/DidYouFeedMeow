@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface BtnProps {
+  className?: string;
   marginTop?: number;
   marginBottom?: number;
   bgColor: string;
@@ -31,9 +32,11 @@ const Button = ({
   hoverBgColor,
   onClick,
   children,
+  className,
 }: BtnProps) => {
   return (
     <Basic
+      className={className ?? className}
       marginTop={marginTop ?? marginTop}
       marginBottom={marginBottom ?? marginBottom}
       onClick={onClick ?? onClick}
