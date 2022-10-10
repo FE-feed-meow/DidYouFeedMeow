@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 interface BtnProps {
+  marginTop?: number;
+  marginBottom?: number;
   bgColor: string;
   hoverBgColor?: string;
   onClick?: () => void;
@@ -9,6 +11,8 @@ interface BtnProps {
 }
 
 const Basic = styled.button<BtnProps>`
+  margin-top: ${(props) => props.marginTop}px;
+  margin-bottom: ${(props) => props.marginBottom}px;
   width: 275px;
   height: 44px;
   font-size: 16px;
@@ -20,9 +24,18 @@ const Basic = styled.button<BtnProps>`
   }
 `;
 
-const Button = ({ bgColor, hoverBgColor, onClick, children }: BtnProps) => {
+const Button = ({
+  marginTop,
+  marginBottom,
+  bgColor,
+  hoverBgColor,
+  onClick,
+  children,
+}: BtnProps) => {
   return (
     <Basic
+      marginTop={marginTop ?? marginTop}
+      marginBottom={marginBottom ?? marginBottom}
       onClick={onClick ?? onClick}
       bgColor={bgColor}
       hoverBgColor={hoverBgColor ?? hoverBgColor}
