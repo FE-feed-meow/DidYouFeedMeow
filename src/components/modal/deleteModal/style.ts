@@ -36,10 +36,10 @@ const ModalWrap = styled.div`
 
 const DeleteText = styled.span`
   display: inline-block;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 26px;
   padding: 35px 64px 29px;
-  /* width: 100%; */
+  font-family: "Shinb7Regular";
 `;
 
 const BtnWrap = styled.div`
@@ -48,14 +48,14 @@ const BtnWrap = styled.div`
 
 const DeleteBtn = styled.button`
   width: 100%;
-  font-size: 20px;
-  padding: 20px 55px;
+  font-size: 22px;
+  padding: 20px 55px 39px;
 `;
 
 const CancelBtn = styled.button`
   width: 100%;
-  font-size: 20px;
-  padding: 20px 55px;
+  font-size: 22px;
+  padding: 20px 55px 39px;
 `;
 
 export {
