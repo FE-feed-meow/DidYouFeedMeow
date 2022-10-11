@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const DeleteModal = styled.div`
+const Modal = styled.div`
   position: fixed;
   bottom: 0;
   right: 0;
@@ -59,7 +59,7 @@ const CancelBtn = styled.button`
 `;
 
 export {
-  DeleteModal,
+  Modal,
   ModalArea,
   ModalWrap,
   DeleteText,

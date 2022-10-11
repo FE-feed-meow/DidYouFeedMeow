@@ -1,7 +1,7 @@
 import React from "react";
 import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import {
-  DeleteModal,
+  Modal,
   ModalArea,
   ModalWrap,
   DeleteText,
@@ -10,9 +10,9 @@ import {
   CancelBtn,
 } from "./style";
 
-const Modal = () => {
+const DeleteModal = () => {
   return (
-    <DeleteModal>
+    <Modal>
       <ModalArea>
         <CloseBtn />
         <ModalWrap>
@@ -23,8 +23,8 @@ const Modal = () => {
           </BtnWrap>
         </ModalWrap>
       </ModalArea>
-    </DeleteModal>
+    </Modal>
   );
 };
 
-export default Modal;
+export default DeleteModal;
