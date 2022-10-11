@@ -19,7 +19,7 @@ const DeleteModal = () => {
           <DeleteText>삭제하시겠습니까?</DeleteText>
           <BtnWrap>
             <DeleteBtn>삭제</DeleteBtn>
-            <CancelBtn>확인</CancelBtn>
+            <CancelBtn>취소</CancelBtn>
           </BtnWrap>
         </ModalWrap>
       </ModalArea>
