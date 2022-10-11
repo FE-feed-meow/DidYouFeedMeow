@@ -14,7 +14,7 @@ interface BtnProps {
 const Basic = styled.button<BtnProps>`
   margin-top: ${(props) => props.marginTop}px;
   margin-bottom: ${(props) => props.marginBottom}px;
-  width: 275px;
+  width: 100%;
   height: 44px;
   font-size: 16px;
   border-radius: 25px;
