@@ -6,10 +6,9 @@ const SearchInpBox = () => {
   return (
     <>
       <SearchWrap>
-        <Image 
-          width={20}
-          src="assets/icons/icon-menu.svg" 
-          alt="메뉴 버튼" />
+          <MenuBtn type="button">
+            <img src="assets/icons/icon-menu.svg" alt="메뉴 버튼" />
+          </MenuBtn>
           <SearchInput type="text" placeholder='장소, 주소를 입력해주세요' />
       </SearchWrap>
     </>
@@ -23,15 +22,22 @@ const SearchWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 48px;
-  padding: 0 30px;
+  padding: 0 20px;
   background-color: var(--background-color);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 4px 0;
 `
 
+const MenuBtn = styled.button`
+  width: 20px;
+  padding: 0;
+  img {
+    vertical-align: middle;
+  }
+`
 const SearchInput = styled.input`
   width: 307px;
   background-color: #f9f9f9;
   margin-left: 12px;
-  padding: 4px 32px;
-  font-size: 14px;
+  padding: 6px 16px;
+  font-size: 16px;
 `
