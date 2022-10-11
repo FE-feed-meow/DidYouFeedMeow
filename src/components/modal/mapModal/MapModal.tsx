@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../../atoms/button/Button'
-import Inputs from '../../atoms/inputs/Inputs'
+import Button from '../../../atoms/button/Button'
+import Inputs from '../../../atoms/inputs/Inputs'
 
 const MapModal = () => {
   return (
