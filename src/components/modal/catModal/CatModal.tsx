@@ -1,4 +1,5 @@
 import React from "react";
+import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import {
   ModalMain,
   ModalArea,
@@ -7,7 +8,7 @@ import {
   CatInfoModify,
   CatInfoDelete,
 } from "./style";
-import { CloseBtn } from "../catInfoModal/style";
+// import { CloseBtn } from "../catInfoModal/style";
 
 const CatModal = () => {
   return (
@@ -19,7 +20,6 @@ const CatModal = () => {
             <CatInfoModify>냥 정보 수정</CatInfoModify>
             <CatInfoDelete>냥 정보 삭제</CatInfoDelete>
           </CatModalWrap>
-          <CatModal />
         </ModalWrap>
       </ModalArea>
     </ModalMain>
