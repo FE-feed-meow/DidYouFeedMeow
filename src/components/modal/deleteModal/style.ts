@@ -34,6 +34,18 @@ const DeleteText = styled.span`
   line-height: 26px;
   padding: 35px 64px 29px;
   font-family: "Shinb7Regular";
+  &::after {
+    content: "";
+    display: inline-block;
+    position: fixed;
+    top: 54%;
+    left: 7%;
+    width: 260px;
+    height: 5px;
+    background-image: url("/assets/images/dashedLine-xl.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 `;
 
 const BtnWrap = styled.div`
@@ -44,6 +56,18 @@ const DeleteBtn = styled.button`
   width: 100%;
   font-size: 22px;
   padding: 20px 55px 39px;
+  &::after {
+    content: "";
+    display: inline-block;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    width: 4px;
+    height: 60px;
+    background-image: url("/assets/images/dashedLine-h.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 `;
 
 const CancelBtn = styled.button`
