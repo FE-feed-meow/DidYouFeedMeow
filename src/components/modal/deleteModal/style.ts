@@ -38,7 +38,7 @@ const DeleteText = styled.span`
     content: "";
     display: inline-block;
     position: fixed;
-    top: 54%;
+    top: 57%;
     left: 7%;
     width: 260px;
     height: 5px;
@@ -49,19 +49,30 @@ const DeleteText = styled.span`
 `;
 
 const BtnWrap = styled.div`
-  display: flex;
+  width: 300px;
+  /* display: flex; */
 `;
 
 const DeleteBtn = styled.button`
-  width: 100%;
   font-size: 22px;
-  padding: 20px 55px 39px;
+  margin: 25px 53px 30px;
+  &:hover,
+  &:focus {
+    width: 50px;
+    margin: 25px 50px 30px;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 240, 0, 0.5) 0%,
+      rgba(255, 240, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  }
   &::after {
     content: "";
     display: inline-block;
     position: fixed;
-    top: 60%;
-    left: 50%;
+    top: 62%;
+    left: 49%;
     width: 4px;
     height: 60px;
     background-image: url("/assets/images/dashedLine-h.svg");
@@ -71,9 +82,19 @@ const DeleteBtn = styled.button`
 `;
 
 const CancelBtn = styled.button`
-  width: 100%;
   font-size: 22px;
-  padding: 20px 55px 39px;
+  margin: 25px 53px 30px;
+  &:hover,
+  &:focus {
+    width: 50px;
+    margin: 25px 48px 30px;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 240, 0, 0.5) 0%,
+      rgba(255, 240, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  }
 `;
 
 export { DeleteText, BtnWrap, DeleteBtn, CancelBtn };
