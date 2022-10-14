@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CatFoodWrap = styled.div`
-  margin: 40px 30px;
+  margin: 40px 40px;
 `;
 
 export const CatFoodTitle = styled.p`
@@ -10,7 +10,7 @@ export const CatFoodTitle = styled.p`
   padding-bottom: 14px;
 `;
 
-export const CatFoodTimeSelect = styled.select`
+export const CatFoodTimeInput = styled.input`
   font-size: 14px;
   color: #797979;
   width: 40px;
@@ -25,12 +25,29 @@ export const CatFoodTimeSelect = styled.select`
     #f0f0f0 50%,
     rgba(0, 0, 0, 0) 50%
   );
+  &:focus {
+    background: linear-gradient(
+      0deg,
+      rgba(255, 240, 0, 0.5) 0%,
+      rgba(255, 240, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  }
+`;
+
+export const CatNowTimeButton = styled.button`
+  width: 75px;
+  float: right;
+  font-family: "SpoqaHanSansNeo-Regular";
+  background: linear-gradient(
+    0deg,
+    #f0f0f0 0%,
+    #f0f0f0 50%,
+    rgba(0, 0, 0, 0) 50%
+  );
 `;
 
 export const CatFoodButton = styled.button`
-  /* height: 60px; */
-  /* width: 50px; */
-  /* padding-top: 20px; */
   color: #797979;
   font-size: 14px;
   font-family: "SpoqaHanSansNeo-Regular";
@@ -98,6 +115,5 @@ export const CatFoodSubmitButton = styled.button`
   padding: 14px 0px;
   border-radius: 44px;
   color: #ffffff;
-
   background-color: var(--main-color);
 `;

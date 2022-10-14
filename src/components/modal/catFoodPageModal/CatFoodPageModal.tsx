@@ -5,7 +5,8 @@ import { ModalArea, ModalMain, ModalWrap } from "../style";
 import {
   CatFoodWrap,
   CatFoodTitle,
-  CatFoodTimeSelect,
+  CatFoodTimeInput,
+  CatNowTimeButton,
   CatFoodButtonArea,
   CatFoodButton,
   CatFoodButtonWrap,
@@ -23,7 +24,10 @@ const CatFoodPageModal = () => {
         <ModalWrap>
           <CatFoodWrap>
             <CatFoodTitle>시간</CatFoodTitle>
-            <CatFoodTimeSelect>
+            <CatFoodTimeInput placeholder="시" />
+            <CatFoodTimeInput placeholder="분" />
+            <CatNowTimeButton>현재 시간</CatNowTimeButton>
+            {/* <CatFoodTimeSelect>
               <option value="시">시</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -34,7 +38,7 @@ const CatFoodPageModal = () => {
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-            </CatFoodTimeSelect>
+            </CatFoodTimeSelect> */}
             <CatFoodTitle>어떤 것을 주셨나요?</CatFoodTitle>
             <CatFoodButtonArea>
               <CatFoodButtonWrap>
