@@ -46,7 +46,7 @@ const AsideWrap = styled.aside`
   left: 0;
   width: 260px;
   height: 820px;
-  padding: 72px 50px;
+  padding: 72px 40px;
   background-image: url('assets/images/background.svg');
   background-position: center;
   background-repeat: no-repeat;

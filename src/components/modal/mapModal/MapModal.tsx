@@ -35,7 +35,7 @@ const ArticleWrap = styled.article`
   align-items: flex-start;
   width: 100%;
   height: 260px;
-  padding: 50px 30px;
+  padding: 40px 30px;
   background-image: url('assets/images/background.svg');
   background-position: center;
   background-repeat: no-repeat;
