@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from '../../atoms/image/Image';
 
 const SearchInpBox = () => {
   return (
