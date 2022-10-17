@@ -19,7 +19,7 @@ const CatInfoPage = () => {
         <CatInfo />
         <CatFeed />
         <Button marginTop={10} bgColor="var(--main-color)">
-          밥 후기
+          밥 주기
         </Button>
       </Wrap>
     </>

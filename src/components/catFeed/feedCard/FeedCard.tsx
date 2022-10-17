@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Icon from "../../../atoms/icon/Icon";
+import Image from "../../../atoms/image/Image";
 
 export const CardWrap = styled.section`
   position: relative;
@@ -48,7 +48,7 @@ const FeedCard = () => {
       </Feedinfo>
       <IconBox>
         <button type="button">
-          <Icon
+          <Image
             width={19}
             height={19}
             alt=""

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "../../atoms/image/Image";
-import Icon from "../../atoms/icon/Icon";
 
 export const ImgWrap = styled.div`
   margin-bottom: 30px;
@@ -67,7 +66,7 @@ const CatInfo = () => {
         <CatName> 치즈</CatName>
         <IconsBox>
           <button type="button">
-            <Icon
+            <Image
               width={19}
               height={19}
               alt=""
@@ -75,7 +74,7 @@ const CatInfo = () => {
             />
           </button>
           <a href="#none">
-            <Icon
+            <Image
               width={19}
               height={19}
               alt=""
