@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Image from "../../../atoms/image/Image";
+import DeleteModal from "../../modal/deleteModal/DeleteModal";
 
 export const CardWrap = styled.section`
   position: relative;
@@ -39,6 +40,13 @@ export const IconBox = styled.div`
 `;
 
 const FeedCard = () => {
+  const [onModal, setModal] = React.useState<boolean>(false);
+  const OpenModal = () => {
+    setModal(true);
+  };
+  const CloseModal = () => {
+    setModal(false);
+  };
   return (
     <CardWrap>
       <FeedTime>20:00</FeedTime>
@@ -47,7 +55,7 @@ const FeedCard = () => {
         <FeedEtc>몸이 안 좋은지 밥을 잘 먹지 못하네요..</FeedEtc>
       </Feedinfo>
       <IconBox>
-        <button type="button">
+        <button type="button" onClick={OpenModal}>
           <Image
             width={19}
             height={19}
@@ -55,6 +63,7 @@ const FeedCard = () => {
             src="assets/icons/icon-delete.svg"
           />
         </button>
+        {onModal && <DeleteModal CloseModal={CloseModal} />}
       </IconBox>
     </CardWrap>
   );
