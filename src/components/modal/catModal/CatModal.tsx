@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
-import { CatModalProps } from "../../catInfo/CatInfo";
 import DeleteModal from "../deleteModal/DeleteModal";
 
 import {
@@ -12,26 +11,24 @@ import {
   CatInfoDelete,
 } from "./style";
 // import { CloseBtn } from "../catInfoModal/style";
+interface Props {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const CatModal = () => {
+const CatModal = ({ setModal }: Props) => {
   const [onAlert, setOnAlert] = useState(false);
   const AlertOpen = () => {
     setOnAlert(!onAlert);
   };
 
-  const handleCancel = () => {
-    setOnAlert(false);
-    // setModal(false);
-  };
-
-  const handleCloseModal = () => {
-    // setModal(false);
+  const CloseModal = () => {
+    setModal(false);
   };
   return (
     <>
       <ModalMain>
         <ModalArea onClick={(e) => e.stopPropagation()}>
-          <CloseBtn />
+          <CloseBtn CloseModal={CloseModal} />
           <ModalWrap>
             <CatModalWrap>
               <CatInfoModify>냥 정보 수정</CatInfoModify>
@@ -40,7 +37,7 @@ const CatModal = () => {
           </ModalWrap>
         </ModalArea>
       </ModalMain>
-      {onAlert && <DeleteModal />}
+      {onAlert && <DeleteModal CloseModal={CloseModal} />}
     </>
   );
 };

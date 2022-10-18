@@ -1,10 +1,14 @@
 import React from "react";
 import { CloseBWrap, ClBnt } from "./style";
 
-const CloseBtn = () => {
+interface Props {
+  CloseModal: () => void;
+}
+
+const CloseBtn = ({ CloseModal }: Props) => {
   return (
     <CloseBWrap>
-      <ClBnt />
+      <ClBnt onClick={CloseModal} />
     </CloseBWrap>
   );
 };

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
 import Image from "../../atoms/image/Image";
+import CatModal from "../modal/catModal/CatModal";
+import DeleteModal from "../modal/deleteModal/DeleteModal";
 
 export const ImgWrap = styled.div`
   margin-bottom: 30px;
@@ -57,6 +59,14 @@ export const CatDetail = styled.p`
 `;
 
 const CatInfo = () => {
+  const [onModal, setModal] = React.useState<boolean>(false);
+  const OpenModal = () => {
+    setModal(true);
+  };
+  const CloseModal = () => {
+    setModal(false);
+  };
+
   return (
     <CatInfoWrap>
       <ImgWrap>
@@ -73,7 +83,8 @@ const CatInfo = () => {
               src="assets/icons/icon-correction.svg"
             />
           </button>
-          <a href="#none">
+
+          <a href="#none" onClick={OpenModal}>
             <Image
               width={19}
               height={19}
@@ -81,6 +92,7 @@ const CatInfo = () => {
               src="assets/icons/icon-delete.svg"
             />
           </a>
+          {onModal && <DeleteModal CloseModal={CloseModal} />}
         </IconsBox>
       </CatNameWrap>
 
