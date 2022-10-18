@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 const ModalMain = styled.div`
   position: fixed;
+  margin: 0 auto;
+  left: 0;
   bottom: 0;
   right: 0;
-  width: 100%;
+  width: 390px;
   height: 100%;
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 100;
-  animation: fadeIn 0.3s;
 `;
 
 const ModalArea = styled.div`
@@ -27,10 +28,6 @@ const ModalWrap = styled.div`
   border-radius: 55px;
   overflow: hidden;
   text-align: center;
-  /* position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   background-color: var(--background-color);
 `;
 
