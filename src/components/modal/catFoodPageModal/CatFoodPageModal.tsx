@@ -16,11 +16,15 @@ import {
   CatFoodSubmitButton,
 } from "./style";
 
-const CatFoodPageModal = () => {
+interface Props {
+  CloseModal: () => void;
+}
+
+const CatFoodPageModal = ({ CloseModal }: Props) => {
   return (
     <ModalMain>
       <ModalArea>
-        <CloseBtn />
+        <CloseBtn CloseModal={CloseModal} />
         <ModalWrap>
           <CatFoodWrap>
             <CatFoodTitle>시간</CatFoodTitle>

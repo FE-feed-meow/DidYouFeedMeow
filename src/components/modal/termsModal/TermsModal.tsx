@@ -10,11 +10,15 @@ import {
   TermsModalBtn,
 } from "./style";
 
-const TermsModal = () => {
+interface Props {
+  CloseModal: () => void;
+}
+
+const TermsModal = ({ CloseModal }: Props) => {
   return (
     <ModalMain>
       <ModalArea>
-        <CloseBtn />
+        <CloseBtn CloseModal={CloseModal} />
         <ModalWrap>
           <TermsWrap>
             <TermsModalH1>약관을 읽어주세요</TermsModalH1>
