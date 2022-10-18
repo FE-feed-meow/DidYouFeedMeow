@@ -8,7 +8,7 @@ export const ModalMain = styled.div`
   right: 0;
   width: 390px;
   height: 100%;
-  /* background-color: rgba(55, 55, 55, 0.5); */
+  background-color: rgba(55, 55, 55, 0.5);
   z-index: 100;
   animation: fadeIn 0.3s;
 `;
