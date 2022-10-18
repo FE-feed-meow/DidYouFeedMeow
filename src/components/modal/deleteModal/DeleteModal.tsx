@@ -10,16 +10,20 @@ import {
   CancelBtn,
 } from "./style";
 
-const DeleteModal = () => {
+interface Props {
+  CloseModal: () => void;
+}
+
+const DeleteModal = ({ CloseModal }: Props) => {
   return (
     <ModalMain>
       <ModalArea>
-        <CloseBtn />
+        <CloseBtn CloseModal={CloseModal} />
         <ModalWrap>
           <DeleteText>삭제하시겠습니까?</DeleteText>
           <BtnWrap>
             <DeleteBtn>삭제</DeleteBtn>
-            <CancelBtn>취소</CancelBtn>
+            <CancelBtn onClick={CloseModal}>취소</CancelBtn>
           </BtnWrap>
         </ModalWrap>
       </ModalArea>
