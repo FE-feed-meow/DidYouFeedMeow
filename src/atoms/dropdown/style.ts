@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const SelectWrap = styled.section``;
 
-export const BtnSelect = styled.button`
+export const BtnSelect = styled.button<{ width: number }>`
   display: block;
-  width: 80px;
+  width: ${(props) => props.width}px;
   height: 30px;
   font-family: "Shinb7Regular";
   font-size: 16px;
@@ -25,10 +25,10 @@ export const BtnSelect = styled.button`
   text-overflow: ellipsis;
 `;
 
-export const UlOption = styled.ul`
+export const UlOption = styled.ul<{ width: number }>`
   display: block;
   box-shadow: 4px 4px 14px rgb(0 0 0 / 15%);
-  width: 78px;
+  width: ${(props) => props.width}px;
   height: 100px;
   border: 1px solid #c4c4c4;
   border-radius: 10px;

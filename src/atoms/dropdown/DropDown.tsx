@@ -21,11 +21,12 @@ const DropDown = ({ options, width, value, children }: DropDownProps) => {
       <BtnSelect
         className={`${open ? "open" : ""}`}
         onClick={() => setOpen(!open)}
+        width={width}
       >
         {options[0]}
       </BtnSelect>
       {open === true ? (
-        <UlOption>
+        <UlOption width={width}>
           {options.map((option) => (
             <li key={option}>
               <BtnOption
