@@ -1,26 +1,33 @@
 import React, { useRef, useState } from 'react'
-import styled from 'styled-components'
 import SearchInpBox from '../../components/searchInpBox/SearchInpBox'
 import MenuBoard from '../../components/menuBoard/MenuBoard'
+import {
+  MapWrapper,
+  BoardBg,
+  PlusBtn,
+  MenuBtn
+} from './style'
 
 const RecordMapPage = () => {
   const [menuBoard, setMenuBoard] = useState(false);
   const outSection = useRef() as React.RefObject<HTMLDivElement>;
+  const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (e.target === outSection.current) {
+        setMenuBoard(false);
+      }
+    };
   return (
-    <MapWrapper 
-      ref={outSection}
-      onClick={(e) => {
-        if(e.target === outSection.current) setMenuBoard(false)
-      }}>
+    <MapWrapper>
       <MenuBtn 
         type="button"
-        onClick={() => {
-          setMenuBoard(!menuBoard);
-        }}>
+        onClick={() => {setMenuBoard(!menuBoard)}}>
         <img src="assets/icons/icon-menu.svg" alt="메뉴 버튼" />
       </MenuBtn>
-      {menuBoard === true ? <MenuBoard/> : null}
       <SearchInpBox/>
+        {menuBoard === true ? 
+        <BoardBg ref={outSection} onClick={closeModal}>
+          <MenuBoard/>
+        </BoardBg> : null}
       <PlusBtn type="button">
         <img src="assets/icons/icon-plus.svg" alt="플러스 버튼" />
       </PlusBtn>
@@ -29,25 +36,3 @@ const RecordMapPage = () => {
 }
 
 export default RecordMapPage
-
-const MapWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`
-const PlusBtn = styled.button`
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  top: 723px;
-  right: 40px;
-`
-
-const MenuBtn = styled.button`
-  position: absolute;
-  top: 15px;
-  left: 10px;
-  img {
-    vertical-align: middle;
-  }
-`

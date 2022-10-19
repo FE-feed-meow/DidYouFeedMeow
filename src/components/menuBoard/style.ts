@@ -1,27 +1,18 @@
 import styled, { keyframes} from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const fadeIn = keyframes`
-  0% {
+const slideLeft = keyframes`
+  from {
     opacity: 0;
+    transform: translateX(-50px);
   }
-  100% {
+  to {
     opacity: 1;
+    transform: translateX(0px);
   }
-`;
-
-const fadeOut = keyframes`
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`;
+` 
 
 const AsideWrap = styled.aside`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 240px;
   height: 820px;
   padding: 72px 40px;
@@ -30,10 +21,10 @@ const AsideWrap = styled.aside`
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  animation: ${fadeIn} .2s ease-in;
+  animation: ${slideLeft} .3s ease-in;
 `
 
-const ProfileWrap = styled.div`
+const ProfileWrap = styled(Link)`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -42,7 +33,7 @@ const ProfileWrap = styled.div`
     font-size: 24px;
   }
   p {
-    margin-top: 5px;
+    margin-top: 6px;
     font-family: 'SpoqaHanSansNeo-Regular';
     font-size: 12px;
     color: #797979;
@@ -56,7 +47,8 @@ const MenuBoardUl = styled.ul`
   }
 `
 
-const MenuBoardBtn = styled.button`
+const MenuBoardBtn = styled(Link)`
+  font-family: 'Shinb7Regular';
   font-size: 24px;
   padding: 0 20px;
   &:hover {
