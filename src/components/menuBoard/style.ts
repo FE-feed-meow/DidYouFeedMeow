@@ -1,10 +1,28 @@
-import styled from 'styled-components';
+import styled, { keyframes} from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 const AsideWrap = styled.aside`
   position: absolute;
   top: 0;
   left: 0;
-  width: 260px;
+  width: 240px;
   height: 820px;
   padding: 72px 40px;
   background-image: url('assets/images/background.svg');
@@ -12,6 +30,7 @@ const AsideWrap = styled.aside`
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  animation: ${fadeIn} .2s ease-in;
 `
 
 const ProfileWrap = styled.div`
@@ -54,5 +73,5 @@ export {
   AsideWrap,
   ProfileWrap,
   MenuBoardUl,
-  MenuBoardBtn
+  MenuBoardBtn,
 }

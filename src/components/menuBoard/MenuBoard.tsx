@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from '../../atoms/image/Image'
 import {
   AsideWrap,
