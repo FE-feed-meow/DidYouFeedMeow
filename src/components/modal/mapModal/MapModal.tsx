@@ -13,12 +13,12 @@ const MapModal = () => {
         width={330}
         placeholder='상세 주소를 입력하세요'
         type="text"
-        required={true}/>
-      <Button 
-        onClick={() => {window.location.href = '/addCat'}}
+        required />
+      <Button
+        onClick={() => { window.location.href = '/addCat' }}
         className='catRegisterBtn'
-        bgColor={'var(--disabled-button-color)'}
-        hoverBgColor={'var(--main-color)'}>
+        bgColor='var(--disabled-button-color)'
+        hoverBgColor='var(--main-color)'>
         냥 등록하기
       </Button>
     </ArticleWrap>
