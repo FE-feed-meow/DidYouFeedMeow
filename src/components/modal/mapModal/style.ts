@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideDown = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+` 
 
 const ArticleWrap = styled.article`
   position: absolute;
@@ -16,6 +27,7 @@ const ArticleWrap = styled.article`
   background-size: cover;
   background-attachment: fixed;
   box-shadow: rgba(0, 0, 0, 0.1) 0 -4px 4px 0;
+  animation: ${slideDown} .3s ease-in;
   p {
     font-family: 'SpoqaHanSansNeo-Regular';
     font-size: 14px;
