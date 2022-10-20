@@ -1,9 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import Button from '../../../atoms/button/Button'
 import Inputs from '../../../atoms/inputs/Inputs'
 import { ArticleWrap } from './style'
 
 const MapModal = () => {
+  const navigate = useNavigate();
+  const navigateToAddCat = () => {
+    navigate('/addCat');
+  }
   return (
     <ArticleWrap>
       <p>
@@ -13,12 +18,12 @@ const MapModal = () => {
         width={330}
         placeholder='상세 주소를 입력하세요'
         type="text"
-        required={true}/>
-      <Button 
-        onClick={() => {window.location.href = '/addCat'}}
+        required />
+      <Button
+        onClick={navigateToAddCat}
         className='catRegisterBtn'
-        bgColor={'var(--disabled-button-color)'}
-        hoverBgColor={'var(--main-color)'}>
+        bgColor='var(--disabled-button-color)'
+        hoverBgColor='var(--main-color)'>
         냥 등록하기
       </Button>
     </ArticleWrap>
