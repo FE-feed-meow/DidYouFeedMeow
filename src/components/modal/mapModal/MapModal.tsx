@@ -1,9 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import Button from '../../../atoms/button/Button'
 import Inputs from '../../../atoms/inputs/Inputs'
 import { ArticleWrap } from './style'
 
 const MapModal = () => {
+  const navigate = useNavigate();
+  const navigateToAddCat = () => {
+    navigate('/addCat');
+  }
   return (
     <ArticleWrap>
       <p>
@@ -15,7 +20,7 @@ const MapModal = () => {
         type="text"
         required />
       <Button
-        onClick={() => { window.location.href = '/addCat' }}
+        onClick={navigateToAddCat}
         className='catRegisterBtn'
         bgColor='var(--disabled-button-color)'
         hoverBgColor='var(--main-color)'>
