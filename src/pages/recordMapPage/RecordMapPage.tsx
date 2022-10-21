@@ -22,22 +22,18 @@ const RecordMapPage = () => {
         <img src="assets/icons/icon-menu.svg" alt="메뉴 버튼" />
       </MenuBtn>
       <SearchInpBox />
-      {
-        menuBoard === true ?
-          <ModalBg ref={outSection} onClick={closeModal}>
-            <MenuBoard />
-          </ModalBg> : null
-      }
+      {menuBoard === true ?
+        <ModalBg ref={outSection} onClick={closeModal}>
+          <MenuBoard />
+        </ModalBg> : null}
       <MyLocation />
       <PlusBtn type="button" onClick={() => { setMapModal(!mapModal) }}>
         <img src="assets/icons/icon-plus.svg" alt="플러스 버튼" />
       </PlusBtn>
-      {
-        mapModal === true ?
-          <ModalBg ref={outSection} onClick={closeModal}>
-            <MapModal />
-          </ModalBg> : null
-      }
+      {mapModal === true ?
+        <ModalBg ref={outSection} onClick={closeModal}>
+          <MapModal />
+        </ModalBg> : null}
     </MapWrapper >
   )
 }

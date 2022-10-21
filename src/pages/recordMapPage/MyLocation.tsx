@@ -28,7 +28,7 @@ const MyLocation = () => {
     // 사용중인 브라우저 내에서 지리적 위치가 없는 경우 에러 메세지
     if (!(navigator.geolocation)) {
       onError({
-        message: "Geolocation is not supported.",
+        message: "위치를 찾을 수 없습니다.",
       })
     }
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
