@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 const MapWrapper = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
 `
 
-const BoardBg = styled.div`
+const ModalBg = styled.div`
   position: fixed;
   top: 0;
   left: 50%;
@@ -32,9 +34,4 @@ const MenuBtn = styled.button`
   }
 `
 
-export {
-  MapWrapper,
-  BoardBg,
-  PlusBtn,
-  MenuBtn
-}
+export { MapWrapper, ModalBg, PlusBtn, MenuBtn }
