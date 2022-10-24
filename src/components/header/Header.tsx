@@ -1,35 +1,23 @@
 import React from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { HeaderWrap, H2 } from "./style";
+
 import Image from "../../atoms/image/Image";
 
-interface HeaderProps {
+export interface HeaderProps {
   children?: React.ReactNode;
 }
 
-const HeaderWrap = styled.div`
-  height: 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  &::after {
-    content: "";
-    display: block;
-  }
-`;
-
-const H2 = styled.h2`
-  font-size: 28px;
-  font-family: "Shinb7Regular";
-`;
-
 const Header = ({ children }: HeaderProps) => {
+  const navigate = useNavigate();
+
   return (
     <HeaderWrap>
       <Image
         width={18}
         src="assets/icons/icon-arrow-left.svg"
         alt="뒤로가기 버튼"
+        onClick={() => navigate(-1)}
       />
       <H2>{children ?? children}</H2>
     </HeaderWrap>
