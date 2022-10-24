@@ -1,101 +1,92 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useMemo, useRef, useState } from "react";
 
 import Header from "../../components/header/Header";
 import Inputs from "../../atoms/inputs/Inputs";
 import Button from "../../atoms/button/Button";
+import DropDown from "../../atoms/dropdown/DropDown";
 
-export const Title = styled.h1`
-  font-size: 28px;
-  font-family: "Shinb7Regular";
-  text-align: center;
-  padding-top: 15px;
-`;
+import {
+  Title,
+  Article,
+  SubTxt,
+  CatImgWrap,
+  CatImg,
+  UploadImgIcon,
+  UploadImgInput,
+  Textarea,
+} from "./style";
 
-export const CatImgWrap = styled.div`
-  margin: 0px auto 33px;
-  position: relative;
-`;
-
-export const CatImg = styled.img`
-  width: 100%;
-  height: 146px;
-  border-radius: 20px;
-`;
-
-export const UploadImgIcon = styled.label`
-  width: 30px;
-  height: 30px;
-  bottom: 12px;
-  right: 12px;
-  position: absolute;
-  background-image: url(assets/icons/icon-plus-small.svg);
-  cursor: pointer;
-`;
-
-export const UploadImgInput = styled.input`
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-`;
-
-export const SubTxt = styled.h2`
-  text-align: left;
-  font-family: "Shinb7Regular";
-  font-size: 16px;
-  margin-bottom: 20px;
-`;
-export const Article = styled.article`
-  position: relative;
-  width: 100%;
-  min-width: 300px;
-  padding: 46px 40px 50px;
-`;
-
-export const Textarea = styled.textarea`
-  width: 100%;
-  height: 143px;
-  font-size: 14px;
-  font-family: "Spoqa Han Sans Neo";
-  padding: 10px;
-  resize: none;
-  outline: none;
-  border: none;
-  background: rgba(255, 255, 255, 0.5);
-  &::placeholder {
-    color: var(--disabled-button-color);
-  }
-`;
-
+type UploadImg = {
+  file: File;
+  thumbnail: string;
+  type: string;
+};
 const RegisterCatPage = () => {
+  const url = "https://mandarin.api.weniv.co.kr";
+  const option = ["잘몰라유..", "2022~2020", "2020~2018", "2018~2016"];
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [imgFile, setImgFile] = useState<UploadImg | null>(null);
+
+  const handleClickFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
+  const onImgChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files;
+    // const length = fileList?.length;
+    if (fileList && fileList[0]) {
+      const urlFile = URL.createObjectURL(fileList[0]);
+      setImgFile({
+        file: fileList[0],
+        thumbnail: urlFile,
+        type: fileList[0].type.slice(0, 5),
+      });
+    }
+  };
+
+  // 업로드 된 이미지 파일 미리보기
+  const showImg = useMemo(() => {
+    if (!imgFile && imgFile == null) {
+      return (
+        <CatImg src="assets/images/add-cat.svg" alt="냥이 등록 기본이미지 " />
+      );
+    }
+    return (
+      <CatImg
+        src={imgFile.thumbnail}
+        alt="냥이 등록 이미지"
+        onClick={handleClickFileInput}
+      />
+    );
+  }, [imgFile]);
+
   return (
     <>
       <Header />
-      <Title> 냥이 정보 수정하기 </Title>
+      <Title> 냥이 등록하기 </Title>
       <Article>
         <form>
           <SubTxt>사진 등록</SubTxt>
           <CatImgWrap>
-            <CatImg src="assets/images/add-cat.svg" />
-            <UploadImgIcon />
-            <UploadImgInput type="file" accept="image/*" id="uploadImg" />
+            {showImg}
+            <UploadImgIcon onClick={handleClickFileInput} />
+            <UploadImgInput
+              type="file"
+              accept="image/*"
+              id="uploadImg"
+              ref={fileInputRef}
+              onChange={onImgChange}
+            />
           </CatImgWrap>
           <Inputs
             label="냥 이름"
             width={310}
             placeholder="2~15자 이내여야합니다."
+            required={false}
             type="text"
           />
-          <Inputs
-            label="출생년도(추정)"
-            width={57}
-            placeholder="2022"
-            type="text"
-          />
+          <DropDown options={option} width={78} />
           <SubTxt>특이사항</SubTxt>
           <Textarea placeholder="50자 이내여야 합니다." />
           <Button marginTop={33} bgColor="var(--main-color)">
