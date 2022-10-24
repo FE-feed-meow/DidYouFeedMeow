@@ -1,5 +1,29 @@
 {
   "compilerOptions": {
+   "baseUrl": "./src",
+    "paths": {
+      "@app":[
+         "./App.tsx"
+      ],
+      "@constants/*":[
+         "./constants/index.ts"
+      ],
+      "@atoms/*":[
+         "./atoms/*"
+      ],
+      "@components/*":[
+         "./components/*"
+      ],
+      "@pages/*":[
+         "./pages/*"
+      ],
+      "@styles/*":[
+         "./styles/*"
+      ],
+      "@assets/*":[
+         "./assets/*"
+      ]
+   },
     "target": "es5",
     "lib": [
       "dom",
@@ -18,12 +42,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "types": [
       "kakao.maps.d.ts"
     ]
   },
   "include": [
     "src"
-  ]
+  ],
+  "extends": "./tsconfig.extend.json",
 }
