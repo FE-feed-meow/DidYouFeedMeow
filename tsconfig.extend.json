@@ -1,0 +1,28 @@
+{
+  "compilerOptions":{
+     "baseUrl":"./src",
+     "paths":{
+        "@app":[
+           "./App.tsx"
+        ],
+        "@constants/*":[
+           "./constants/index.ts"
+        ],
+        "@atoms/*":[
+           "./atoms/*"
+        ],
+        "@components/*":[
+           "./components/*"
+        ],
+        "@pages/*":[
+           "./pages/*"
+        ],
+        "@styles/*":[
+           "./styles/*"
+        ],
+        "@assets/*":[
+           "./assets/*"
+        ]
+     }
+  }
+}
