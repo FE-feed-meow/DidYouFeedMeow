@@ -1,24 +1,24 @@
 import styled from "styled-components";
 
-export const Title = styled.h1`
+const Title = styled.h1`
   font-size: 28px;
   font-family: "Shinb7Regular";
   text-align: center;
   padding-top: 15px;
 `;
 
-export const CatImgWrap = styled.div`
+const CatImgWrap = styled.div`
   margin: 0px auto 33px;
   position: relative;
 `;
 
-export const CatImg = styled.img`
+const CatImg = styled.img`
   width: 100%;
   height: 146px;
   border-radius: 20px;
 `;
 
-export const UploadImgIcon = styled.label`
+const UploadImgIcon = styled.label`
   width: 30px;
   height: 30px;
   bottom: 12px;
@@ -28,7 +28,7 @@ export const UploadImgIcon = styled.label`
   cursor: pointer;
 `;
 
-export const UploadImgInput = styled.input`
+const UploadImgInput = styled.input`
   position: absolute;
   left: -10000px;
   top: auto;
@@ -38,20 +38,20 @@ export const UploadImgInput = styled.input`
   padding: 0;
 `;
 
-export const SubTxt = styled.h2`
+const SubTxt = styled.h2`
   text-align: left;
   font-family: "Shinb7Regular";
   font-size: 16px;
   margin-bottom: 20px;
 `;
-export const Article = styled.article`
+const Article = styled.article`
   position: relative;
   width: 100%;
   min-width: 300px;
   padding: 46px 40px 50px;
 `;
 
-export const Textarea = styled.textarea`
+const Textarea = styled.textarea`
   width: 100%;
   height: 143px;
   font-size: 14px;
@@ -65,3 +65,14 @@ export const Textarea = styled.textarea`
     color: var(--disabled-button-color);
   }
 `;
+
+export {
+  Title,
+  CatImgWrap,
+  CatImg,
+  UploadImgIcon,
+  UploadImgInput,
+  SubTxt,
+  Article,
+  Textarea,
+};
