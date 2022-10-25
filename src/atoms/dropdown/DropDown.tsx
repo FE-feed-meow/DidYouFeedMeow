@@ -1,37 +1,45 @@
 import React from "react";
 
-import { SelectWrap, BtnSelect, UlOption, BtnOption } from "./style";
+import { SelectWrap, Title, BtnSelect, UlOption, BtnOption } from "./style";
 
 export interface DropDownProps {
   options: string[];
   width: number;
   value?: string;
-  children?: React.ReactNode;
+  title?: string;
 }
 
-const DropDown = ({ options, width, value, children }: DropDownProps) => {
+const DropDown = ({ options, width, value, title }: DropDownProps) => {
   const [open, setOpen] = React.useState<boolean>(false);
+  const [selected, setSelected] = React.useState(options[0]);
 
-  const handleChange = (e: any) => {
-    console.log(e.target.value);
+  const ClickSelect = (e: any) => {
+    setOpen(!open);
+    e.currentTarget.style.color = "#000";
   };
+
   return (
     <SelectWrap>
-      <h4 className="ir">{children}</h4>
+      <Title>{title}</Title>
       <BtnSelect
-        className={`${open ? "open" : ""}`}
-        onClick={() => setOpen(!open)}
+        type="button"
+        value={selected}
+        onClick={ClickSelect}
         width={width}
       >
-        {options[0]}
+        {selected}
       </BtnSelect>
-      {open === true ? (
+      {open ? (
         <UlOption width={width}>
           {options.map((option) => (
             <li key={option}>
               <BtnOption
+                type="button"
                 key={option}
-                onClick={() => handleChange}
+                onClick={() => {
+                  setOpen(!open);
+                  setSelected(option);
+                }}
                 value={value}
               >
                 {option}
