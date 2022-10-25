@@ -21,6 +21,27 @@ interface Props {
 }
 
 const CatFoodPageModal = ({ CloseModal }: Props) => {
+  const [onClickFood, setOnClickFood] = React.useState<boolean>(false);
+  const [onClickWater, setOnClickWater] = React.useState<boolean>(false);
+  const [onClickTreat, setOnClickTreat] = React.useState<boolean>(false);
+
+  const handleClickFood = () => {
+    setOnClickFood(true);
+    setOnClickWater(false);
+    setOnClickTreat(false);
+  };
+
+  const handleClickWater = () => {
+    setOnClickFood(false);
+    setOnClickWater(true);
+    setOnClickTreat(false);
+  };
+
+  const handleClickTreat = () => {
+    setOnClickFood(false);
+    setOnClickWater(false);
+    setOnClickTreat(true);
+  };
   return (
     <ModalMain>
       <ModalArea>
@@ -31,31 +52,52 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
             <CatFoodTimeInput placeholder="시" />
             <CatFoodTimeInput placeholder="분" />
             <CatNowTimeButton>현재 시간</CatNowTimeButton>
-            {/* <CatFoodTimeSelect>
-              <option value="시">시</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </CatFoodTimeSelect>
-            <CatFoodTimeSelect>
-              <option value="분">분</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </CatFoodTimeSelect> */}
             <CatFoodTitle>어떤 것을 주셨나요?</CatFoodTitle>
             <CatFoodButtonArea>
               <CatFoodButtonWrap>
-                <CatFeedImage src="/assets/icons/icon-feed.svg" alt="" />
-                <CatFeedButton>밥</CatFeedButton>
+                {onClickFood === false ? (
+                  <CatFeedImage
+                    src="/assets/icons/icon-feed.svg"
+                    onClick={handleClickFood}
+                    alt=""
+                  />
+                ) : (
+                  <CatFeedImage src="/assets/icons/icon-feed-fill.svg" alt="" />
+                )}
+
+                <CatFeedButton onClick={handleClickFood}>밥</CatFeedButton>
               </CatFoodButtonWrap>
               <CatFoodButtonWrap>
-                <CatFeedImage src="/assets/icons/icon-water.svg" alt="" />
-                <CatFoodButton>물</CatFoodButton>
+                {onClickWater === false ? (
+                  <CatFeedImage
+                    src="/assets/icons/icon-water.svg"
+                    alt=""
+                    onClick={handleClickWater}
+                  />
+                ) : (
+                  <CatFeedImage
+                    src="/assets/icons/icon-water-fill.svg"
+                    alt=""
+                  />
+                )}
+
+                <CatFoodButton onClick={handleClickWater}>물</CatFoodButton>
               </CatFoodButtonWrap>
               <CatFoodButtonWrap>
-                <CatFeedImage src="/assets/icons/icon-treat.svg" alt="" />
-                <CatFoodButton>간식</CatFoodButton>
+                {onClickTreat === false ? (
+                  <CatFeedImage
+                    src="/assets/icons/icon-treat.svg"
+                    alt=""
+                    onClick={handleClickTreat}
+                  />
+                ) : (
+                  <CatFeedImage
+                    src="/assets/icons/icon-treat-fill.svg"
+                    alt=""
+                  />
+                )}
+
+                <CatFoodButton onClick={handleClickTreat}>간식</CatFoodButton>
               </CatFoodButtonWrap>
             </CatFoodButtonArea>
             <CatFoodInput placeholder="2-15자 이내여야 합니다." />
