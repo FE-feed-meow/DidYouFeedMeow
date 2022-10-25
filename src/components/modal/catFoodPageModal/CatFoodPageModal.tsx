@@ -42,6 +42,7 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
     setOnClickWater(false);
     setOnClickTreat(true);
   };
+
   return (
     <ModalMain>
       <ModalArea>
@@ -65,7 +66,12 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
                   <CatFeedImage src="/assets/icons/icon-feed-fill.svg" alt="" />
                 )}
 
-                <CatFeedButton onClick={handleClickFood}>밥</CatFeedButton>
+                <CatFoodButton
+                  onClick={handleClickFood}
+                  ClickState={onClickFood}
+                >
+                  밥
+                </CatFoodButton>
               </CatFoodButtonWrap>
               <CatFoodButtonWrap>
                 {onClickWater === false ? (
@@ -81,7 +87,12 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
                   />
                 )}
 
-                <CatFoodButton onClick={handleClickWater}>물</CatFoodButton>
+                <CatFoodButton
+                  onClick={handleClickWater}
+                  ClickState={onClickWater}
+                >
+                  물
+                </CatFoodButton>
               </CatFoodButtonWrap>
               <CatFoodButtonWrap>
                 {onClickTreat === false ? (
@@ -97,7 +108,12 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
                   />
                 )}
 
-                <CatFoodButton onClick={handleClickTreat}>간식</CatFoodButton>
+                <CatFoodButton
+                  onClick={handleClickTreat}
+                  ClickState={onClickTreat}
+                >
+                  간식
+                </CatFoodButton>
               </CatFoodButtonWrap>
             </CatFoodButtonArea>
             <CatFoodInput placeholder="2-15자 이내여야 합니다." />
