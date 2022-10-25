@@ -52,6 +52,10 @@ export const CatFoodButton = styled.button`
   font-size: 14px;
   font-family: "SpoqaHanSansNeo-Regular";
   margin-bottom: 15px;
+  /* background: ${() =>
+    props.onClickFood
+      ? "linear-gradient(0deg,#f0f0f0 0%,#f0f0f0 50%,rgba(0, 0, 0, 0) 50%))"
+      : "linear-gradient(0deg, rgba(255, 240, 0, 0.5) 0%, rgba(255, 240, 0, 0.5) 50%,rgba(0, 0, 0, 0) 50%)"}; */
   background: linear-gradient(
     0deg,
     #f0f0f0 0%,
