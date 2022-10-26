@@ -79,14 +79,16 @@ const RecordMapPage = () => {
       >
         {position &&
           <MapMarker position={position} image={{
-            src: 'assets/icons/icon-marker.svg', size: { width: 30, height: 30 }
+            src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
           }}>
             <small style={{ fontSize: '12px', fontFamily: 'SpoqaHanSansNeo-Regular' }}>
               {address}
             </small>
           </MapMarker>
         }
-        <MapMarker position={myLocation.center} />
+        <MapMarker position={myLocation.center} image={{
+          src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
+        }} />
       </Map >
     </>
   )
