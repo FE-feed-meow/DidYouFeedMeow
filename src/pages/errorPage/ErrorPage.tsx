@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 import Image from "../../atoms/image/Image";
 
 const Wrap = styled.div`
@@ -23,6 +24,7 @@ const ErrorButton = styled.button`
 `;
 
 const ErrorPage = () => {
+  const navigate = useNavigate();
   return (
     <Wrap>
       <Image
@@ -34,7 +36,7 @@ const ErrorPage = () => {
         src="assets/icons/icon-error.svg"
       />
       <p>페이지를 찾을 수 없습니다. :(</p>
-      <ErrorButton>이전 페이지</ErrorButton>
+      <ErrorButton onClick={() => navigate(-1)}>이전 페이지</ErrorButton>
     </Wrap>
   );
 };
