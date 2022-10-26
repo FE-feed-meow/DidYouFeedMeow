@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const MapWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-`
+`;
 
 const ModalBg = styled.div`
   position: fixed;
@@ -15,7 +15,7 @@ const ModalBg = styled.div`
   height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 10;
-`
+`;
 
 const PlusBtn = styled.button`
   width: 60px;
@@ -23,7 +23,8 @@ const PlusBtn = styled.button`
   position: absolute;
   top: 723px;
   right: 40px;
-`
+  z-index: 10;
+`;
 
 const MenuBtn = styled.button`
   position: absolute;
@@ -32,6 +33,6 @@ const MenuBtn = styled.button`
   img {
     vertical-align: middle;
   }
-`
+`;
 
-export { MapWrapper, ModalBg, PlusBtn, MenuBtn }
+export { MapWrapper, ModalBg, PlusBtn, MenuBtn };
