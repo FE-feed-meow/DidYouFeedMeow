@@ -13,12 +13,14 @@ const Header = ({ children }: HeaderProps) => {
 
   return (
     <HeaderWrap>
-      <Image
-        width={18}
-        src="assets/icons/icon-arrow-left.svg"
-        alt="뒤로가기 버튼"
-        onClick={() => navigate(-1)}
-      />
+      <button type="button">
+        <Image
+          width={18}
+          src="assets/icons/icon-arrow-left.svg"
+          alt="뒤로가기 버튼"
+          onClick={() => navigate(-1)}
+        />
+      </button>
       <H2>{children ?? children}</H2>
     </HeaderWrap>
   );

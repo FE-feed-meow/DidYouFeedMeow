@@ -7,6 +7,7 @@ interface BtnProps {
   marginBottom?: number;
   bgColor: string;
   hoverBgColor?: string;
+  disabled?: boolean;
   onClick?: () => void;
   children?: React.ReactNode;
 }
@@ -26,22 +27,25 @@ const Basic = styled.button<BtnProps>`
 `;
 
 const Button = ({
+  className,
   marginTop,
   marginBottom,
   bgColor,
   hoverBgColor,
-  onClick,
+  disabled,
   children,
-  className,
+  onClick,
 }: BtnProps) => {
   return (
     <Basic
       className={className ?? className}
+      type="button"
       marginTop={marginTop ?? marginTop}
       marginBottom={marginBottom ?? marginBottom}
-      onClick={onClick ?? onClick}
       bgColor={bgColor}
       hoverBgColor={hoverBgColor ?? hoverBgColor}
+      onClick={onClick ?? onClick}
+      disabled={disabled}
     >
       {children}
     </Basic>

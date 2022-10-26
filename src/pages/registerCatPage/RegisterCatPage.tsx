@@ -23,7 +23,15 @@ type UploadImg = {
 };
 const RegisterCatPage = () => {
   const url = "https://mandarin.api.weniv.co.kr";
-  const option = ["잘몰라유..", "2022~2020", "2020~2018", "2018~2016"];
+  const option = [
+    "잘몰라유..",
+    "2022년",
+    "2021년",
+    "2020년",
+    "2019년",
+    "2018년",
+    "2017년전",
+  ];
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [imgFile, setImgFile] = useState<UploadImg | null>(null);
@@ -32,9 +40,9 @@ const RegisterCatPage = () => {
     fileInputRef.current?.click();
   };
 
+  // 파일 업로드
   const onImgChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = e.target.files;
-    // const length = fileList?.length;
     if (fileList && fileList[0]) {
       const urlFile = URL.createObjectURL(fileList[0]);
       setImgFile({
@@ -86,10 +94,14 @@ const RegisterCatPage = () => {
             required={false}
             type="text"
           />
-          <DropDown options={option} width={78} />
+          <DropDown title="출생년도" options={option} width={88} />
           <SubTxt>특이사항</SubTxt>
           <Textarea placeholder="50자 이내여야 합니다." />
-          <Button marginTop={33} bgColor="var(--main-color)">
+          <Button
+            marginTop={33}
+            bgColor="var(--disabled-button-color)"
+            disabled
+          >
             저장하기
           </Button>
         </form>
