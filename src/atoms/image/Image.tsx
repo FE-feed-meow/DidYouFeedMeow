@@ -9,6 +9,7 @@ interface ImageProps {
   height?: number;
   src: string;
   alt: string;
+  onClick?: () => void;
 }
 
 const Img = styled.img<ImageProps>`
@@ -26,6 +27,7 @@ const Image = ({
   height,
   src,
   alt,
+  onClick,
 }: ImageProps): JSX.Element => {
   return (
     <Img
@@ -36,6 +38,7 @@ const Image = ({
       height={height ?? height}
       src={src}
       alt={alt}
+      onClick={onClick ?? onClick}
     />
   );
 };
