@@ -49,6 +49,15 @@ export const CatNowTimeButton = styled.button`
     #f0f0f0 50%,
     rgba(0, 0, 0, 0) 50%
   );
+  &:hover,
+  &:focus {
+    background: linear-gradient(
+      0deg,
+      rgba(255, 240, 0, 0.5) 0%,
+      rgba(255, 240, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  }
 `;
 
 export const CatFoodButton = styled.button`
