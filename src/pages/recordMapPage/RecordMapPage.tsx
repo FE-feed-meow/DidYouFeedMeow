@@ -81,25 +81,12 @@ const RecordMapPage = () => {
           geocoder.coord2Address(mouseEvent.latLng.getLng(), mouseEvent.latLng.getLat(), callbackAddress)
         }}
       >
-        {/* {position &&
+        {position &&
           <MapMarker position={position} image={{
             src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
           }}>
             <small style={{ fontSize: '12px', fontFamily: 'SpoqaHanSansNeo-Regular' }}>
               {address}
-            </small>
-          </MapMarker>
-        } */}
-        {position ?
-          <MapMarker position={position} image={{
-            src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
-          }}>
-            <small style={{ fontSize: '12px', fontFamily: 'SpoqaHanSansNeo-Regular' }}>
-              {address}
-            </small>
-          </MapMarker> : <MapMarker position={myLocation.center}>
-            <small style={{ fontSize: '12px', fontFamily: 'SpoqaHanSansNeo-Regular' }}>
-              {curAddress}
             </small>
           </MapMarker>
         }
