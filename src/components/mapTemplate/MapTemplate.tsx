@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
-import MapModal from '../../components/modal/mapModal/MapModal'
-import MenuBoard from '../../components/menuBoard/MenuBoard'
-import SearchInpBox from '../../components/searchInpBox/SearchInpBox'
+import MapModal from '../modal/mapModal/MapModal'
+import MenuBoard from '../menuBoard/MenuBoard'
 import { MapWrapper, ModalBg, PlusBtn, MenuBtn } from './style'
 
 const MapTemplate = ({ address, curAddress }: any) => {
@@ -20,7 +19,6 @@ const MapTemplate = ({ address, curAddress }: any) => {
       <MenuBtn type="button" onClick={() => { setMenuBoard(!menuBoard) }}>
         <img src="assets/icons/icon-menu.svg" alt="메뉴 버튼" />
       </MenuBtn>
-      <SearchInpBox />
       {menuBoard === true ?
         <ModalBg ref={outSection} onClick={closeModal}>
           <MenuBoard />

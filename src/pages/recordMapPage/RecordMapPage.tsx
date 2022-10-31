@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
-import MapTemplate from './MapTemplate';
+import MapTemplate from '../../components/mapTemplate/MapTemplate';
+import SearchInpBox from '../../components/searchInpBox/SearchInpBox';
+import ResetLocationBtn from './style'
 
 interface LocationType {
-  center: { lat: number, lng: number },
+  center: { lat: number, lng: number };
   error?: { message: string };
 }
 
@@ -17,9 +19,8 @@ const RecordMapPage = () => {
     center: { lat: 0, lng: 0 },
   })
   const [position, setPosition] = useState<ClickMarker | null>(null);
-  const [address, setAddress] = useState();
-  const [curAddress, setCurAddress] = useState();
-
+  const [address, setAddress] = useState<any>();
+  const [curAddress, setCurAddress] = useState<any>();
 
   // 성공시 인자로 받은 위치의 경도, 위도 표시
   const onSuccess = (location: { coords: { latitude: number; longitude: number; } }) => {
@@ -45,11 +46,13 @@ const RecordMapPage = () => {
   }, [])
 
   const geocoder = new kakao.maps.services.Geocoder();
+  // 내가 선택한 위치
   const callbackAddress = (result: any, status: any) => {
     if (status && kakao.maps.services.Status.OK) {
-      setAddress(result[0].address.address_name) // 지번주소
+      setAddress(result[0].address.address_name)
     }
   }
+  // 현재 위치
   const callbackCurAddress = (result: any, status: any) => {
     if (status === kakao.maps.services.Status.OK) {
       setCurAddress(result[0].address.address_name)
@@ -58,6 +61,7 @@ const RecordMapPage = () => {
   geocoder.coord2Address(myLocation.center.lng, myLocation.center.lat, callbackCurAddress)
   return (
     <>
+      <SearchInpBox setMyLocation={setMyLocation} setAddress={setAddress} />
       <MapTemplate address={address} curAddress={curAddress} />
       <Map
         center={myLocation.center}
@@ -77,7 +81,7 @@ const RecordMapPage = () => {
           geocoder.coord2Address(mouseEvent.latLng.getLng(), mouseEvent.latLng.getLat(), callbackAddress)
         }}
       >
-        {position &&
+        {/* {position &&
           <MapMarker position={position} image={{
             src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
           }}>
@@ -85,11 +89,43 @@ const RecordMapPage = () => {
               {address}
             </small>
           </MapMarker>
+        } */}
+        {position ?
+          <MapMarker position={position} image={{
+            src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
+          }}>
+            <small style={{ fontSize: '12px', fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+              {address}
+            </small>
+          </MapMarker> : <MapMarker position={myLocation.center}>
+            <small style={{ fontSize: '12px', fontFamily: 'SpoqaHanSansNeo-Regular' }}>
+              {curAddress}
+            </small>
+          </MapMarker>
         }
         <MapMarker position={myLocation.center} image={{
           src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 }
         }} />
-      </Map >
+        <ResetLocationBtn
+          type='button'
+          onClick={() => {
+            navigator.geolocation.getCurrentPosition(onSuccess)
+            setCurAddress(
+              geocoder.coord2Address(myLocation.center.lng, myLocation.center.lat, callbackAddress)
+            )
+            setMyLocation({
+              center: {
+                lat: myLocation.center.lat, lng: myLocation.center.lng
+              }
+            })
+            setPosition({
+              lat: myLocation.center.lat, lng: myLocation.center.lng
+            })
+          }}
+        >
+          현위치
+        </ResetLocationBtn>
+      </Map>
     </>
   )
 }
