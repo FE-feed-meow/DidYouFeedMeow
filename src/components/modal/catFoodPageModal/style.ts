@@ -17,7 +17,7 @@ export const CatFoodTitle = styled.p`
 export const CatFoodTimeInput = styled.input`
   font-size: 14px;
   color: #797979;
-  width: 40px;
+  width: 115px;
   text-align: center;
   margin-bottom: 30px;
   margin-right: 10px;
