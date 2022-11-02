@@ -5,7 +5,7 @@ const SelectWrap = styled.section``;
 const Title = styled.h4`
   font-family: "Shinb7Regular";
   font-size: 16px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 `;
 
 const BtnSelect = styled.button<{ width: number }>`
@@ -16,7 +16,7 @@ const BtnSelect = styled.button<{ width: number }>`
   font-family: "SpoqaHanSansNeo-Regular";
   font-size: 14px;
   text-align: left;
-  margin-bottom: 15px;
+  margin-bottom: 24px;
   background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 0.5) 0%,
