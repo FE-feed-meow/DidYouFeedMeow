@@ -50,7 +50,39 @@ const Article = styled.article`
   min-width: 300px;
   padding: 46px 40px 50px;
 `;
+const TitAdress = styled.p`
+  font-family: "Shinb7Regular";
+  font-size: 18px;
+  margin-bottom: 8px;
+`;
 
+const DivAdress = styled.p`
+  display: block;
+  width: 100%;
+  height: 20px;
+  color: #000;
+  font-family: "SpoqaHanSansNeo-Regular";
+  font-size: 14px;
+  margin-bottom: 23px;
+  padding: 0 9px;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.5) 70%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const CatBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 47px;
+`;
 const Textarea = styled.textarea`
   width: 100%;
   height: 143px;
@@ -73,6 +105,9 @@ export {
   UploadImgIcon,
   UploadImgInput,
   SubTxt,
+  TitAdress,
+  DivAdress,
+  CatBox,
   Article,
   Textarea,
 };

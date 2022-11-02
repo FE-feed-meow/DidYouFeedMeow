@@ -9,6 +9,9 @@ import {
   Title,
   Article,
   SubTxt,
+  TitAdress,
+  DivAdress,
+  CatBox,
   CatImgWrap,
   CatImg,
   UploadImgIcon,
@@ -87,14 +90,20 @@ const RegisterCatPage = () => {
               onChange={onImgChange}
             />
           </CatImgWrap>
-          <Inputs
-            label="냥 이름"
-            width={310}
-            placeholder="2~15자 이내여야합니다."
-            required={false}
-            type="text"
-          />
-          <DropDown title="출생년도" options={option} width={88} />
+          <TitAdress>주소</TitAdress>
+          <DivAdress>
+            경기도 의정부시 체육로 300-1 쌍용아파트,101동101호
+          </DivAdress>
+          <CatBox>
+            <Inputs
+              label="냥 이름"
+              width={150}
+              placeholder="10자 이내여야 합니다."
+              required={false}
+              type="text"
+            />
+            <DropDown title="출생년도(추정)" options={option} width={88} />
+          </CatBox>
           <SubTxt>특이사항</SubTxt>
           <Textarea placeholder="50자 이내여야 합니다." />
           <Button
