@@ -38,21 +38,34 @@ export const IconBox = styled.div`
   top: -3px;
   right: -25px;
 `;
-
-const FeedCard = () => {
+interface FeedProps {
+  feed: {
+    id: string;
+    content: string;
+    createdAt: string;
+    author: string;
+  };
+}
+const FeedCard = ({ feed }: FeedProps) => {
   const [onModal, setModal] = React.useState<boolean>(false);
+
   const OpenModal = () => {
     setModal(true);
   };
   const CloseModal = () => {
     setModal(false);
   };
+  const test = feed.content.split("/");
+  const time = test[0];
+  const feedName = test[1];
+  const feedContent = test[2];
+  const etc = test[3];
   return (
     <CardWrap>
-      <FeedTime>20:00</FeedTime>
+      <FeedTime>{time}</FeedTime>
       <Feedinfo>
-        <FeedName>간식(츄르)</FeedName>
-        <FeedEtc>몸이 안 좋은지 밥을 잘 먹지 못하네요..</FeedEtc>
+        <FeedName>{`${feedName} (${feedContent})`}</FeedName>
+        <FeedEtc>{etc}</FeedEtc>
       </Feedinfo>
       <IconBox>
         <button type="button" onClick={OpenModal}>
