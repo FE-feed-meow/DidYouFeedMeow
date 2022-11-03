@@ -15,13 +15,29 @@ export const DateTxt = styled.p`
   width: 64px;
 `;
 
-const CatFeed = () => {
+interface Feed {
+  id: string;
+  content: string;
+  createdAt: string;
+  author: string;
+}
+
+interface FeedProps {
+  feedList: Feed[];
+}
+
+const CatFeed = ({ feedList }: FeedProps) => {
   return (
     <FeedWrap>
       <DateTxt> 22. 10. 04</DateTxt>
-      <FeedCard />
-      <FeedCard />
-      <FeedCard />
+      {feedList.length > 0
+        ? feedList.map((feed, i: number) => {
+            return <FeedCard key={feed.id} feed={feed} />;
+          })
+        : null}
+
+      {/* <FeedCard />
+      <FeedCard /> */}
     </FeedWrap>
   );
 };
