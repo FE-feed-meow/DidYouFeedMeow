@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import { ModalArea, ModalMain, ModalWrap } from "../style";
@@ -19,57 +20,106 @@ interface Props {
 }
 
 const CatFoodPageModal = ({ CloseModal }: Props) => {
+  localStorage.setItem(
+    "token",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjY0NjYwNywiaWF0IjoxNjY3NDYyNjA3fQ.LIZswbAIK9Wk4aQZJpvrXs3udP5Cas7UjSm7iUtLHpA",
+  );
+  const token = localStorage.getItem("token");
+
+  const [selectTime, setSelectTime] = useState<string>("");
+  const [feedName, setFeedName] = useState<string>("");
   const [onClickFood, setOnClickFood] = React.useState<boolean>(false);
   const [onClickWater, setOnClickWater] = React.useState<boolean>(false);
   const [onClickTreat, setOnClickTreat] = React.useState<boolean>(false);
-  const [WhatDidFood, setWhatDidFood] = useState("");
+  const [whatDidFood, setWhatDidFood] = useState<string>("");
+  const [etc, setEtc] = useState<string>("");
 
-  const [nowTime, setNowTime] = useState("");
-
+  const [text, setText] = useState<string>("");
   const currentTimer = () => {
     const date = new Date();
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
-    setNowTime(`${hours}:${minutes}`);
+    setSelectTime(`${hours}:${minutes}`);
   };
   const startTimer = () => {
     setTimeout(currentTimer, 1000);
   };
 
+  const onChangeTime = useCallback((e: any) => {
+    setSelectTime(e.target.value);
+  }, []);
+
   useEffect(() => {
     startTimer();
   }, []);
+  useEffect(() => {
+    setText(`${selectTime}/${feedName}/${whatDidFood}/${etc}`);
+  }, [selectTime, feedName, whatDidFood, etc]);
 
   // const onClickNowTime = () => {
   //   startTimer();
   //   setChangeTime(nowTime);
   // };
 
-  const onChangeTime = useCallback((e: any) => {
-    setNowTime(e.target.value);
-  }, []);
+  // const handleFeedName = (e: any) => {
+  //   setFeedName(e.target.value);
+  //   console.log("feedName", feedName);
+  // };
 
   /* 버튼 클릭 */
   const handleClickFood = () => {
     setOnClickFood(true);
     setOnClickWater(false);
     setOnClickTreat(false);
+    setFeedName("밥");
   };
 
   const handleClickWater = () => {
     setOnClickFood(false);
     setOnClickWater(true);
     setOnClickTreat(false);
+    setFeedName("물");
   };
 
   const handleClickTreat = () => {
     setOnClickFood(false);
     setOnClickWater(false);
     setOnClickTreat(true);
+    setFeedName("간식");
   };
 
   const handleFood = (e: any) => {
     setWhatDidFood(e.target.value);
+  };
+
+  const handleEtc = (e: any) => {
+    setEtc(e.target.value);
+  };
+
+  const postId = "62e0054a17ae6665819ebcaf";
+
+  const handleSubmitFood = async () => {
+    console.log("text", text);
+    const url = `https://mandarin.api.weniv.co.kr/post/${postId}/comments`;
+    const comment = {
+      comment: {
+        content: text,
+      },
+    };
+
+    try {
+      const res = await axios(url, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+        data: comment,
+      });
+      console.log("data:", res.data.comment);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -81,7 +131,7 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
             <CatFoodTitle>시간</CatFoodTitle>
             <CatFoodTimeInput
               type="time"
-              defaultValue={nowTime}
+              defaultValue={selectTime}
               placeholder="시간"
               onChange={onChangeTime}
             />
@@ -163,8 +213,11 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
               type="text"
               maxLength={15}
               placeholder="15자 이내여야 합니다."
+              onChange={handleEtc}
             />
-            <CatFoodSubmitButton>저장하기</CatFoodSubmitButton>
+            <CatFoodSubmitButton onClick={handleSubmitFood}>
+              저장하기
+            </CatFoodSubmitButton>
           </CatFoodWrap>
         </ModalWrap>
       </ModalArea>
