@@ -10,7 +10,16 @@ const MapModal = ({ address, curAddress }: any) => {
     setDetailAdd(e.target.value)
   }
   const navigate = useNavigate();
-  const navigateToAddCat = () => { navigate('/addCat'); }
+  const navigateToAddCat = () => {
+    navigate('/addCat', {
+      state: {
+        curAddress,
+        address,
+        detailAdd
+      }
+    });
+  }
+
   return (
     <ArticleWrap>
       <p>

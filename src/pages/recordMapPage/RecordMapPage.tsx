@@ -9,7 +9,7 @@ interface LocationType {
   error?: { message: string };
 }
 
-type ClickMarker = {
+interface ClickMarker {
   lat: number;
   lng: number;
 }
@@ -19,7 +19,7 @@ const RecordMapPage = () => {
     center: { lat: 0, lng: 0 },
   })
   const [position, setPosition] = useState<ClickMarker | null>(null);
-  const [address, setAddress] = useState<any>();
+  const [address, setAddress] = useState<string>();
   const [curAddress, setCurAddress] = useState<any>();
 
   // 성공시 인자로 받은 위치의 경도, 위도 표시

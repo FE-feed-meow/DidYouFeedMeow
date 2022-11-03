@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useState } from "react";
+import { useLocation } from 'react-router';
 
 import Header from "../../components/header/Header";
 import Inputs from "../../atoms/inputs/Inputs";
@@ -72,6 +73,9 @@ const RegisterCatPage = () => {
     );
   }, [imgFile]);
 
+  // 현위치 or 선택한 주소, MapModal에서 입력한 상세주소 넘겨주기
+  const location = useLocation();
+
   return (
     <>
       <Header />
@@ -92,7 +96,7 @@ const RegisterCatPage = () => {
           </CatImgWrap>
           <TitAdress>주소</TitAdress>
           <DivAdress>
-            경기도 의정부시 체육로 300-1 쌍용아파트,101동101호
+            {!location.state.address ? `${location.state.curAddress}, ${location.state.detailAdd || ''}` : `${location.state.address}, ${location.state.detailAdd || ''}`}
           </DivAdress>
           <CatBox>
             <Inputs
