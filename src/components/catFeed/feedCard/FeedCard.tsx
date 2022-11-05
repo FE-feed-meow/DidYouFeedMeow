@@ -31,12 +31,14 @@ export const FeedName = styled.h3`
 export const FeedEtc = styled.p`
   font-size: 12px;
   color: #797979;
+  width: 200px;
+  height: 13px;
 `;
 
 export const IconBox = styled.div`
   position: absolute;
   top: -3px;
-  right: -25px;
+  right: 0;
 `;
 interface FeedProps {
   feed: {
@@ -72,7 +74,7 @@ const FeedCard = ({ feed }: FeedProps) => {
           <Image
             width={19}
             height={19}
-            alt=""
+            alt="밥 지우기"
             src="assets/icons/icon-delete.svg"
           />
         </button>
