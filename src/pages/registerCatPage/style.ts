@@ -16,6 +16,8 @@ const CatImg = styled.img`
   width: 100%;
   height: 146px;
   border-radius: 20px;
+  background-color: #b5b5b5;
+  object-fit: contain;
 `;
 
 const UploadImgIcon = styled.label`

@@ -7,9 +7,16 @@ export interface DropDownProps {
   width: number;
   value?: string;
   title?: string;
+  getOption?: any;
 }
 
-const DropDown = ({ options, width, value, title }: DropDownProps) => {
+const DropDown = ({
+  options,
+  width,
+  value,
+  title,
+  getOption,
+}: DropDownProps) => {
   const [open, setOpen] = React.useState<boolean>(false);
   const [selected, setSelected] = React.useState(options[0]);
 
@@ -39,6 +46,7 @@ const DropDown = ({ options, width, value, title }: DropDownProps) => {
                 onClick={() => {
                   setOpen(!open);
                   setSelected(option);
+                  getOption(option);
                 }}
                 value={value}
               >

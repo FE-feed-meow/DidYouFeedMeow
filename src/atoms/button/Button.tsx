@@ -24,6 +24,9 @@ const Basic = styled.button<BtnProps>`
   &:hover {
     background: ${(props) => props.hoverBgColor};
   }
+  :disabled {
+    background: var(--disabled-button-color);
+  }
 `;
 
 const Button = ({

@@ -1,5 +1,7 @@
-import React, { useMemo, useRef, useState } from "react";
-import { useLocation } from 'react-router';
+import React, { useMemo, useRef, useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router";
 
 import Header from "../../components/header/Header";
 import Inputs from "../../atoms/inputs/Inputs";
@@ -20,13 +22,8 @@ import {
   Textarea,
 } from "./style";
 
-type UploadImg = {
-  file: File;
-  thumbnail: string;
-  type: string;
-};
 const RegisterCatPage = () => {
-  const url = "https://mandarin.api.weniv.co.kr";
+  const API_URL = "https://mandarin.api.weniv.co.kr";
   const option = [
     "잘몰라유..",
     "2022년",
@@ -34,27 +31,71 @@ const RegisterCatPage = () => {
     "2020년",
     "2019년",
     "2018년",
-    "2017년전",
+    "2017년",
   ];
 
+  const [imgFile, setImgFile] = React.useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [imgFile, setImgFile] = useState<UploadImg | null>(null);
+  const [catName, setCatName] = React.useState("");
+  const [catBirth, setCatBirth] = React.useState(0);
+  const [catEtc, setCatEtc] = React.useState("");
+  const [disabled, setDisabled] = React.useState<boolean>(true);
+  const navigate = useNavigate();
 
-  const handleClickFileInput = () => {
-    fileInputRef.current?.click();
+  localStorage.setItem(
+    "token",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjgxMDc5MiwiaWF0IjoxNjY3NjI2NzkyfQ._7qY-rNq9nWvyxjTFwZ1CW_OfHXmR1Edz_b25YkAKJc",
+  );
+  const token = localStorage.getItem("token");
+
+  // 현위치 or 선택한 주소, MapModal에서 입력한 상세주소 넘겨주기
+  const location = useLocation();
+
+  // 출생년도 숫자로 등록
+  const getOption = (opt: any) => {
+    let year = Number(opt.replace("년", ""));
+
+    // '잘몰라유' = 999으로 변환하여 등록
+    if (Number.isNaN(year)) {
+      year = 999;
+    }
+    console.log(year);
+    setCatBirth(year);
   };
 
-  // 파일 업로드
+  // 이미지 업로드
+  const imageUpload = async (file: any) => {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    axios
+      .post(`${API_URL}/image/uploadfile`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        const urlFile = URL.createObjectURL(file);
+        setImgFile(urlFile);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // 파일 onChange 부분
   const onImgChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = e.target.files;
     if (fileList && fileList[0]) {
-      const urlFile = URL.createObjectURL(fileList[0]);
-      setImgFile({
-        file: fileList[0],
-        thumbnail: urlFile,
-        type: fileList[0].type.slice(0, 5),
-      });
+      const imgSrc = await imageUpload(fileList[0]);
+      console.log(imgSrc);
     }
+  };
+  // 클릭시 파일 업로드 창 띄우기
+  const handleClickFileInput = () => {
+    fileInputRef.current?.click();
   };
 
   // 업로드 된 이미지 파일 미리보기
@@ -64,17 +105,34 @@ const RegisterCatPage = () => {
         <CatImg src="assets/images/add-cat.svg" alt="냥이 등록 기본이미지 " />
       );
     }
-    return (
-      <CatImg
-        src={imgFile.thumbnail}
-        alt="냥이 등록 이미지"
-        onClick={handleClickFileInput}
-      />
-    );
+    return <CatImg src={imgFile} alt="냥이 등록 이미지" />;
   }, [imgFile]);
 
-  // 현위치 or 선택한 주소, MapModal에서 입력한 상세주소 넘겨주기
-  const location = useLocation();
+  // 서버등록
+  const saveBtnCat = async () => {
+    const reqData = {
+      product: {
+        itemName: catName,
+        price: catBirth,
+        link: catEtc,
+        itemImage: imgFile,
+      },
+    };
+    axios
+      .post(`${API_URL}/product`, reqData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        navigate(`/catInfo:${response.data.product.id}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -96,7 +154,11 @@ const RegisterCatPage = () => {
           </CatImgWrap>
           <TitAdress>주소</TitAdress>
           <DivAdress>
-            {!location.state.address ? `${location.state.curAddress}, ${location.state.detailAdd || ''}` : `${location.state.address}, ${location.state.detailAdd || ''}`}
+            {!location.state.address
+              ? `${location.state.curAddress}, ${
+                  location.state.detailAdd || ""
+                }`
+              : `${location.state.address}, ${location.state.detailAdd || ""}`}
           </DivAdress>
           <CatBox>
             <Inputs
@@ -105,15 +167,33 @@ const RegisterCatPage = () => {
               placeholder="10자 이내여야 합니다."
               required={false}
               type="text"
+              onChange={(e) => {
+                setCatName(e.target.value);
+                return e.target.value.length > 0
+                  ? setDisabled(false)
+                  : setDisabled(true);
+              }}
             />
-            <DropDown title="출생년도(추정)" options={option} width={88} />
+            <DropDown
+              title="출생년도(추정)"
+              options={option}
+              getOption={getOption}
+              width={88}
+            />
           </CatBox>
           <SubTxt>특이사항</SubTxt>
-          <Textarea placeholder="50자 이내여야 합니다." />
+          <Textarea
+            placeholder="50자 이내여야 합니다."
+            onChange={(e) => {
+              setCatEtc(e.target.value);
+            }}
+          />
           <Button
+            className="saveBtn"
             marginTop={33}
-            bgColor="var(--disabled-button-color)"
-            disabled
+            bgColor="var(  --main-color)"
+            disabled={disabled}
+            onClick={saveBtnCat}
           >
             저장하기
           </Button>
