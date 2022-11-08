@@ -78,7 +78,7 @@ const FeedCard = ({ feed }: FeedProps) => {
             src="assets/icons/icon-delete.svg"
           />
         </button>
-        {onModal && <DeleteModal CloseModal={CloseModal} />}
+        {onModal && <DeleteModal CloseModal={CloseModal} feedId={feed.id} />}
       </IconBox>
     </CardWrap>
   );
