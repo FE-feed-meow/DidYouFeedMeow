@@ -28,7 +28,7 @@ const CatInfoPage = () => {
   );
   const token = localStorage.getItem("token");
 
-  const getFeedList = async () => {
+  const getFeedList = React.useCallback(async () => {
     const postId = "62e0054a17ae6665819ebcaf";
 
     const url = `https://mandarin.api.weniv.co.kr/post/${postId}/comments`;
@@ -44,11 +44,11 @@ const CatInfoPage = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [feedList]);
 
   React.useEffect(() => {
     getFeedList();
-  }, [feedList]);
+  }, []);
   return (
     <>
       <Header />

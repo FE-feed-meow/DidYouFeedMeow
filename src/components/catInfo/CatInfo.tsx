@@ -60,8 +60,10 @@ export const CatDetail = styled.p`
 
 const CatInfo = () => {
   const [onModal, setModal] = React.useState<boolean>(false);
+  const [deleteState, setDeleteState] = React.useState<boolean>(false);
   const OpenModal = () => {
     setModal(true);
+    setDeleteState(false);
   };
   const CloseModal = () => {
     setModal(false);
@@ -92,7 +94,9 @@ const CatInfo = () => {
               src="assets/icons/icon-delete.svg"
             />
           </a>
-          {onModal && <DeleteModal CloseModal={CloseModal} />}
+          {onModal && (
+            <DeleteModal CloseModal={CloseModal} deleteState={deleteState} />
+          )}
         </IconsBox>
       </CatNameWrap>
 

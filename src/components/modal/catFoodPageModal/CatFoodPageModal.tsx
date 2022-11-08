@@ -56,16 +56,6 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
     setText(`${selectTime}/${feedName}/${whatDidFood}/${etc}`);
   }, [selectTime, feedName, whatDidFood, etc]);
 
-  // const onClickNowTime = () => {
-  //   startTimer();
-  //   setChangeTime(nowTime);
-  // };
-
-  // const handleFeedName = (e: any) => {
-  //   setFeedName(e.target.value);
-  //   console.log("feedName", feedName);
-  // };
-
   /* 버튼 클릭 */
   const handleClickFood = () => {
     setOnClickFood(true);
@@ -120,6 +110,8 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
     } catch (err) {
       console.log(err);
     }
+    CloseModal();
+    window.location.reload();
   };
 
   return (
@@ -135,10 +127,6 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
               placeholder="시간"
               onChange={onChangeTime}
             />
-            {/* <CatNowTimeButton onClick={onClickNowTime}>
-              현재 시간
-            </CatNowTimeButton> */}
-
             <CatFoodTitle>어떤 것을 주셨나요?</CatFoodTitle>
             <CatFoodButtonArea>
               <CatFoodButtonWrap>
