@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-const ResetLocationBtn = styled.button`
-  position: relative;
-  top: -55px;
-  background-color: yellow;
-  font-size: 20px;
+const MarkerText = styled.small`
+  font-size: 12px;
+  font-family: "SpoqaHanSansNeo-Regular";
+  text-align: center;
 `;
 
-export default ResetLocationBtn;
+export default MarkerText;
