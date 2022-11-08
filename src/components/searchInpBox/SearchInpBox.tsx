@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { SearchWrap, SearchInput } from './style'
 
-const SearchInpBox = ({ setMyLocation, setAddress }: any) => {
+const SearchInpBox = ({ setMyLocation, setAddress, myLocation }: any) => {
   const [searchAddress, setSearchAddress] = useState<string>();
   const searchMap = () => {
     const ps = new kakao.maps.services.Places();
@@ -16,10 +16,14 @@ const SearchInpBox = ({ setMyLocation, setAddress }: any) => {
         setAddress()
       } else {
         alert('위치 정보를 찾을 수 없습니다')
+        setMyLocation({
+          center: { lat: myLocation.center.lat, lng: myLocation.center.lng }
+        })
       }
     }
     ps.keywordSearch(`${searchAddress}`, searchPlace)
   }
+
   const handleSearchAddress = (e: any) => {
     setSearchAddress(e.target.value)
   }
@@ -30,6 +34,7 @@ const SearchInpBox = ({ setMyLocation, setAddress }: any) => {
       setSearchAddress('');
     }
   }
+
   return (
     <SearchWrap>
       <SearchInput
