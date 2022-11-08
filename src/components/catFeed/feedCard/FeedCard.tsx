@@ -70,7 +70,7 @@ const FeedCard = ({ feed }: FeedProps) => {
     <CardWrap>
       <FeedTime>{time}</FeedTime>
       <Feedinfo>
-        <FeedName>{`${feedName} (${feedContent})`}</FeedName>
+        <FeedName>{`${feedName} ${feedContent}`}</FeedName>
         <FeedEtc>{etc}</FeedEtc>
       </Feedinfo>
       <IconBox>

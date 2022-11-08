@@ -79,7 +79,7 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
   };
 
   const handleFood = (e: any) => {
-    setWhatDidFood(e.target.value);
+    setWhatDidFood(`(${e.target.value})`);
   };
 
   const handleEtc = (e: any) => {
