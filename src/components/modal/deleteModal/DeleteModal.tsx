@@ -14,11 +14,12 @@ import {
 interface Props {
   CloseModal: () => void;
   feedId?: string;
+  deleteState?: boolean;
 }
-const postId = "62e0054a17ae6665819ebcaf";
-const DeleteModal = ({ CloseModal, feedId }: Props) => {
-  console.log(feedId);
+
+const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
   const token = localStorage.getItem("token");
+  const postId = "62e0054a17ae6665819ebcaf";
 
   // 고양이 밥 정보 삭제
   const deleteFeed = async () => {
@@ -38,6 +39,17 @@ const DeleteModal = ({ CloseModal, feedId }: Props) => {
     CloseModal();
     window.location.reload();
   };
+
+  const onDelete = () => {
+    // true면 빕 정보 삭제
+    // false면 고양이 정보 삭제
+    if (deleteState === true) {
+      deleteFeed();
+    } else {
+      console.log("아님");
+      CloseModal();
+    }
+  };
   return (
     <ModalMain>
       <ModalArea>
@@ -45,7 +57,7 @@ const DeleteModal = ({ CloseModal, feedId }: Props) => {
         <ModalWrap>
           <DeleteText>삭제하시겠습니까?</DeleteText>
           <BtnWrap>
-            <DeleteBtn onClick={deleteFeed}>삭제</DeleteBtn>
+            <DeleteBtn onClick={onDelete}>삭제</DeleteBtn>
             <CancelBtn onClick={CloseModal}>취소</CancelBtn>
           </BtnWrap>
         </ModalWrap>

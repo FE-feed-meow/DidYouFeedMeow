@@ -50,13 +50,17 @@ interface FeedProps {
 }
 const FeedCard = ({ feed }: FeedProps) => {
   const [onModal, setModal] = React.useState<boolean>(false);
+  const [deleteState, setDeleteState] = React.useState<boolean>(false);
 
   const OpenModal = () => {
     setModal(true);
+    setDeleteState(true);
   };
   const CloseModal = () => {
     setModal(false);
+    setDeleteState(false);
   };
+
   const test = feed.content.split("/");
   const time = test[0];
   const feedName = test[1];
@@ -78,7 +82,13 @@ const FeedCard = ({ feed }: FeedProps) => {
             src="assets/icons/icon-delete.svg"
           />
         </button>
-        {onModal && <DeleteModal CloseModal={CloseModal} feedId={feed.id} />}
+        {onModal && (
+          <DeleteModal
+            CloseModal={CloseModal}
+            feedId={feed.id}
+            deleteState={deleteState}
+          />
+        )}
       </IconBox>
     </CardWrap>
   );
