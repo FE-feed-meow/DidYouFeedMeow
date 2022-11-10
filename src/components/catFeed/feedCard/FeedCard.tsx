@@ -79,7 +79,7 @@ const FeedCard = ({ feed }: FeedProps) => {
             width={19}
             height={19}
             alt="밥 지우기"
-            src="assets/icons/icon-delete.svg"
+            src="../../../assets/icons/icon-delete.svg"
           />
         </button>
         {onModal && (

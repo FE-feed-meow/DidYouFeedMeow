@@ -16,7 +16,7 @@ const Header = ({ children }: HeaderProps) => {
       <button type="button">
         <Image
           width={18}
-          src="assets/icons/icon-arrow-left.svg"
+          src="../assets/icons/icon-arrow-left.svg"
           alt="뒤로가기 버튼"
           onClick={() => navigate(-1)}
         />
