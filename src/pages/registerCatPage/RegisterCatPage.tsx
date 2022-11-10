@@ -37,8 +37,8 @@ const RegisterCatPage = () => {
   const [imgFile, setImgFile] = React.useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [catName, setCatName] = React.useState("");
-  const [catBirth, setCatBirth] = React.useState(0);
-  const [catEtc, setCatEtc] = React.useState("");
+  const [catBirth, setCatBirth] = React.useState(999);
+  const [catEtc, setCatEtc] = React.useState("특이사항 없음");
   const [disabled, setDisabled] = React.useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -50,6 +50,9 @@ const RegisterCatPage = () => {
 
   // 현위치 or 선택한 주소, MapModal에서 입력한 상세주소 넘겨주기
   const location = useLocation();
+  const userAddress = `${location.state.curAddress}, ${
+    location.state.detailAdd || ""
+  }`;
 
   // 출생년도 숫자로 등록
   const getOption = (opt: any) => {
@@ -59,7 +62,6 @@ const RegisterCatPage = () => {
     if (Number.isNaN(year)) {
       year = 999;
     }
-    console.log(year);
     setCatBirth(year);
   };
 
@@ -77,10 +79,11 @@ const RegisterCatPage = () => {
       })
       .then((response) => {
         console.log(response);
-        const urlFile = URL.createObjectURL(file);
-        setImgFile(urlFile);
+        // const urlFile = URL.createObjectURL(file);
+        setImgFile(
+          `https://mandarin.api.weniv.co.kr/${response.data.filename}`,
+        );
       })
-
       .catch((error) => {
         console.log(error);
       });
@@ -105,14 +108,15 @@ const RegisterCatPage = () => {
         <CatImg src="assets/images/add-cat.svg" alt="냥이 등록 기본이미지 " />
       );
     }
+
     return <CatImg src={imgFile} alt="냥이 등록 이미지" />;
   }, [imgFile]);
 
   // 서버등록
-  const saveBtnCat = async () => {
+  const saveCat = async () => {
     const reqData = {
       product: {
-        itemName: catName,
+        itemName: catName.concat(`|${userAddress}`),
         price: catBirth,
         link: catEtc,
         itemImage: imgFile,
@@ -127,12 +131,18 @@ const RegisterCatPage = () => {
       })
       .then((response) => {
         console.log(response);
-        navigate(`/catInfo:${response.data.product.id}`);
+        navigate(`/catInfo/${response.data.product.id}`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const onDisable = useEffect(() => {
+    if (catName.length > 0 && imgFile !== null) {
+      setDisabled(false);
+    }
+  }, [catName, imgFile]);
 
   return (
     <>
@@ -140,7 +150,7 @@ const RegisterCatPage = () => {
       <Title> 냥이 등록하기 </Title>
       <Article>
         <form>
-          <SubTxt>사진 등록</SubTxt>
+          <SubTxt>사진 등록(필수)</SubTxt>
           <CatImgWrap>
             {showImg}
             <UploadImgIcon onClick={handleClickFileInput} />
@@ -152,6 +162,7 @@ const RegisterCatPage = () => {
               onChange={onImgChange}
             />
           </CatImgWrap>
+
           <TitAdress>주소</TitAdress>
           <DivAdress>
             {!location.state.address
@@ -162,20 +173,18 @@ const RegisterCatPage = () => {
           </DivAdress>
           <CatBox>
             <Inputs
-              label="냥 이름"
-              width={150}
-              placeholder="10자 이내여야 합니다."
-              required={false}
               type="text"
+              maxLength={10}
+              label="냥 이름(필수)"
+              placeholder="10자 이내여야 합니다."
+              width={150}
+              required={false}
               onChange={(e) => {
                 setCatName(e.target.value);
-                return e.target.value.length > 0
-                  ? setDisabled(false)
-                  : setDisabled(true);
               }}
             />
             <DropDown
-              title="출생년도(추정)"
+              title="출생년도"
               options={option}
               getOption={getOption}
               width={88}
@@ -183,6 +192,7 @@ const RegisterCatPage = () => {
           </CatBox>
           <SubTxt>특이사항</SubTxt>
           <Textarea
+            maxLength={50}
             placeholder="50자 이내여야 합니다."
             onChange={(e) => {
               setCatEtc(e.target.value);
@@ -193,7 +203,7 @@ const RegisterCatPage = () => {
             marginTop={33}
             bgColor="var(  --main-color)"
             disabled={disabled}
-            onClick={saveBtnCat}
+            onClick={saveCat}
           >
             저장하기
           </Button>
