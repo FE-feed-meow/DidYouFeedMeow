@@ -1,62 +1,20 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect, useMemo } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 import Image from "../../atoms/image/Image";
 import CatModal from "../modal/catModal/CatModal";
 import DeleteModal from "../modal/deleteModal/DeleteModal";
-
-export const ImgWrap = styled.div`
-  margin-bottom: 30px;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-`;
-export const CatInfoWrap = styled.div`
-  &::after {
-    content: url(assets/images/dashedLine-xl.svg);
-  }
-`;
-
-export const CatNameWrap = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const IconsBox = styled.div`
-  margin-top: 10px;
-`;
-
-export const CatName = styled.h2`
-  font-family: "Shinb7Regular";
-  font-size: 32px;
-  margin-bottom: 15px;
-  width: 59px;
-  padding-left: 10px;
-  background: linear-gradient(
-    0deg,
-    rgba(255, 240, 0, 0.5) 0%,
-    rgba(255, 240, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0) 50%
-  );
-`;
-export const CatLocation = styled.p`
-  font-size: 12px;
-  color: #797979;
-  margin-bottom: 18px;
-`;
-
-export const CatDetail = styled.p`
-  font-size: 14px;
-  color: #373737;
-  width: 100%;
-  line-height: 22px;
-  word-break: break-all;
-  margin-bottom: 23px;
-`;
+import {
+  ImgWrap,
+  CatInfoWrap,
+  CatNameWrap,
+  IconsBox,
+  CatName,
+  CatLocation,
+  CatAge,
+  CatDetail,
+} from "./style";
 
 const CatInfo = () => {
   const [onModal, setModal] = React.useState<boolean>(false);
@@ -69,13 +27,57 @@ const CatInfo = () => {
     setModal(false);
   };
 
+  const API_URL = "https://mandarin.api.weniv.co.kr";
+  const { catid } = useParams();
+  const [catDetail, setCatDetail] = React.useState<any>([]);
+
+  const [name, setName] = React.useState("");
+  const [address, setAddress] = React.useState("");
+
+  localStorage.setItem(
+    "token",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjgxMDc5MiwiaWF0IjoxNjY3NjI2NzkyfQ._7qY-rNq9nWvyxjTFwZ1CW_OfHXmR1Edz_b25YkAKJc",
+  );
+  const token = localStorage.getItem("token");
+
+  const changeBirth = useMemo(() => {
+    if (catDetail.price === 999) {
+      catDetail.price = "잘 몰라유..";
+    }
+    console.log("안녕");
+    console.log(catDetail.price);
+    return catDetail.price;
+  }, [catDetail]);
+
+  const getCatInfo = async () => {
+    axios
+      .get(`${API_URL}/product/detail/${catid}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        setCatDetail(response.data.product);
+        setName(response.data.product.itemName.split("|")[0]);
+        setAddress(response.data.product.itemName.split("|")[1]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    getCatInfo();
+  }, []);
+
   return (
     <CatInfoWrap>
       <ImgWrap>
-        <Image src="assets/images/cat-sample.jpeg" alt="고양이 사진" />
+        <Image src={catDetail.itemImage} alt="고양이 사진" />
       </ImgWrap>
       <CatNameWrap>
-        <CatName> 치즈</CatName>
+        <CatName>{name}</CatName>
         <IconsBox>
           <button type="button">
             <Image
@@ -100,12 +102,9 @@ const CatInfo = () => {
         </IconsBox>
       </CatNameWrap>
 
-      <CatLocation>경기도 의정부시 체육로 300-1 / 2살 추정</CatLocation>
-      <CatDetail>
-        치즈는 우리 동네 주황색 고양이인 삼색이의 아내 고양이입니다. 새끼
-        고양이를 두마리 낳았던 경험이 있어요. 잠을 많이 자고, 물 마시기를
-        좋아합니다. 우리 치즈 잘 부탁드려요!
-      </CatDetail>
+      <CatLocation>{address}</CatLocation>
+      <CatAge> /나이: {catDetail !== null ? changeBirth : null}</CatAge>
+      <CatDetail>{catDetail.link}</CatDetail>
     </CatInfoWrap>
   );
 };
