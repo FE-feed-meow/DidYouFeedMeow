@@ -7,6 +7,7 @@ export interface InputsProps {
   label?: string;
   placeholder?: string;
   type?: string;
+  maxLength?: number;
   value?: string;
   required?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -17,6 +18,7 @@ const Inputs = ({
   label,
   placeholder,
   type,
+  maxLength,
   value,
   required = true,
   onChange,
@@ -28,6 +30,7 @@ const Inputs = ({
         width={width}
         placeholder={placeholder}
         type={type}
+        maxLength={maxLength}
         value={value}
         required={required}
         onChange={onChange}
