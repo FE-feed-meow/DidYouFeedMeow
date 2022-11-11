@@ -11,9 +11,8 @@ import {
   CatNameWrap,
   IconsBox,
   CatName,
-  CatLocation,
-  CatAge,
-  CatDetail,
+  TxtCatInfo,
+  CatEtc,
 } from "./style";
 
 const CatInfo = () => {
@@ -84,7 +83,7 @@ const CatInfo = () => {
               width={19}
               height={19}
               alt=""
-              src="assets/icons/icon-correction.svg"
+              src="../assets/icons/icon-correction.svg"
             />
           </button>
 
@@ -93,7 +92,7 @@ const CatInfo = () => {
               width={19}
               height={19}
               alt=""
-              src="assets/icons/icon-delete.svg"
+              src="../assets/icons/icon-delete.svg"
             />
           </a>
           {onModal && (
@@ -102,9 +101,9 @@ const CatInfo = () => {
         </IconsBox>
       </CatNameWrap>
 
-      <CatLocation>{address}</CatLocation>
-      <CatAge> /나이: {catDetail !== null ? changeBirth : null}</CatAge>
-      <CatDetail>{catDetail.link}</CatDetail>
+      <TxtCatInfo>{address}</TxtCatInfo>
+      <TxtCatInfo> 나이: {catDetail !== null ? changeBirth : null}</TxtCatInfo>
+      <CatEtc>{catDetail.link}</CatEtc>
     </CatInfoWrap>
   );
 };

@@ -55,7 +55,7 @@ const CatInfoPage = () => {
       <Wrap>
         <CatInfo />
         <CatFeed feedList={feedList} />
-        <Button marginTop={10} bgColor="var(--main-color)" onClick={OpenModal}>
+        <Button marginTop={15} bgColor="var(--main-color)" onClick={OpenModal}>
           밥 주기
         </Button>
         {onModal && <CatFoodPageModal CloseModal={CloseModal} />}

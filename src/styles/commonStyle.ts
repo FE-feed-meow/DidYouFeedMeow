@@ -4,7 +4,7 @@ export const AllWrap = styled.div`
   margin: 0 auto;
   width: 390px;
   height: 820px;
-  background: url(./assets/images/background.svg);
+  background: url(../assets/images/background.svg);
 `;
 
 export const MiddleWrap = styled.div`

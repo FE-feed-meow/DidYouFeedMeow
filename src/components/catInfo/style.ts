@@ -14,7 +14,7 @@ const ImgWrap = styled.div`
 `;
 const CatInfoWrap = styled.div`
   &::after {
-    content: url(assets/images/dashedLine-xl.svg);
+    content: url(../assets/images/dashedLine-xl.svg);
   }
 `;
 
@@ -31,7 +31,7 @@ const CatName = styled.h2`
   font-family: "Shinb7Regular";
   font-size: 28px;
   margin-bottom: 15px;
-  width: 150px;
+  //width: 150px;
   padding-left: 10px;
   background: linear-gradient(
     0deg,
@@ -40,23 +40,19 @@ const CatName = styled.h2`
     rgba(0, 0, 0, 0) 50%
   );
 `;
-const CatLocation = styled.span`
+const TxtCatInfo = styled.p`
   font-size: 14px;
   color: #797979;
   margin-bottom: 18px;
 `;
-const CatAge = styled.span`
-  font-size: 14px;
-  color: #797979;
-`;
 
-const CatDetail = styled.p`
-  font-size: 14px;
-  color: #373737;
-  width: 100%;
-  line-height: 22px;
-  word-break: break-all;
+const CatEtc = styled.p`
   margin: 15px 0 23px;
+  width: 100%;
+  height: 80px;
+  font-size: 16px;
+  color: #373737;
+  word-break: break-all;
 `;
 export {
   ImgWrap,
@@ -64,7 +60,6 @@ export {
   CatNameWrap,
   IconsBox,
   CatName,
-  CatLocation,
-  CatAge,
-  CatDetail,
+  TxtCatInfo,
+  CatEtc,
 };
