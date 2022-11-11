@@ -32,6 +32,8 @@ const CatInfo = () => {
 
   const [name, setName] = React.useState("");
   const [address, setAddress] = React.useState("");
+  const [birth, setBirth] = React.useState("");
+  const [etc, setEtc] = React.useState("");
 
   localStorage.setItem(
     "token",
@@ -39,18 +41,9 @@ const CatInfo = () => {
   );
   const token = localStorage.getItem("token");
 
-  const changeBirth = useMemo(() => {
-    if (catDetail.price === 999) {
-      catDetail.price = "잘 몰라유..";
-    }
-    console.log("안녕");
-    console.log(catDetail.price);
-    return catDetail.price;
-  }, [catDetail]);
-
   const getCatInfo = async () => {
     axios
-      .get(`${API_URL}/product/detail/${catid}`, {
+      .get(`${API_URL}/post/${catid}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -58,9 +51,11 @@ const CatInfo = () => {
       })
       .then((response) => {
         console.log(response);
-        setCatDetail(response.data.product);
-        setName(response.data.product.itemName.split("|")[0]);
-        setAddress(response.data.product.itemName.split("|")[1]);
+        setCatDetail(response.data.post);
+        setName(response.data.post.content.split("|")[0]);
+        setAddress(response.data.post.content.split("|")[1]);
+        setBirth(response.data.post.content.split("|")[2]);
+        setEtc(response.data.post.content.split("|")[3]);
       })
       .catch((error) => {
         console.log(error);
@@ -73,7 +68,7 @@ const CatInfo = () => {
   return (
     <CatInfoWrap>
       <ImgWrap>
-        <Image src={catDetail.itemImage} alt="고양이 사진" />
+        <Image src={catDetail.image} alt="고양이 사진" />
       </ImgWrap>
       <CatNameWrap>
         <CatName>{name}</CatName>
@@ -102,8 +97,8 @@ const CatInfo = () => {
       </CatNameWrap>
 
       <TxtCatInfo>{address}</TxtCatInfo>
-      <TxtCatInfo> 나이: {catDetail !== null ? changeBirth : null}</TxtCatInfo>
-      <CatEtc>{catDetail.link}</CatEtc>
+      <TxtCatInfo> 나이: {birth}</TxtCatInfo>
+      <CatEtc>{etc}</CatEtc>
     </CatInfoWrap>
   );
 };
