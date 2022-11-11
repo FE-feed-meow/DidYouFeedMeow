@@ -31,8 +31,7 @@ const CatName = styled.h2`
   font-family: "Shinb7Regular";
   font-size: 28px;
   margin-bottom: 15px;
-  //width: 150px;
-  padding-left: 10px;
+  padding: 0 7px 0;
   background: linear-gradient(
     0deg,
     rgba(255, 240, 0, 0.5) 0%,
