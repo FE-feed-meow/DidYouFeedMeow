@@ -192,8 +192,8 @@ const RegisterCatPage = () => {
           </CatBox>
           <SubTxt>특이사항</SubTxt>
           <Textarea
-            maxLength={50}
-            placeholder="50자 이내여야 합니다."
+            maxLength={100}
+            placeholder="100자 이내여야 합니다."
             onChange={(e) => {
               setCatEtc(e.target.value);
             }}
