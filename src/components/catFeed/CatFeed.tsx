@@ -11,12 +11,6 @@ interface Feed {
 
 interface FeedProps {
   feedList: Feed[];
-  // feedList: {
-  //   id: string;
-  //   content: string;
-  //   createdAt: string;
-  //   author: string;
-  // };
 }
 
 const CatFeed = ({ feedList }: FeedProps) => {
@@ -36,7 +30,6 @@ const CatFeed = ({ feedList }: FeedProps) => {
     for (let i = 0; i < feedList.length; i++) {
       const newItem = { id: i, date: feedList[i].createdAt.split("T")[0] };
       setNewDateArray((arrays) => [...arrays, newItem]);
-      console.log("Array1", newDateArray);
     }
   };
 

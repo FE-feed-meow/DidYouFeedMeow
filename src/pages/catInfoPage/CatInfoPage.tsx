@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -27,11 +28,10 @@ const CatInfoPage = () => {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjY0NjYwNywiaWF0IjoxNjY3NDYyNjA3fQ.LIZswbAIK9Wk4aQZJpvrXs3udP5Cas7UjSm7iUtLHpA",
   );
   const token = localStorage.getItem("token");
+  const { catid } = useParams();
 
   const getFeedList = React.useCallback(async () => {
-    const postId = "62e0054a17ae6665819ebcaf";
-
-    const url = `https://mandarin.api.weniv.co.kr/post/${postId}/comments`;
+    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments`;
     try {
       const res = await axios(url, {
         method: "GET",
