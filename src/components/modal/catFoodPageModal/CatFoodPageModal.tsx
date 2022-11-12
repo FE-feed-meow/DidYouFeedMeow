@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import { ModalArea, ModalMain, ModalWrap } from "../style";
 
@@ -86,11 +87,11 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
     setEtc(e.target.value);
   };
 
-  const postId = "62e0054a17ae6665819ebcaf";
+  const { catid } = useParams();
 
   const handleSubmitFood = async () => {
     console.log("text", text);
-    const url = `https://mandarin.api.weniv.co.kr/post/${postId}/comments`;
+    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments`;
     const comment = {
       comment: {
         content: text,
