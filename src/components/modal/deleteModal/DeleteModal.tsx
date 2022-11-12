@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router";
 import axios from "axios";
 import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import {
@@ -19,11 +20,11 @@ interface Props {
 
 const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
   const token = localStorage.getItem("token");
-  const postId = "62e0054a17ae6665819ebcaf";
+  const { catid } = useParams();
 
   // 고양이 밥 정보 삭제
   const deleteFeed = async () => {
-    const url = `https://mandarin.api.weniv.co.kr/post/${postId}/comments/${feedId}`;
+    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments/${feedId}`;
     try {
       const res = await axios(url, {
         method: "DELETE",
