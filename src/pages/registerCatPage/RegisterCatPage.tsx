@@ -36,7 +36,7 @@ const RegisterCatPage = () => {
 
   const [imgFile, setImgFile] = React.useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [catName, setCatName] = React.useState("");
+  const [catName, setCatName] = React.useState<string>("");
   const [catBirth, setCatBirth] = React.useState(999);
   const [catEtc, setCatEtc] = React.useState("특이사항 없음");
   const [disabled, setDisabled] = React.useState<boolean>(true);
@@ -56,13 +56,7 @@ const RegisterCatPage = () => {
 
   // 출생년도 숫자로 등록
   const getOption = (opt: any) => {
-    let year = Number(opt.replace("년", ""));
-
-    // '잘몰라유' = 999으로 변환하여 등록
-    if (Number.isNaN(year)) {
-      year = 999;
-    }
-    setCatBirth(year);
+    setCatBirth(opt);
   };
 
   // 이미지 업로드
@@ -115,15 +109,13 @@ const RegisterCatPage = () => {
   // 서버등록
   const saveCat = async () => {
     const reqData = {
-      product: {
-        itemName: catName.concat(`|${userAddress}`),
-        price: catBirth,
-        link: catEtc,
-        itemImage: imgFile,
+      post: {
+        content: catName.concat(`|${userAddress}|${catBirth}|${catEtc}`),
+        image: imgFile,
       },
     };
     axios
-      .post(`${API_URL}/product`, reqData, {
+      .post(`${API_URL}/post`, reqData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -131,7 +123,7 @@ const RegisterCatPage = () => {
       })
       .then((response) => {
         console.log(response);
-        navigate(`/catInfo/${response.data.product.id}`);
+        navigate(`/catInfo/${response.data.post.id}`);
       })
       .catch((error) => {
         console.log(error);
