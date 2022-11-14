@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface BtnProps {
+  type?: "submit" | "reset" | "button";
   className?: string;
   marginTop?: number;
   marginBottom?: number;
@@ -24,12 +25,10 @@ const Basic = styled.button<BtnProps>`
   &:hover {
     background: ${(props) => props.hoverBgColor};
   }
-  :disabled {
-    background: var(--disabled-button-color);
-  }
 `;
 
 const Button = ({
+  type,
   className,
   marginTop,
   marginBottom,
@@ -41,14 +40,14 @@ const Button = ({
 }: BtnProps) => {
   return (
     <Basic
+      type={type ?? type}
       className={className ?? className}
-      type="button"
       marginTop={marginTop ?? marginTop}
       marginBottom={marginBottom ?? marginBottom}
       bgColor={bgColor}
       hoverBgColor={hoverBgColor ?? hoverBgColor}
       onClick={onClick ?? onClick}
-      disabled={disabled}
+      disabled={disabled ?? disabled}
     >
       {children}
     </Basic>
