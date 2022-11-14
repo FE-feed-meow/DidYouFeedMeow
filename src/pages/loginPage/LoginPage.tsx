@@ -1,12 +1,14 @@
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useInput from "hooks/useInput";
+import axios from "axios";
 
 import Button from "../../atoms/button/Button";
 import Image from "../../atoms/image/Image";
 import Inputs from "../../atoms/inputs/Inputs";
 import { MiddleWrap } from "../../styles/commonStyle";
-import { H2, Join } from "./style";
+import { H2, Join, ErrorMessage } from "./style";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -18,6 +20,36 @@ const LoginPage = () => {
   useEffect(() => {
     setLogInError(false);
   }, [password]);
+
+  const onLogin = async () => {
+    const url = "https://mandarin.api.weniv.co.kr/user/login/";
+    const config = {
+      user: { email: `${email}`, password: `${password}` },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(url, config);
+      const reqMsg = res.data.message;
+
+      reqMsg === "이메일 또는 비밀번호가 일치하지 않습니다."
+        ? setLogInError(true)
+        : setLogInError(false);
+
+      if (!!reqMsg === false) {
+        localStorage.setItem("userInfo", JSON.stringify(res.data.user));
+        localStorage.setItem(
+          "accountname",
+          JSON.stringify(res.data.user.accountname),
+        );
+        localStorage.setItem("token", JSON.stringify(res.data.user.token));
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <MiddleWrap>
@@ -49,15 +81,15 @@ const LoginPage = () => {
         width={275}
         onChange={onChangePassword}
       />
-      {/* {logInError && (
+      {logInError && (
         <ErrorMessage>* 이메일 또는 비밀번호가 일치하지 않습니다.</ErrorMessage>
-      )} */}
+      )}
       <Button
         marginTop={12}
         bgColor="var(--disabled-button-color)"
         hoverBgColor="var(--main-color)"
         type="submit"
-        // onClick={onLogin}
+        onClick={onLogin}
       >
         입장하기
       </Button>
