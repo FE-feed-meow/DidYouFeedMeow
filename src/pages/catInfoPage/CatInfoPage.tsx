@@ -25,7 +25,7 @@ const CatInfoPage = () => {
   const [feedList, setFeedList] = React.useState<[]>([]);
   localStorage.setItem(
     "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjY0NjYwNywiaWF0IjoxNjY3NDYyNjA3fQ.LIZswbAIK9Wk4aQZJpvrXs3udP5Cas7UjSm7iUtLHpA",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MzYxMzE4NiwiaWF0IjoxNjY4NDI5MTg2fQ.Y3jSp2KiPqKNTWXBXNmXR8_gbkbzyQGXnjN-lnXbkm0",
   );
   const token = localStorage.getItem("token");
   const { catid } = useParams();
@@ -55,7 +55,12 @@ const CatInfoPage = () => {
       <Wrap>
         <CatInfo />
         <CatFeed feedList={feedList} />
-        <Button marginTop={15} bgColor="var(--main-color)" onClick={OpenModal}>
+        <Button
+          type="button"
+          marginTop={15}
+          bgColor="var(--main-color)"
+          onClick={OpenModal}
+        >
           밥 주기
         </Button>
         {onModal && <CatFoodPageModal CloseModal={CloseModal} />}

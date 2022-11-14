@@ -44,7 +44,7 @@ const RegisterCatPage = () => {
 
   localStorage.setItem(
     "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjgxMDc5MiwiaWF0IjoxNjY3NjI2NzkyfQ._7qY-rNq9nWvyxjTFwZ1CW_OfHXmR1Edz_b25YkAKJc",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MzYxMzE4NiwiaWF0IjoxNjY4NDI5MTg2fQ.Y3jSp2KiPqKNTWXBXNmXR8_gbkbzyQGXnjN-lnXbkm0",
   );
   const token = localStorage.getItem("token");
 
@@ -191,6 +191,7 @@ const RegisterCatPage = () => {
             }}
           />
           <Button
+            type="button"
             className="saveBtn"
             marginTop={33}
             bgColor="var(  --main-color)"
