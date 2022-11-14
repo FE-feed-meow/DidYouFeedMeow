@@ -14,4 +14,12 @@ const Join = styled.button`
   font-family: "SpoqaHanSansNeo-Regular";
 `;
 
-export { H2, Join };
+const ErrorMessage = styled.span`
+  font-family: "SpoqaHanSansNeo-Regular";
+  font-size: 12px;
+  color: red;
+  position: relative;
+  top: -14px;
+`;
+
+export { H2, Join, ErrorMessage };
