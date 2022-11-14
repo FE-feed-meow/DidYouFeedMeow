@@ -4,7 +4,7 @@ import Inputs, { Input, Label } from "../../atoms/inputs/Inputs";
 import Header from "../../components/header/Header";
 import Image from "../../atoms/image/Image";
 import { MiddleWrap } from "../../styles/commonStyle";
-import { H2 } from "../loginPage/LoginPage";
+import { H2 } from "../loginPage/style";
 import Button from "../../atoms/button/Button";
 
 const ColumnFlexBox = styled.div`

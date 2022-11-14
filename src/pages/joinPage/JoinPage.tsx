@@ -5,7 +5,7 @@ import Button from "../../atoms/button/Button";
 import Image from "../../atoms/image/Image";
 import Inputs from "../../atoms/inputs/Inputs";
 import { MiddleWrap } from "../../styles/commonStyle";
-import { H2 } from "../loginPage/LoginPage";
+import { H2 } from "../loginPage/style";
 
 const JoinPage = () => {
   return (
