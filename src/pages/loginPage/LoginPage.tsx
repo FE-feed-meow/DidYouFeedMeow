@@ -1,24 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 
 import Button from "../../atoms/button/Button";
 import Image from "../../atoms/image/Image";
 import Inputs from "../../atoms/inputs/Inputs";
 import { MiddleWrap } from "../../styles/commonStyle";
-
-export const H2 = styled.h2`
-  font-size: 28px;
-  font-family: "Shinb7Regular";
-  margin: 30px 0;
-`;
-
-const Join = styled.button`
-  display: block;
-  margin-top: 20px;
-  border: none;
-  font-size: 12px;
-  font-family: "SpoqaHanSansNeo-Regular";
-`;
+import { H2, Join } from "./style";
 
 const LoginPage = () => {
   return (
