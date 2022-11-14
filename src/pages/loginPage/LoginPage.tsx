@@ -1,5 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import useInput from "hooks/useInput";
 
 import Button from "../../atoms/button/Button";
 import Image from "../../atoms/image/Image";
@@ -9,9 +10,14 @@ import { H2, Join } from "./style";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const navigateToJoin = () => {
-    navigate("/join");
-  };
+  const [email, onChangeEmail] = useInput({ initialData: "" });
+  const [password, onChangePassword] = useInput({ initialData: "" });
+  const [logInError, setLogInError] = useState(false);
+
+  const navigateToJoin = () => navigate("/join");
+  useEffect(() => {
+    setLogInError(false);
+  }, [password]);
 
   return (
     <MiddleWrap>
@@ -29,9 +35,9 @@ const LoginPage = () => {
         required
         name="email"
         type="email"
-        // value={email}
+        value={email}
         width={275}
-        // onChange={onChangeEmail}
+        onChange={onChangeEmail}
       />
       <Inputs
         label="비밀번호"
@@ -39,9 +45,9 @@ const LoginPage = () => {
         required
         name="password"
         type="password"
-        // value={password}
+        value={password}
         width={275}
-        // onChange={onChangePassword}
+        onChange={onChangePassword}
       />
       {/* {logInError && (
         <ErrorMessage>* 이메일 또는 비밀번호가 일치하지 않습니다.</ErrorMessage>
