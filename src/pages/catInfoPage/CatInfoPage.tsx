@@ -9,6 +9,7 @@ import Button from "../../atoms/button/Button";
 import CatInfo from "../../components/catInfo/CatInfo";
 import CatFeed from "../../components/catFeed/CatFeed";
 import CatFoodPageModal from "../../components/modal/catFoodPageModal/CatFoodPageModal";
+import CatFeedNone from "../../components/catFeedNone/CatFeedNone";
 
 export const Wrap = styled.div`
   padding: 15px 40px 37px;
