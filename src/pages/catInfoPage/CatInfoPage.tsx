@@ -9,6 +9,7 @@ import Button from "../../atoms/button/Button";
 import CatInfo from "../../components/catInfo/CatInfo";
 import CatFeed from "../../components/catFeed/CatFeed";
 import CatFoodPageModal from "../../components/modal/catFoodPageModal/CatFoodPageModal";
+import CatFeedNone from "../../components/catFeedNone/CatFeedNone";
 
 export const Wrap = styled.div`
   padding: 15px 40px 37px;
@@ -23,10 +24,6 @@ const CatInfoPage = () => {
     setModal(false);
   };
   const [feedList, setFeedList] = React.useState<[]>([]);
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjY0NjYwNywiaWF0IjoxNjY3NDYyNjA3fQ.LIZswbAIK9Wk4aQZJpvrXs3udP5Cas7UjSm7iUtLHpA",
-  );
   const token = localStorage.getItem("token");
   const { catid } = useParams();
 
@@ -54,7 +51,11 @@ const CatInfoPage = () => {
       <Header />
       <Wrap>
         <CatInfo />
-        <CatFeed feedList={feedList} />
+        {feedList.length > 0 ? (
+          <CatFeed feedList={feedList} />
+        ) : (
+          <CatFeedNone />
+        )}
         <Button marginTop={15} bgColor="var(--main-color)" onClick={OpenModal}>
           밥 주기
         </Button>
