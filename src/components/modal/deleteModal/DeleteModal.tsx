@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import {
@@ -21,6 +21,25 @@ interface Props {
 const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
   const token = localStorage.getItem("token");
   const { catid } = useParams();
+  const navigate = useNavigate();
+
+  // 고양이 정보 삭제
+  const deleteCat = async () => {
+    const url = `https://mandarin.api.weniv.co.kr/post/${catid}`;
+    try {
+      const res = await axios(url, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-type": "application/json",
+        },
+      });
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+    CloseModal();
+  };
 
   // 고양이 밥 정보 삭제
   const deleteFeed = async () => {
@@ -47,7 +66,8 @@ const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
     if (deleteState === true) {
       deleteFeed();
     } else {
-      console.log("아님");
+      deleteCat();
+      navigate("/home");
       CloseModal();
     }
   };
