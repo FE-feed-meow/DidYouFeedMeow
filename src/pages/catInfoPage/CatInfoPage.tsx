@@ -55,11 +55,7 @@ const CatInfoPage = () => {
       <Header />
       <Wrap>
         <CatInfo />
-        {feedList.length > 0 ? (
-          <CatFeed feedList={feedList} />
-        ) : (
-          <CatFeedNone />
-        )}
+        <CatFeed feedList={feedList} />
         <Button
           type="button"
           marginTop={15}
