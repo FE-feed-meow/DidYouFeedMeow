@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from '../../atoms/image/Image'
+
 import {
   AsideWrap,
   ProfileWrap,
@@ -7,19 +8,21 @@ import {
   MenuBoardBtn
 } from './style'
 
+const userInfo: any = localStorage.getItem('userInfo')
+
 const MenuBoard = () => {
   return (
     <AsideWrap>
       <ProfileWrap to='/profile'>
-        <Image 
+        <Image
           width={50}
-          src='assets/images/profile.svg'
-          alt='프로필 이미지'/>
+          src={JSON.parse(userInfo).image}
+          alt='프로필 이미지' />
         <div>
-          <h1>쯔쯔언니</h1>
-          <p>경기도 하남시</p>
+          <h1>{JSON.parse(userInfo).username}</h1>
+          <p>{JSON.parse(userInfo).username}</p>
         </div>
-      </ProfileWrap>  
+      </ProfileWrap>
       <MenuBoardUl>
         <li>
           <MenuBoardBtn to='/profile'>
@@ -34,6 +37,11 @@ const MenuBoard = () => {
         <li>
           <MenuBoardBtn to='/news'>
             밥줬냥 신문
+          </MenuBoardBtn>
+        </li>
+        <li>
+          <MenuBoardBtn to='/catList'>
+            내가 등록한 냥이
           </MenuBoardBtn>
         </li>
       </MenuBoardUl>

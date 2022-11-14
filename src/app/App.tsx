@@ -15,6 +15,7 @@ import CatInfo from "../components/catInfo/CatInfo";
 import CatLetterPage from "../pages/catLetterPage/CatLetterPage";
 import CatNewsPage from "../pages/catNewsPage/CatNewsPage";
 import CatInfoPage from "../pages/catInfoPage/CatInfoPage";
+import CatList from '../components/catList/CatList';
 
 const App = () => {
   return (
@@ -83,6 +84,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <CatNewsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/catList"
+              element={
+                <PrivateRoute>
+                  <CatList />
                 </PrivateRoute>
               }
             />
