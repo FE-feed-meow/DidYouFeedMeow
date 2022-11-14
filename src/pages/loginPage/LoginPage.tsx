@@ -1,26 +1,56 @@
-import React from "react";
-import styled from "styled-components";
+/* eslint-disable no-unused-expressions */
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useInput from "hooks/useInput";
+import axios from "axios";
 
 import Button from "../../atoms/button/Button";
 import Image from "../../atoms/image/Image";
 import Inputs from "../../atoms/inputs/Inputs";
 import { MiddleWrap } from "../../styles/commonStyle";
-
-export const H2 = styled.h2`
-  font-size: 28px;
-  font-family: "Shinb7Regular";
-  margin: 30px 0;
-`;
-
-const Join = styled.button`
-  display: block;
-  margin-top: 20px;
-  border: none;
-  font-size: 12px;
-  font-family: "SpoqaHanSansNeo-Regular";
-`;
+import { H2, Join, ErrorMessage } from "./style";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [email, onChangeEmail] = useInput({ initialData: "" });
+  const [password, onChangePassword] = useInput({ initialData: "" });
+  const [logInError, setLogInError] = useState(false);
+
+  const navigateToJoin = () => navigate("/join");
+  useEffect(() => {
+    setLogInError(false);
+  }, [password]);
+
+  const onLogin = async () => {
+    const url = "https://mandarin.api.weniv.co.kr/user/login/";
+    const config = {
+      user: { email: `${email}`, password: `${password}` },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(url, config);
+      const reqMsg = res.data.message;
+
+      reqMsg === "이메일 또는 비밀번호가 일치하지 않습니다."
+        ? setLogInError(true)
+        : setLogInError(false);
+
+      if (!!reqMsg === false) {
+        localStorage.setItem("userInfo", JSON.stringify(res.data.user));
+        localStorage.setItem(
+          "accountname",
+          JSON.stringify(res.data.user.accountname),
+        );
+        localStorage.setItem("token", JSON.stringify(res.data.user.token));
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <MiddleWrap>
       <Image
@@ -31,12 +61,39 @@ const LoginPage = () => {
         src="assets/images/logo.svg"
       />
       <H2 style={{ marginBottom: 60 }}>로그인</H2>
-      <Inputs label="이메일" type="text" width={275} />
-      <Inputs label="비밀번호" type="text" width={275} />
-      <Button marginTop={12} bgColor="var(--disabled-button-color)">
+      <Inputs
+        label="이메일"
+        placeholder="이메일을 입력해주세요."
+        required
+        name="email"
+        type="email"
+        value={email}
+        width={275}
+        onChange={onChangeEmail}
+      />
+      <Inputs
+        label="비밀번호"
+        placeholder="비밀번호를 입력해주세요."
+        required
+        name="password"
+        type="password"
+        value={password}
+        width={275}
+        onChange={onChangePassword}
+      />
+      {logInError && (
+        <ErrorMessage>* 이메일 또는 비밀번호가 일치하지 않습니다.</ErrorMessage>
+      )}
+      <Button
+        marginTop={12}
+        bgColor="var(--disabled-button-color)"
+        hoverBgColor="var(--main-color)"
+        type="submit"
+        onClick={onLogin}
+      >
         입장하기
       </Button>
-      <Join>이메일로 회원가입</Join>
+      <Join onClick={navigateToJoin}>이메일로 회원가입</Join>
     </MiddleWrap>
   );
 };

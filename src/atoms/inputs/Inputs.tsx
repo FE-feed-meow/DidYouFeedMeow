@@ -1,39 +1,46 @@
 /* eslint-disable no-use-before-define */
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 export interface InputsProps {
+  id?: string;
+  name?: string;
   width: number;
+  maxLength?: number;
   label?: string;
   placeholder?: string;
   type?: string;
-  maxLength?: number;
   value?: string;
   required?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Inputs = ({
+  id,
+  name,
   width,
+  maxLength,
   label,
   placeholder,
   type,
-  maxLength,
   value,
   required = true,
   onChange,
 }: InputsProps) => {
   return (
     <Wrap>
-      <Label>{label}</Label>
+      <Label id={id ?? id}>{label ?? label}</Label>
       <Input
-        width={width}
-        placeholder={placeholder}
-        type={type}
-        maxLength={maxLength}
-        value={value}
-        required={required}
-        onChange={onChange}
+        autoComplete="off"
+        id={id ?? id}
+        name={name ?? name}
+        width={width ?? width}
+        maxLength={maxLength ?? maxLength}
+        placeholder={placeholder ?? placeholder}
+        type={type ?? type}
+        value={value ?? value}
+        required={required ?? required}
+        onChange={onChange ?? onChange}
       />
     </Wrap>
   );

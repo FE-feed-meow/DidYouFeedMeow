@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import QuizList from "../../components/quizList/QuizList";
 import { MiddleWrap } from "../../styles/commonStyle";
 import Image from "../../atoms/image/Image";
-import { H2 } from "../loginPage/LoginPage";
+import { H2 } from "../loginPage/style";
 
 const JoinQuizPage = () => {
   return (
