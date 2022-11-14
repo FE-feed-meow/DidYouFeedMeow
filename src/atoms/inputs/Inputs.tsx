@@ -6,6 +6,7 @@ export interface InputsProps {
   id?: string;
   name?: string;
   width: number;
+  maxLength?: number;
   label?: string;
   placeholder?: string;
   type?: string;
@@ -18,6 +19,7 @@ const Inputs = ({
   id,
   name,
   width,
+  maxLength,
   label,
   placeholder,
   type,
@@ -33,6 +35,7 @@ const Inputs = ({
         id={id ?? id}
         name={name ?? name}
         width={width ?? width}
+        maxLength={maxLength ?? maxLength}
         placeholder={placeholder ?? placeholder}
         type={type ?? type}
         value={value ?? value}
