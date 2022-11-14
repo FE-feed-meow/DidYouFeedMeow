@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface Search {
-  setLocation: any;
-  location: any;
-}
 const SearchWrap = styled.div`
   position: absolute;
   display: flex;
@@ -18,7 +14,7 @@ const SearchWrap = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 307px;
+  width: 280px;
   background-color: #f9f9f9;
   margin-left: 22px;
   padding: 6px 16px;
@@ -26,6 +22,10 @@ const SearchInput = styled.input`
   font-size: 16px;
 `;
 
-const SearchBtn = styled.button``;
+const ResetLocationBtn = styled.button`
+  position: absolute;
+  top: 9px;
+  right: 8px;
+`;
 
-export { SearchWrap, SearchInput, SearchBtn };
+export { SearchWrap, SearchInput, ResetLocationBtn };
