@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Image from "../../atoms/image/Image";
 
 import {
@@ -12,8 +13,11 @@ import {
 const userInfo: any = localStorage.getItem("userInfo");
 
 const MenuBoard = () => {
+  const navigate = useNavigate();
+
   const onLogout = () => {
-    console.log("로그아웃 코드 구현");
+    localStorage.clear();
+    navigate("/");
   };
 
   return (
