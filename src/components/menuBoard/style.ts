@@ -61,4 +61,18 @@ const MenuBoardBtn = styled(Link)`
   }
 `;
 
-export { AsideWrap, ProfileWrap, MenuBoardUl, MenuBoardBtn };
+const LogoutBtn = styled.button`
+  font-family: "Shinb7Regular";
+  font-size: 24px;
+  padding: 0 10px;
+  &:hover {
+    background: linear-gradient(
+      0deg,
+      rgba(255, 240, 0, 0.5) 0%,
+      rgba(255, 240, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 50%
+    );
+  }
+`;
+
+export { AsideWrap, ProfileWrap, MenuBoardUl, MenuBoardBtn, LogoutBtn };

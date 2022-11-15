@@ -1,23 +1,33 @@
-import React from 'react'
-import Image from '../../atoms/image/Image'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Image from "../../atoms/image/Image";
 
 import {
   AsideWrap,
   ProfileWrap,
   MenuBoardUl,
-  MenuBoardBtn
-} from './style'
+  MenuBoardBtn,
+  LogoutBtn,
+} from "./style";
 
-const userInfo: any = localStorage.getItem('userInfo')
+const userInfo: any = localStorage.getItem("userInfo");
 
 const MenuBoard = () => {
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <AsideWrap>
-      <ProfileWrap to='/profile'>
+      <ProfileWrap to="/profile">
         <Image
           width={50}
           src={JSON.parse(userInfo).image}
-          alt='프로필 이미지' />
+          alt="프로필 이미지"
+        />
         <div>
           <h1>{JSON.parse(userInfo).username}</h1>
           <p>{JSON.parse(userInfo).username}</p>
@@ -25,28 +35,23 @@ const MenuBoard = () => {
       </ProfileWrap>
       <MenuBoardUl>
         <li>
-          <MenuBoardBtn to='/profile'>
-            집사 정보
-          </MenuBoardBtn>
+          <MenuBoardBtn to="/profile">집사 정보</MenuBoardBtn>
         </li>
         <li>
-          <MenuBoardBtn to='/letters'>
-            동네 냥 소식통
-          </MenuBoardBtn>
+          <MenuBoardBtn to="/letters">동네 냥 소식통</MenuBoardBtn>
         </li>
         <li>
-          <MenuBoardBtn to='/news'>
-            밥줬냥 신문
-          </MenuBoardBtn>
+          <MenuBoardBtn to="/news">밥줬냥 신문</MenuBoardBtn>
         </li>
         <li>
-          <MenuBoardBtn to='/catList'>
-            내가 등록한 냥이
-          </MenuBoardBtn>
+          <MenuBoardBtn to="/catList">내가 등록한 냥이</MenuBoardBtn>
+        </li>
+        <li>
+          <LogoutBtn onClick={onLogout}>로그아웃</LogoutBtn>
         </li>
       </MenuBoardUl>
     </AsideWrap>
-  )
-}
+  );
+};
 
-export default MenuBoard
+export default MenuBoard;
