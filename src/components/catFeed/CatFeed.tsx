@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import { FeedWrap, FeedBox, DateTxt } from "./style";
 import FeedCard from "./feedCard/FeedCard";
 
+interface authorProps {
+  accountname: string;
+}
+
 interface Feed {
   id: string;
   content: string;
   createdAt: string;
-  author: string;
+  author: authorProps;
 }
 
 interface FeedProps {
@@ -55,7 +59,13 @@ const CatFeed = ({ feedList }: FeedProps) => {
                   ? feedList
                       .filter((arr) => arr.createdAt.split("T")[0] === nowDate)
                       .map((feed) => {
-                        return <FeedCard key={feed.id} feed={feed} />;
+                        return (
+                          <FeedCard
+                            key={feed.id}
+                            feed={feed}
+                            feedAccountname={feed.author.accountname}
+                          />
+                        );
                       })
                   : null}
               </FeedBox>
