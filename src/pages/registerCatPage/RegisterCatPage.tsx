@@ -42,10 +42,6 @@ const RegisterCatPage = () => {
   const [disabled, setDisabled] = React.useState<boolean>(true);
   const navigate = useNavigate();
 
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MzYxMzE4NiwiaWF0IjoxNjY4NDI5MTg2fQ.Y3jSp2KiPqKNTWXBXNmXR8_gbkbzyQGXnjN-lnXbkm0",
-  );
   const token = localStorage.getItem("token");
 
   // 현위치 or 선택한 주소, MapModal에서 입력한 상세주소 넘겨주기
