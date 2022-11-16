@@ -21,10 +21,6 @@ interface Props {
 }
 
 const CatFoodPageModal = ({ CloseModal }: Props) => {
-  localStorage.setItem(
-    "token",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYzk5OWIyODJmZGNjNzEyZjQzN2ExZiIsImV4cCI6MTY3MjY0NjYwNywiaWF0IjoxNjY3NDYyNjA3fQ.LIZswbAIK9Wk4aQZJpvrXs3udP5Cas7UjSm7iUtLHpA",
-  );
   const token = localStorage.getItem("token");
 
   const [selectTime, setSelectTime] = useState<string>("");
