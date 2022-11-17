@@ -17,6 +17,7 @@ import CatNewsPage from "../pages/catNewsPage/CatNewsPage";
 import CatInfoPage from "../pages/catInfoPage/CatInfoPage";
 import CatList from "../components/catList/CatList";
 import CatNewItem from "../components/catNewsItem/CatNewItem";
+import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
 
 const App = () => {
   return (
@@ -65,10 +66,10 @@ const App = () => {
               }
             />
             <Route
-              path="/catInfoEdit:id"
+              path="/catInfoEdit/:catid"
               element={
                 <PrivateRoute>
-                  <CatInfo />
+                  <CatinfoEditPage />
                 </PrivateRoute>
               }
             />

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { SelectWrap, Title, BtnSelect, UlOption, BtnOption } from "./style";
 
 export interface DropDownProps {
   options: string[];
   width: number;
-  value?: string;
+  value?: any;
   title?: string;
   getOption?: any;
 }
@@ -24,6 +24,10 @@ const DropDown = ({
     setOpen(!open);
     e.currentTarget.style.color = "#000";
   };
+
+  useEffect(() => {
+    setSelected(value);
+  }, []);
 
   return (
     <SelectWrap>

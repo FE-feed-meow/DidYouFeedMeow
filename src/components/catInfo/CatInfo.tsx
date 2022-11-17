@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Image from "../../atoms/image/Image";
-import CatModal from "../modal/catModal/CatModal";
 import DeleteModal from "../modal/deleteModal/DeleteModal";
 import {
   ImgWrap,
@@ -69,23 +68,32 @@ const CatInfo = () => {
       <CatNameWrap>
         <CatName>{name}</CatName>
         <IconsBox>
-          <button type="button">
+          <Link
+            to={`/catInfoEdit/${catid}`}
+            state={{
+              data: catDetail,
+              nameData: name,
+              addressData: address,
+              birthData: birth,
+              etcData: etc,
+            }}
+          >
             <Image
               width={19}
               height={19}
               alt=""
               src="../assets/icons/icon-correction.svg"
             />
-          </button>
+          </Link>
 
-          <a href="#none" onClick={OpenModal}>
+          <button type="button" onClick={OpenModal}>
             <Image
               width={19}
               height={19}
               alt=""
               src="../assets/icons/icon-delete.svg"
             />
-          </a>
+          </button>
           {onModal && (
             <DeleteModal CloseModal={CloseModal} deleteState={deleteState} />
           )}
@@ -93,7 +101,7 @@ const CatInfo = () => {
       </CatNameWrap>
 
       <TxtCatInfo>{address}</TxtCatInfo>
-      <TxtCatInfo> 나이: {birth}</TxtCatInfo>
+      <TxtCatInfo> 출생년도: {birth}</TxtCatInfo>
       <CatEtc>{etc}</CatEtc>
     </CatInfoWrap>
   );

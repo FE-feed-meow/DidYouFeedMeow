@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import axios from "axios";
+import { useLocation, useParams } from "react-router-dom";
+import RegisterCatPage from "@pages/registerCatPage/RegisterCatPage";
 
 const CatinfoEditPage = () => {
-  return (
-    <div>CatinfoEditPage</div>
-  )
-}
+  const { state } = useLocation();
 
-export default CatinfoEditPage
+  return <RegisterCatPage stateData={state} />;
+};
+
+export default CatinfoEditPage;
