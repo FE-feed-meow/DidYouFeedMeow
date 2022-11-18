@@ -33,7 +33,7 @@ const TermsModal = ({ CloseModal }: Props) => {
               마음가짐으로 앞으로도 계속 노력할 것 입니다.
               <br />
               <br />
-              &quot;밥줬냥`&quot;과 함께 동네고양이의 안전을 위한 행동에
+              &quot;밥줬냥`&quot;과 함께 동네고양이의 안전을 위한 행보에
               동참해주세요.
             </TermsModalTextArea>
             <TermsModalBtn onClick={CloseModal}>
