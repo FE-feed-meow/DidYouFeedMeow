@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import TermsModal from "@components/modal/termsModal/TermsModal";
 import Button from "../../atoms/button/Button";
 import Header from "../../components/header/Header";
 import QuizList from "../../components/quizList/QuizList";
@@ -7,10 +8,17 @@ import Image from "../../atoms/image/Image";
 import { H2 } from "../loginPage/style";
 
 const JoinQuizPage = () => {
+  const [modalState, setModalState] = useState<boolean>(true);
+
+  const CloseModal = () => {
+    setModalState(false);
+  };
+
   return (
     <>
       <Header />
       <MiddleWrap>
+        {modalState && <TermsModal CloseModal={CloseModal} />}
         <Image
           marginTop={18}
           width={113}
