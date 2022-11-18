@@ -14,18 +14,19 @@ const SearchWrap = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 280px;
+  width: 290px;
   background-color: #f9f9f9;
   margin-left: 22px;
   padding: 6px 16px;
   font-family: "SpoqaHanSansNeo-Regular";
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 const ResetLocationBtn = styled.button`
   position: absolute;
-  top: 9px;
-  right: 8px;
+  top: 13px;
+  right: 12px;
+  padding: 0;
 `;
 
 export { SearchWrap, SearchInput, ResetLocationBtn };

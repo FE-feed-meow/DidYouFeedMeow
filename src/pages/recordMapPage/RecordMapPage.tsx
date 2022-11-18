@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 import MapTemplate from '../../components/mapTemplate/MapTemplate';
 import SearchInpBox from '../../components/searchInpBox/SearchInpBox';
@@ -8,7 +9,6 @@ interface LocationType {
   center: { lat: number, lng: number };
   error?: { message: string };
 }
-
 interface ClickMarker {
   lat: number;
   lng: number;
@@ -16,11 +16,21 @@ interface ClickMarker {
 
 const RecordMapPage = () => {
   const geocoder = new kakao.maps.services.Geocoder();
-
   const [myLocation, setMyLocation] = useState<LocationType>({ center: { lat: 0, lng: 0 } })
   const [position, setPosition] = useState<ClickMarker | null>(null);
-  const [address, setAddress] = useState<any>();
-  const [curAddress, setCurAddress] = useState<any>();
+  const [address, setAddress] = React.useState("");
+  const [curAddress, setCurAddress] = React.useState("");
+
+  const [savedMarker, setSavedMarker] = useState<any>();
+  const [saveAddress, setSaveAddress] = useState<any>([]);
+
+  const [latitude, setLatitude] = useState<any>();
+  const [longitude, setLongitude] = useState<any>();
+  const [coords, setCoords] = useState<any>({});
+
+  const token = localStorage.getItem('token')
+  const API_URL = "https://mandarin.api.weniv.co.kr";
+  const userInfo: any = localStorage.getItem('userInfo');
 
   // 성공시 인자로 받은 위치의 경도, 위도 표시
   const onSuccess = (location: { coords: { latitude: number; longitude: number; } }) => {
@@ -31,30 +41,58 @@ const RecordMapPage = () => {
     setMyLocation({ center: { lat: 0, lng: 0 }, error })
   }
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    // 사용중인 브라우저 내에서 지리적 위치가 없는 경우 에러 메세지
-    if (!(navigator.geolocation)) {
-      onError({ message: "위치를 찾을 수 없습니다." })
-    }
-  }, [])
-
   // 현재 위치
   const callbackCurAddress = (result: any, status: any) => {
     if (status === kakao.maps.services.Status.OK) {
       setCurAddress(result[0].address.address_name)
     }
   }
-
   // 내가 선택한 위치
   const callbackAddress = (result: any, status: any) => {
-    if (status && kakao.maps.services.Status.OK) {
+    if (status === kakao.maps.services.Status.OK) {
       setAddress(result[0].address.address_name)
     }
   }
 
+  const cbSavedAddress = (result: any, status: any) => {
+    if (status === kakao.maps.services.Status.OK) {
+      const coord = { lat: result[0].y, lng: result[0].x }
+      setLatitude(result[0].y);
+      setLongitude(result[0].x);
+      setCoords(coord)
+    }
+  }
+
+  const getCatAddress = async () => {
+    axios
+      .get(`${API_URL}/post/${JSON.parse(userInfo).accountname}/userpost/?limit=20`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        })
+      .then((response) => {
+        // console.log([response.data.post]);
+        /* eslint-disable-next-line no-plusplus */
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    // 사용중인 브라우저 내에서 지리적 위치가 없는 경우 에러 메세지
+    if (!(navigator.geolocation)) {
+      onError({ message: "위치를 찾을 수 없습니다." })
+    }
+    getCatAddress()
+  }, [])
+
   return (
     <>
+      {geocoder.coord2Address(myLocation.center.lng, myLocation.center.lat, callbackCurAddress)}
       <SearchInpBox
         setMyLocation={setMyLocation}
         setPosition={setPosition}
@@ -68,9 +106,8 @@ const RecordMapPage = () => {
         myLocation={myLocation}
         address={address}
         curAddress={curAddress} />
-      {geocoder.coord2Address(myLocation.center.lng, myLocation.center.lat, callbackCurAddress)}
       <Map
-        level={3}
+        level={4}
         center={myLocation.center}
         style={{
           width: "390px",
@@ -85,18 +122,17 @@ const RecordMapPage = () => {
           geocoder.coord2Address(mouseEvent.latLng.getLng(), mouseEvent.latLng.getLat(), callbackAddress)
         }}
       >
-        {position &&
+        {position ?
           <MapMarker
             position={position}
             image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }}>
             <MarkerText>
               {address}
             </MarkerText>
-          </MapMarker>
+          </MapMarker> : <MapMarker
+            position={myLocation.center}
+            image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }} />
         }
-        {/* <MapMarker
-          position={myLocation.center}
-          image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }} /> */}
       </Map>
     </>
   )
