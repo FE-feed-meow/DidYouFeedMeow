@@ -7,9 +7,10 @@ import Image from "../../atoms/image/Image";
 import { H2 } from "../loginPage/style";
 
 const JoinQuizPage = () => {
+  const [onHome, setOnHome] = React.useState(false);
   return (
     <>
-      <Header />
+      <Header onHome={onHome} />
       <MiddleWrap>
         <Image
           marginTop={18}

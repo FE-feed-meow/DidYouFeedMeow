@@ -6,11 +6,12 @@ import Image from "../../atoms/image/Image";
 
 export interface HeaderProps {
   children?: React.ReactNode;
+  onHome?: boolean;
 }
 
-const Header = ({ children }: HeaderProps) => {
+const Header = ({ children, onHome }: HeaderProps) => {
   const navigate = useNavigate();
-
+  // 헤더에 홈을 넣고 싶지 않다면 onHome에 false를 전달해주세요
   return (
     <HeaderWrap>
       <button type="button">
@@ -21,6 +22,17 @@ const Header = ({ children }: HeaderProps) => {
           onClick={() => navigate(-1)}
         />
       </button>
+      {onHome ? null : (
+        <button type="button">
+          <Image
+            src="../assets/images/home.svg"
+            alt="홈 버튼"
+            onClick={() => navigate("/home")}
+            width={24}
+          />
+        </button>
+      )}
+
       <H2>{children ?? children}</H2>
     </HeaderWrap>
   );
