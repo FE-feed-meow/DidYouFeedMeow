@@ -16,7 +16,7 @@ const LoginPage = () => {
   const [password, onChangePassword] = useInput({ initialData: "" });
   const [logInError, setLogInError] = useState(false);
 
-  const navigateToJoin = () => navigate("/join");
+  const navigateToJoinQuiz = () => navigate("/quiz");
   useEffect(() => {
     setLogInError(false);
   }, [password]);
@@ -90,7 +90,7 @@ const LoginPage = () => {
       >
         입장하기
       </Button>
-      <Join onClick={navigateToJoin}>이메일로 회원가입</Join>
+      <Join onClick={navigateToJoinQuiz}>이메일로 회원가입</Join>
     </MiddleWrap>
   );
 };
