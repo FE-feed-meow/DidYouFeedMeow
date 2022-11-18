@@ -14,7 +14,7 @@ const ModalBg = styled.div`
   width: 390px;
   height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
-  z-index: 10;
+  z-index: 40;
 `;
 
 const PlusBtn = styled.button`
@@ -23,7 +23,7 @@ const PlusBtn = styled.button`
   position: absolute;
   top: 723px;
   right: 40px;
-  z-index: 10;
+  z-index: 20;
 `;
 
 const MenuBtn = styled.button`
