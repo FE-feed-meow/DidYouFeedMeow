@@ -27,7 +27,7 @@ const NewsCatImg = styled.img`
 `;
 
 const NewsItemSpan = styled.span`
-  margin-left: 15px;
+  margin-left: 13px;
   &:hover,
   :focus {
     background: linear-gradient(
@@ -40,7 +40,7 @@ const NewsItemSpan = styled.span`
 `;
 
 const PointColor = styled.span`
-  margin-left: 15px;
+  margin-left: 13px;
   background: linear-gradient(
     0deg,
     rgba(255, 240, 0, 0.5) 0%,

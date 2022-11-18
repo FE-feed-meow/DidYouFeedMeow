@@ -22,6 +22,7 @@ const Header = ({ children, onHome }: HeaderProps) => {
           onClick={() => navigate(-1)}
         />
       </button>
+      <H2>{children ?? children}</H2>
       {onHome ? null : (
         <button type="button">
           <Image
@@ -32,8 +33,6 @@ const Header = ({ children, onHome }: HeaderProps) => {
           />
         </button>
       )}
-
-      <H2>{children ?? children}</H2>
     </HeaderWrap>
   );
 };
