@@ -16,6 +16,7 @@ export const HeaderWrap = styled.div`
 `;
 
 export const H2 = styled.h2`
-  font-size: 28px;
+  font-size: 22px;
   font-family: "Shinb7Regular";
+  margin-left: -24px;
 `;

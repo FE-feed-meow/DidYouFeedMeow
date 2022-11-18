@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const AllWrap = styled.div`
+  position: relative;
   margin: 0 auto;
   width: 390px;
   height: 820px;

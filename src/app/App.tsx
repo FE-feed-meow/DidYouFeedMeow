@@ -13,6 +13,7 @@ import RecordMapPage from "../pages/recordMapPage/RecordMapPage";
 import RegisterCatPage from "../pages/registerCatPage/RegisterCatPage";
 import CatInfo from "../components/catInfo/CatInfo";
 import CatLetterPage from "../pages/catLetterPage/CatLetterPage";
+import CatLettersItem from '../components/catLettersItem/CatLettersItem';
 import CatNewsPage from "../pages/catNewsPage/CatNewsPage";
 import CatInfoPage from "../pages/catInfoPage/CatInfoPage";
 import CatList from "../components/catList/CatList";
@@ -78,6 +79,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <CatLetterPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/letters/:lettersId"
+              element={
+                <PrivateRoute>
+                  <CatLettersItem />
                 </PrivateRoute>
               }
             />
