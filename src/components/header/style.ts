@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderWrap = styled.div`
   height: 48px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   padding: 0 20px;
   &::after {
