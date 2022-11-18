@@ -31,16 +31,9 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/join" element={<JoinPage />} />
             <Route path="/quiz" element={<JoinQuizPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
 
             {/* private page */}
-            <Route
-              path="/profile"
-              element={
-                <PrivateRoute>
-                  <ProfilePage />
-                </PrivateRoute>
-              }
-            />
             <Route
               path="/home"
               element={
