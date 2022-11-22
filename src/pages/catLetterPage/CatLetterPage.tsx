@@ -1,7 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router';
 import Header from '@components/header/Header'
-import { LetterWrap, LetterTitle, LetterAddress, LetterList, LetterItem, LetterItemGrey, LetterItemBeige, LetterItemMix, LetterItemName } from './style'
+import {
+  LetterWrap,
+  LetterTitle,
+  LetterAddress,
+  LetterList,
+  LetterItem,
+  LetterItemGrey,
+  LetterItemBeige,
+  LetterItemMix,
+  LetterItemName
+} from './style'
 
 const CatLetterPage = () => {
   const navigate = useNavigate();

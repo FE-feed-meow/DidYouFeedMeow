@@ -1,7 +1,8 @@
 import React from 'react'
-import { 
-  ModalWrap, 
-  ArticleWrap, 
+import { useNavigate } from 'react-router';
+import {
+  ModalWrap,
+  ArticleWrap,
   ModalCatImg,
   ModalCatInfoWrap,
   ModalCatNameWrap,
@@ -10,20 +11,29 @@ import {
   CloseBtn
 } from "./style";
 
+const CatInfoModal = ({ data }: any) => {
+  const navigate = useNavigate();
 
-const CatInfoModal = () => {
+  // charCodeAt 메소드를 사용하여 유니코드 문자로 변환
+  // 마지막 글자의 받침 유무 비교
+  const lastChar = data.name.charCodeAt(data.name.length - 1);
+  const isThereLastChar = (lastChar - 0xac00) % 28;
+
   return (
     <ModalWrap>
       <ArticleWrap>
-        <ModalCatImg src="assets/images/cat-sample.jpeg" alt="고양이 이미지" />
+        <ModalCatImg src={data.img} alt="고양이 이미지" />
         <ModalCatInfoWrap>
           <ModalCatNameWrap>
-            <h1><span>치즈</span>는 배고파요!</h1>
-            <button type='button'>
+            <h1>
+              <span>{data.name}</span>
+              {isThereLastChar ? '은' : '는'} 배고파요!
+            </h1>
+            <button type='button' onClick={() => { navigate(`/catInfo/${data.id}`) }}>
               <img src="assets/icons/icon-arrow-right.svg" alt="화살표 버튼" />
             </button>
           </ModalCatNameWrap>
-          <ModalCatLocation>경기도 하남시 미사강변중앙로 90<span>2살 추정</span></ModalCatLocation>
+          <ModalCatLocation>{data.address}<span>{data.age}</span></ModalCatLocation>
           <ModalCatFeedTime>마지막 식사 시간은 7시</ModalCatFeedTime>
         </ModalCatInfoWrap>
         <CloseBtn>
