@@ -15,6 +15,16 @@ export const Wrap = styled.div`
   padding: 15px 40px 37px;
 `;
 
+interface authorProps {
+  accountname: string;
+}
+interface Feed {
+  id: string;
+  content: string;
+  createdAt: string;
+  author: authorProps;
+}
+
 const CatInfoPage = () => {
   const [onModal, setModal] = React.useState<boolean>(false);
   const OpenModal = () => {
@@ -23,7 +33,7 @@ const CatInfoPage = () => {
   const CloseModal = () => {
     setModal(false);
   };
-  const [feedList, setFeedList] = React.useState<[]>([]);
+  const [feedList, setFeedList] = React.useState<Feed[]>([]);
   const token = localStorage.getItem("token");
   const { catid } = useParams();
 
@@ -43,6 +53,13 @@ const CatInfoPage = () => {
     }
   }, [feedList]);
 
+  // 현재 날짜
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const nowDate = `${year}-${month}-${date}`;
+
   React.useEffect(() => {
     getFeedList();
   }, []);
@@ -51,7 +68,9 @@ const CatInfoPage = () => {
       <Header />
       <Wrap>
         <CatInfo />
-        {feedList.length > 0 ? (
+        {feedList.length > 0 &&
+        feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
+          .length > 0 ? (
           <CatFeed feedList={feedList} />
         ) : (
           <CatFeedNone />
