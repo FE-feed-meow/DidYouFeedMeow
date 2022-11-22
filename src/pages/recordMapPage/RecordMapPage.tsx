@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import CatInfoModal from '@components/modal/catInfoModal/CatInfoModal';
 import MapTemplate from '../../components/mapTemplate/MapTemplate';
 import SearchInpBox from '../../components/searchInpBox/SearchInpBox';
-import MarkerText from './style'
+import { MarkerText, ModalBg } from './style'
 
 interface LocationType {
   center: { lat: number, lng: number };
@@ -16,18 +17,19 @@ interface ClickMarker {
 
 const RecordMapPage = () => {
   const geocoder = new kakao.maps.services.Geocoder();
-  const [myLocation, setMyLocation] = useState<LocationType>({ center: { lat: 0, lng: 0 } })
-  const [position, setPosition] = useState<ClickMarker | null>(null);
+  const [myLocation, setMyLocation] = React.useState<LocationType>({ center: { lat: 0, lng: 0 } })
+  const [position, setPosition] = React.useState<ClickMarker | null>(null);
   const [address, setAddress] = React.useState("");
   const [curAddress, setCurAddress] = React.useState("");
-
-  const [savedMarker, setSavedMarker] = useState<any>();
-  const [saveAddress, setSaveAddress] = useState<any>([]);
-
-  const [latitude, setLatitude] = useState<any>();
-  const [longitude, setLongitude] = useState<any>();
-  const [coords, setCoords] = useState<any>({});
-
+  const [saveMarker, setSaveMarker] = React.useState("");
+  const [data, setData] = React.useState("");
+  const [catModal, setCatModal] = React.useState<boolean>(false);
+  const outSection = useRef() as React.RefObject<HTMLDivElement>;
+  const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.target === outSection.current && catModal) {
+      setCatModal(false)
+    }
+  };
   const token = localStorage.getItem('token')
   const API_URL = "https://mandarin.api.weniv.co.kr";
   const userInfo: any = localStorage.getItem('userInfo');
@@ -54,15 +56,7 @@ const RecordMapPage = () => {
     }
   }
 
-  const cbSavedAddress = (result: any, status: any) => {
-    if (status === kakao.maps.services.Status.OK) {
-      const coord = { lat: result[0].y, lng: result[0].x }
-      setLatitude(result[0].y);
-      setLongitude(result[0].x);
-      setCoords(coord)
-    }
-  }
-
+  // 등록한 게시글 데이터
   const getCatAddress = async () => {
     axios
       .get(`${API_URL}/post/${JSON.parse(userInfo).accountname}/userpost/?limit=20`,
@@ -73,8 +67,46 @@ const RecordMapPage = () => {
           },
         })
       .then((response) => {
-        // console.log([response.data.post]);
+        const KAKAO = kakao.maps.services.Status.OK;
+        const addressArr: any = [];
+        const newArr: any = [];
+
         /* eslint-disable-next-line no-plusplus */
+        for (let i = 0; i < response.data.post.length; i++) {
+          addressArr.push(response.data.post[i].content.split('|')[1].split(',')[0])
+
+          // 주소를 좌표로 변환하는 코드
+          geocoder.addressSearch(addressArr[i], (result, status) => {
+            if (status === KAKAO) {
+              const coord = {
+                id: response.data.post[i].id,
+                img: response.data.post[i].image,
+                age: response.data.post[i].content.split('|')[2],
+                name: response.data.post[i].content.split('|')[0],
+                address: (`${result[0].address_name}, ${response.data.post[i].content.split('|')[1].split(',')[1]}`),
+                lat: result[0].y,
+                lng: result[0].x
+              }
+              newArr.push(coord)
+            }
+
+            // 좌표 배열로 각 위치에 마커 찍기
+            const savedMarker = newArr.map((e: any) => {
+              return (
+                <MapMarker
+                  position={e}
+                  key={e.id}
+                  image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }}
+                  onClick={() => {
+                    setCatModal(!catModal);
+                    setData(e);
+                  }}
+                />
+              )
+            })
+            setSaveMarker(savedMarker)
+          })
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -107,7 +139,7 @@ const RecordMapPage = () => {
         address={address}
         curAddress={curAddress} />
       <Map
-        level={4}
+        level={3}
         center={myLocation.center}
         style={{
           width: "390px",
@@ -123,16 +155,17 @@ const RecordMapPage = () => {
         }}
       >
         {position ?
-          <MapMarker
-            position={position}
-            image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }}>
-            <MarkerText>
+          <MapMarker position={position}>
+            {/* <MarkerText>
               {address}
-            </MarkerText>
-          </MapMarker> : <MapMarker
-            position={myLocation.center}
-            image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }} />
+            </MarkerText> */}
+          </MapMarker> : <MapMarker position={myLocation.center} />
         }
+        {catModal === true ?
+          <ModalBg ref={outSection} onClick={closeModal}>
+            <CatInfoModal data={data} />
+          </ModalBg> : null}
+        {saveMarker}
       </Map>
     </>
   )

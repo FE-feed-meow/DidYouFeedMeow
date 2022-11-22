@@ -22,7 +22,7 @@ const CatList = () => {
           },
         })
       .then((response) => {
-        const arrList = response.data.post.map((e: any): any => {
+        const arrList = response.data.post.map((e: any) => {
           const moveToDetailpage = () => { navigate(`/catInfo/${e.id}`) }
           return (
             <Catlist key={e.id} onClick={moveToDetailpage}>
