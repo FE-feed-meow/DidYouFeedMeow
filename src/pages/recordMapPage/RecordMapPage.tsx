@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 import CatInfoModal from '@components/modal/catInfoModal/CatInfoModal';
-import MapTemplate from '../../components/mapTemplate/MapTemplate';
-import SearchInpBox from '../../components/searchInpBox/SearchInpBox';
-import { MarkerText, ModalBg } from './style'
+import MapTemplate from '@components/mapTemplate/MapTemplate';
+import SearchInpBox from '@components/searchInpBox/SearchInpBox';
+import { ModalBg } from './style'
 
 interface LocationType {
   center: { lat: number, lng: number };
@@ -58,7 +58,7 @@ const RecordMapPage = () => {
 
   // 등록한 게시글 데이터
   const getCatAddress = async () => {
-    axios
+    await axios
       .get(`${API_URL}/post/${JSON.parse(userInfo).accountname}/userpost/?limit=20`,
         {
           headers: {
@@ -91,15 +91,15 @@ const RecordMapPage = () => {
             }
 
             // 좌표 배열로 각 위치에 마커 찍기
-            const savedMarker = newArr.map((e: any) => {
+            const savedMarker = newArr.map((datas: any) => {
               return (
                 <MapMarker
-                  position={e}
-                  key={e.id}
+                  position={datas}
+                  key={datas.id}
                   image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }}
                   onClick={() => {
                     setCatModal(!catModal);
-                    setData(e);
+                    setData(datas);
                   }}
                 />
               )
@@ -154,13 +154,8 @@ const RecordMapPage = () => {
           geocoder.coord2Address(mouseEvent.latLng.getLng(), mouseEvent.latLng.getLat(), callbackAddress)
         }}
       >
-        {position ?
-          <MapMarker position={position}>
-            {/* <MarkerText>
-              {address}
-            </MarkerText> */}
-          </MapMarker> : <MapMarker position={myLocation.center} />
-        }
+        {position ? <MapMarker position={position} /> :
+          <MapMarker position={myLocation.center} />}
         {catModal === true ?
           <ModalBg ref={outSection} onClick={closeModal}>
             <CatInfoModal data={data} />

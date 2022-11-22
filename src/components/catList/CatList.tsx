@@ -13,7 +13,7 @@ const CatList = () => {
   const navigate = useNavigate();
 
   const getCatInfo = async () => {
-    axios
+    await axios
       .get(`${API_URL}/post/${JSON.parse(userInfo).accountname}/userpost/?limit=20`,
         {
           headers: {
