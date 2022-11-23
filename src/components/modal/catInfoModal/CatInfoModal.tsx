@@ -19,17 +19,12 @@ const CatInfoModal = ({ data }: any) => {
   const navigate = useNavigate();
   const [feedArr, setFeedArr] = React.useState<any>([]);
 
-  // charCodeAt 메소드를 사용하여 유니코드 문자로 변환
-  // 마지막 글자의 받침 유무 비교
-  const lastChar = data.name.charCodeAt(data.name.length - 1);
-  const isThereLastChar = (lastChar - 0xac00) % 28;
-
   // 가장 최근 밥 준 시간차이 계산
   const getTimeDifference = (time: any) => {
     const today = new Date();
-    const timeValue = new Date(time);
+    const feedTime = new Date(time);
 
-    const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+    const betweenTime = Math.floor((today.getTime() - feedTime.getTime()) / 1000 / 60);
     if (betweenTime < 1) {
       return "방금 전";
     }
@@ -66,6 +61,7 @@ const CatInfoModal = ({ data }: any) => {
     getFeedInfo();
   }, [])
 
+
   return (
     <ModalWrap>
       <ArticleWrap>
@@ -73,9 +69,7 @@ const CatInfoModal = ({ data }: any) => {
         <ModalCatInfoWrap>
           <ModalCatNameWrap>
             <h1>
-              <span>{data.name}</span>
-              {isThereLastChar ? '은' : '는'}
-              {feedArr.length > 0 ? ' 배불러요!' : ' 배고파요!'}
+              <span>{data.name}</span>에게 밥주세요!
             </h1>
             <button type='button' onClick={() => { navigate(`/catInfo/${data.id}`) }}>
               <img src="assets/icons/icon-arrow-right.svg" alt="화살표 버튼" />
