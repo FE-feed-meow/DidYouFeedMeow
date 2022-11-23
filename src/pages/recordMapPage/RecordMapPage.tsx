@@ -2,9 +2,8 @@ import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 import CatInfoModal from '@components/modal/catInfoModal/CatInfoModal';
-import MapTemplate from '../../components/mapTemplate/MapTemplate';
-import SearchInpBox from '../../components/searchInpBox/SearchInpBox';
-import { MarkerText, ModalBg } from './style'
+import MapTemplate from '@components/mapTemplate/MapTemplate';
+import { ModalBg } from './style'
 
 interface LocationType {
   center: { lat: number, lng: number };
@@ -58,7 +57,7 @@ const RecordMapPage = () => {
 
   // 등록한 게시글 데이터
   const getCatAddress = async () => {
-    axios
+    await axios
       .get(`${API_URL}/post/${JSON.parse(userInfo).accountname}/userpost/?limit=20`,
         {
           headers: {
@@ -91,15 +90,15 @@ const RecordMapPage = () => {
             }
 
             // 좌표 배열로 각 위치에 마커 찍기
-            const savedMarker = newArr.map((e: any) => {
+            const savedMarker = newArr.map((datas: any) => {
               return (
                 <MapMarker
-                  position={e}
-                  key={e.id}
+                  position={datas}
+                  key={datas.id}
                   image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }}
                   onClick={() => {
                     setCatModal(!catModal);
-                    setData(e);
+                    setData(datas);
                   }}
                 />
               )
@@ -125,27 +124,22 @@ const RecordMapPage = () => {
   return (
     <>
       {geocoder.coord2Address(myLocation.center.lng, myLocation.center.lat, callbackCurAddress)}
-      <SearchInpBox
+      <MapTemplate
         setMyLocation={setMyLocation}
         setPosition={setPosition}
-        setAddress={setAddress}
-        myLocation={myLocation}
-        callbackAddress={callbackAddress}
-        onSuccess={onSuccess} />
-      <MapTemplate
-        setPosition={setPosition}
-        position={position}
         myLocation={myLocation}
         address={address}
-        curAddress={curAddress} />
+        curAddress={curAddress}
+        onSuccess={onSuccess}
+      />
       <Map
         level={3}
         center={myLocation.center}
         style={{
           width: "390px",
-          height: "772px",
+          height: "100%",
           position: 'absolute',
-          top: '48px',
+          top: '0',
           left: '50%',
           transform: 'translateX(-50%)'
         }}
@@ -154,18 +148,13 @@ const RecordMapPage = () => {
           geocoder.coord2Address(mouseEvent.latLng.getLng(), mouseEvent.latLng.getLat(), callbackAddress)
         }}
       >
-        {position ?
-          <MapMarker position={position}>
-            {/* <MarkerText>
-              {address}
-            </MarkerText> */}
-          </MapMarker> : <MapMarker position={myLocation.center} />
-        }
+        {position ? <MapMarker position={position} /> :
+          <MapMarker position={myLocation.center} />}
+        {saveMarker}
         {catModal === true ?
           <ModalBg ref={outSection} onClick={closeModal}>
             <CatInfoModal data={data} />
           </ModalBg> : null}
-        {saveMarker}
       </Map>
     </>
   )
