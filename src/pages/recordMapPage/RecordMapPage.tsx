@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 import CatInfoModal from '@components/modal/catInfoModal/CatInfoModal';
 import MapTemplate from '@components/mapTemplate/MapTemplate';
-import SearchInpBox from '@components/searchInpBox/SearchInpBox';
 import { ModalBg } from './style'
 
 interface LocationType {
@@ -125,27 +124,22 @@ const RecordMapPage = () => {
   return (
     <>
       {geocoder.coord2Address(myLocation.center.lng, myLocation.center.lat, callbackCurAddress)}
-      <SearchInpBox
+      <MapTemplate
         setMyLocation={setMyLocation}
         setPosition={setPosition}
-        setAddress={setAddress}
-        myLocation={myLocation}
-        callbackAddress={callbackAddress}
-        onSuccess={onSuccess} />
-      <MapTemplate
-        setPosition={setPosition}
-        position={position}
         myLocation={myLocation}
         address={address}
-        curAddress={curAddress} />
+        curAddress={curAddress}
+        onSuccess={onSuccess}
+      />
       <Map
         level={3}
         center={myLocation.center}
         style={{
           width: "390px",
-          height: "772px",
+          height: "100%",
           position: 'absolute',
-          top: '48px',
+          top: '0',
           left: '50%',
           transform: 'translateX(-50%)'
         }}
@@ -156,11 +150,11 @@ const RecordMapPage = () => {
       >
         {position ? <MapMarker position={position} /> :
           <MapMarker position={myLocation.center} />}
+        {saveMarker}
         {catModal === true ?
           <ModalBg ref={outSection} onClick={closeModal}>
             <CatInfoModal data={data} />
           </ModalBg> : null}
-        {saveMarker}
       </Map>
     </>
   )

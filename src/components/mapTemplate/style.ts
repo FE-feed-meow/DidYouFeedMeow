@@ -23,14 +23,7 @@ const PlusBtn = styled.button`
   position: absolute;
   top: 723px;
   right: 40px;
-  z-index: 20;
+  z-index: 1;
 `;
 
-const MenuBtn = styled.button`
-  position: absolute;
-  top: 15px;
-  left: 10px;
-  z-index: 2;
-`;
-
-export { MapWrapper, ModalBg, PlusBtn, MenuBtn };
+export { MapWrapper, ModalBg, PlusBtn };
