@@ -6,17 +6,7 @@ import Image from "../../atoms/image/Image";
 import { MiddleWrap } from "../../styles/commonStyle";
 import { H2 } from "../loginPage/style";
 import Button from "../../atoms/button/Button";
-
-const ColumnFlexBox = styled.div`
-  width: 275px;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const RowFlexBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
+import { ColumnFlexBox, RowFlexBox } from "./style";
 
 const ProfilePage = () => {
   return (

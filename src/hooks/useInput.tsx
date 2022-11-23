@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-const useInput = ({ initialData }: { initialData: any }) => {
+const useInput = (initialData: any) => {
   const [value, setValue] = useState(initialData);
   const handler = useCallback(
     (e: { target: { value: React.SetStateAction<string> } }) => {

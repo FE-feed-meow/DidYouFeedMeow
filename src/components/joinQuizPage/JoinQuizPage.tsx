@@ -26,10 +26,12 @@ const JoinQuizPage = () => {
       setIsActive(false);
     }
   };
+
   const plusScore = async () => {
     setResultScore(resultScore + 20);
     calcActive(resultScore);
   };
+
   const minusScore = async () => {
     setResultScore(resultScore - 20);
     calcActive(resultScore);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RowFlexBox } from "../../pages/profilePage/ProfilePage";
+import { RowFlexBox } from "@pages/profilePage/style";
 
 const ListFlexbox = styled(RowFlexBox)`
   align-items: flex-end;

@@ -8,7 +8,7 @@ import LoginPage from "../pages/loginPage/LoginPage";
 import JoinPage from "../pages/joinPage/JoinPage";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 import ProfilePage from "../pages/profilePage/ProfilePage";
-import JoinQuizPage from "../pages/joinQuizPage/JoinQuizPage";
+import JoinQuizPage from "../components/joinQuizPage/JoinQuizPage";
 import RecordMapPage from "../pages/recordMapPage/RecordMapPage";
 import RegisterCatPage from "../pages/registerCatPage/RegisterCatPage";
 import CatInfo from "../components/catInfo/CatInfo";
