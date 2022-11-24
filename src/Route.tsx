@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from "react";
 import { Navigate } from "react-router-dom";
 
@@ -7,8 +8,11 @@ interface PrivateRouteProps {
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const token = localStorage.getItem("token");
-  // eslint-disable-next-line react/jsx-no-useless-fragment
   return token ? <>{children}</> : <Navigate to="/" />;
 };
 
-export default PrivateRoute;
+const PublicRoute = ({ children }: PrivateRouteProps) => {
+  const token = !!localStorage.getItem("token");
+  return token ? <Navigate to="/home" /> : <>{children}</>;
+};
+export { PrivateRoute, PublicRoute };

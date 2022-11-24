@@ -2,7 +2,7 @@ import * as React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./style";
 import { AllWrap } from "../styles/commonStyle";
-import PrivateRoute from "../Route";
+import { PrivateRoute, PublicRoute } from "../Route";
 import Splash from "../pages/splashPage/Splash";
 import LoginPage from "../pages/loginPage/LoginPage";
 import JoinPage from "../pages/joinPage/JoinPage";
@@ -20,6 +20,7 @@ import CatNewItem from "../components/catNewsItem/CatNewItem";
 import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
 
 const App = () => {
+  const token = localStorage.getItem("token");
   return (
     <>
       <GlobalStyles />
@@ -27,10 +28,38 @@ const App = () => {
         <AllWrap>
           <Routes>
             {/* public page */}
-            <Route path="/" element={<Splash />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/join" element={<JoinPage />} />
-            <Route path="/quiz" element={<JoinQuizPage />} />
+            <Route
+              path="/"
+              element={
+                <PublicRoute>
+                  <Splash />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/join"
+              element={
+                <PublicRoute>
+                  <JoinPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/quiz"
+              element={
+                <PublicRoute>
+                  <JoinQuizPage />
+                </PublicRoute>
+              }
+            />
             <Route path="/profile" element={<ProfilePage />} />
 
             {/* private page */}
