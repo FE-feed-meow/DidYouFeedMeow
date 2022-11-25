@@ -80,7 +80,6 @@ const RegisterCatPage = ({ stateData }: any) => {
     const fileList = e.target.files;
     if (fileList && fileList[0]) {
       const imgSrc = await imageUpload(fileList[0]);
-      console.log(imgSrc);
     }
   };
   // 클릭시 파일 업로드 창 띄우기
@@ -126,6 +125,8 @@ const RegisterCatPage = ({ stateData }: any) => {
   const onDisable = useEffect(() => {
     if (catName.length > 0 && imgFile !== null) {
       setDisabled(false);
+    } else {
+      setDisabled(true);
     }
   }, [catName, imgFile]);
 
@@ -155,8 +156,6 @@ const RegisterCatPage = ({ stateData }: any) => {
   };
 
   useEffect(() => {
-    console.log(stateData);
-
     if (stateData) {
       setImgFile(stateData.data.image);
       setUserAddress(stateData.addressData);
@@ -170,8 +169,6 @@ const RegisterCatPage = ({ stateData }: any) => {
           ? `${location.state.curAddress}, ${location.state.detailAdd || ""}`
           : `${location.state.address}, ${location.state.detailAdd || ""}`;
       }
-
-      console.log(userAddress);
       setUserAddress(locationAddress);
     }
   }, []);
