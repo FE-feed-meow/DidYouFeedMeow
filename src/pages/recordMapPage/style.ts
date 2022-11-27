@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-const MarkerText = styled.small`
-  font-size: 12px;
-  font-family: "SpoqaHanSansNeo-Regular";
-  text-align: center;
-`;
-
 const ModalBg = styled.div`
   position: fixed;
   top: 0;
@@ -17,4 +11,4 @@ const ModalBg = styled.div`
   z-index: 40;
 `;
 
-export { MarkerText, ModalBg };
+export default ModalBg;

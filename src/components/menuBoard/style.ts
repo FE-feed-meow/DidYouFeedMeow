@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
 
 const slideLeft = keyframes`
   from {
@@ -24,16 +23,18 @@ const AsideWrap = styled.aside`
   animation: ${slideLeft} 0.3s ease-in;
 `;
 
-const ProfileWrap = styled(Link)`
+const ProfileWrap = styled.button`
   display: flex;
   justify-content: space-around;
   align-items: center;
   h1 {
     font-family: "Shinb7Regular";
     font-size: 24px;
+    margin-left: 8px;
   }
   p {
-    margin-top: 6px;
+    margin-top: 4px;
+    margin-left: 8px;
     font-family: "SpoqaHanSansNeo-Regular";
     font-size: 12px;
     color: #797979;
@@ -47,7 +48,7 @@ const MenuBoardUl = styled.ul`
   }
 `;
 
-const MenuBoardBtn = styled(Link)`
+const MenuBoardBtn = styled.button`
   font-family: "Shinb7Regular";
   font-size: 24px;
   padding: 0 10px;

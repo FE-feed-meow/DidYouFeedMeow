@@ -11,12 +11,11 @@ import ProfilePage from "../pages/profilePage/ProfilePage";
 import JoinQuizPage from "../pages/joinQuizPage/JoinQuizPage";
 import RecordMapPage from "../pages/recordMapPage/RecordMapPage";
 import RegisterCatPage from "../pages/registerCatPage/RegisterCatPage";
-import CatInfo from "../components/catInfo/CatInfo";
 import CatLetterPage from "../pages/catLetterPage/CatLetterPage";
 import CatLettersItem from '../components/catLettersItem/CatLettersItem';
 import CatNewsPage from "../pages/catNewsPage/CatNewsPage";
 import CatInfoPage from "../pages/catInfoPage/CatInfoPage";
-import CatList from "../components/catList/CatList";
+import CatListPage from '../pages/catListPage/CatListPage';
 import CatNewItem from "../components/catNewsItem/CatNewItem";
 import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
 
@@ -110,7 +109,7 @@ const App = () => {
               path="/catList"
               element={
                 <PrivateRoute>
-                  <CatList />
+                  <CatListPage />
                 </PrivateRoute>
               }
             />
