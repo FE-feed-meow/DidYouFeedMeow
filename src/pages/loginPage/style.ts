@@ -1,5 +1,22 @@
 import styled from "styled-components";
 
+const ModalBg = styled.div`
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(25, 25, 25, 0.8);
+  z-index: 100;
+`;
+
+const TutorCloseBtn = styled.button`
+  position: absolute;
+  top: 70px;
+  right: 40px;
+`;
+
 const H2 = styled.h2`
   font-size: 28px;
   font-family: "Shinb7Regular";
@@ -22,4 +39,4 @@ const ErrorMessage = styled.span`
   top: -14px;
 `;
 
-export { H2, Join, ErrorMessage };
+export { ModalBg, TutorCloseBtn, H2, Join, ErrorMessage };

@@ -69,14 +69,14 @@ const CatInfoModal = ({ data }: any) => {
         <ModalCatInfoWrap>
           <ModalCatNameWrap>
             <h1>
-              <span>{data.name}</span>에게 밥주세요!
+              <span>{data.name}</span>에게 밥을 주세요!
             </h1>
             <button type='button' onClick={() => { navigate(`/catInfo/${data.id}`) }}>
               <img src="assets/icons/icon-arrow-right.svg" alt="화살표 버튼" />
             </button>
           </ModalCatNameWrap>
           <ModalCatLocation>{data.address}<span>{data.age}</span></ModalCatLocation>
-          <ModalCatFeedTime>마지막 식사{feedArr.length > 0 ? `는 ${getTimeDifference(feedArr[0].createdAt)}` : "가 아직 없어요!"}</ModalCatFeedTime>
+          <ModalCatFeedTime>마지막 식사{feedArr.length > 0 ? `는 ${getTimeDifference(feedArr[0].createdAt)}` : "가 아직 없어요"}</ModalCatFeedTime>
         </ModalCatInfoWrap>
         <CloseBtn>
           <img src="assets/icons/icon-close.svg" alt="닫기 버튼" />

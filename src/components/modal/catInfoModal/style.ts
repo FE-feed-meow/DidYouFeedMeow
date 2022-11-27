@@ -33,10 +33,10 @@ const ModalCatNameWrap = styled.div`
   margin-bottom: 14px;
   h1 {
     font-family: "Shinb7Regular";
-    font-size: 22px;
+    font-size: 20px;
   }
   span {
-    padding: 0 8px;
+    padding: 0 4px;
     background: linear-gradient(
       0deg,
       rgba(255, 240, 0, 0.5) 0%,
@@ -46,6 +46,9 @@ const ModalCatNameWrap = styled.div`
   }
   button {
     padding: 0;
+  }
+  img {
+    vertical-align: middle;
   }
 `;
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 import CatInfoModal from '@components/modal/catInfoModal/CatInfoModal';
 import MapTemplate from '@components/mapTemplate/MapTemplate';
-import { ModalBg } from './style'
+import ModalBg from './style'
 
 interface LocationType {
   center: { lat: number, lng: number };
@@ -29,6 +29,7 @@ const RecordMapPage = () => {
       setCatModal(false)
     }
   };
+
   const token = localStorage.getItem('token')
   const API_URL = "https://mandarin.api.weniv.co.kr";
   const userInfo: any = localStorage.getItem('userInfo');
@@ -95,7 +96,7 @@ const RecordMapPage = () => {
                 <MapMarker
                   position={datas}
                   key={datas.id}
-                  image={{ src: 'assets/icons/icon-marker.svg', size: { width: 40, height: 40 } }}
+                  image={{ src: 'assets/icons/icon-marker.svg', size: { width: 50, height: 50 } }}
                   onClick={() => {
                     setCatModal(!catModal);
                     setData(datas);
