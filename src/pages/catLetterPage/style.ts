@@ -17,7 +17,7 @@ const LetterAddress = styled.p`
 
 const LetterList = styled.ul`
   padding: 0 40px;
-  height: 666px;
+  height: 648px;
   overflow-y: scroll;
   /* 스크롤바 설정 */
   &::-webkit-scrollbar {
@@ -43,7 +43,7 @@ const LetterItem = styled.li`
   padding: 16px 30px;
   background-color: #e3e3e3;
   &::after {
-    content: url("assets/images/cat-face.svg");
+    content: url(../assets/images/cat-face.svg);
     display: block;
     position: absolute;
     top: 54%;
@@ -56,21 +56,21 @@ const LetterItemGrey = styled(LetterItem)`
   color: #fff;
   background-color: #515151;
   &::after {
-    content: url("assets/images/cat-face-white.svg");
+    content: url(../assets/images/cat-face-white.svg);
   }
 `;
 
 const LetterItemBeige = styled(LetterItem)`
   background-color: #d1c7b3;
   &::after {
-    content: url("assets/images/cat-face-white.svg");
+    content: url(../assets/images/cat-face-white.svg);
   }
 `;
 
 const LetterItemMix = styled(LetterItem)`
   background: linear-gradient(180deg, #e3e3e3 36.333333%, #515151 33.333333%);
   &::after {
-    content: url("assets/images/cat-face-white.svg");
+    content: url(../assets/images/cat-face-white.svg);
   }
 `;
 

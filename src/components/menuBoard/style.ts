@@ -13,9 +13,9 @@ const slideLeft = keyframes`
 
 const AsideWrap = styled.aside`
   width: 240px;
-  height: 820px;
+  height: 100%;
   padding: 72px 40px;
-  background-image: url("assets/images/background.svg");
+  background-image: url(../assets/images/background.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

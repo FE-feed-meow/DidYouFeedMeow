@@ -9,11 +9,11 @@ const Carousel = styled.div`
   height: 724px;
   padding: 40px;
   .slick-prev:before {
-    margin-left: -80px;
+    margin-left: -120px;
     content: url("assets/icons/icon-arrow-left-white.svg");
   }
   .slick-next:before {
-    margin-left: 40px;
+    margin-left: 80px;
     content: url("assets/icons/icon-arrow-right-white.svg");
   }
   .slick-dots li {

@@ -10,7 +10,7 @@ const Title = styled.h1`
 
 const CatListWrap = styled.ul`
   position: relative;
-  max-height: 688px;
+  max-height: 672px;
   overflow-y: scroll;
   padding: 0 40px;
   &::-webkit-scrollbar {
@@ -39,7 +39,7 @@ const Catlist = styled.li`
     margin-right: 6px;
   }
   &::after {
-    content: url("assets/images/dashedLine-xl.svg");
+    content: url(../assets/images/dashedLine-xl.svg);
     display: block;
     position: absolute;
     left: 42px;

@@ -13,8 +13,8 @@ const ModalBg = styled.div`
 
 const TutorCloseBtn = styled.button`
   position: absolute;
-  top: 70px;
-  right: 40px;
+  top: 90px;
+  right: 80px;
 `;
 
 const H2 = styled.h2`

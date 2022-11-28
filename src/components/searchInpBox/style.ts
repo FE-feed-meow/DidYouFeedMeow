@@ -22,7 +22,7 @@ const MenuBtn = styled.button`
 
 const ModalBg = styled.div`
   position: fixed;
-  top: 0;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
   width: 390px;
