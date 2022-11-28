@@ -20,7 +20,7 @@ const ProfileImg = styled.img`
   width: 117px;
   height: 117px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 const UploadProfileImgIcon = styled.label`

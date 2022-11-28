@@ -1,6 +1,6 @@
-import React from 'react'
-import { useNavigate } from 'react-router';
-import Header from '@components/header/Header'
+import React from "react";
+import { useNavigate } from "react-router";
+import Header from "@components/header/Header";
 import {
   LetterWrap,
   LetterTitle,
@@ -10,20 +10,25 @@ import {
   LetterItemGrey,
   LetterItemBeige,
   LetterItemMix,
-  LetterItemName
-} from './style'
+  LetterItemName,
+} from "./style";
+
+const userInfo: any = localStorage.getItem("userInfo");
 
 const CatLetterPage = () => {
+  const [userIntro, addr1, addr2] = JSON.parse(userInfo).intro.split("@@@");
   const navigate = useNavigate();
   const moveToLetterDetail = () => {
-    navigate('/letters/1')
-  }
+    navigate("/letters/1");
+  };
   return (
     <>
       <Header />
       <LetterWrap>
         <LetterTitle>동네 냥 소식통</LetterTitle>
-        <LetterAddress>경기도 의정부시</LetterAddress>
+        <LetterAddress>
+          {addr1} {addr2}
+        </LetterAddress>
         <LetterList>
           <LetterItem onClick={moveToLetterDetail}>
             <LetterItemName>의정부시 호원동</LetterItemName>
@@ -40,7 +45,7 @@ const CatLetterPage = () => {
         </LetterList>
       </LetterWrap>
     </>
-  )
-}
+  );
+};
 
-export default CatLetterPage
+export default CatLetterPage;
