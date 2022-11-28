@@ -1,8 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-use-before-define */
-/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useCallback, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
@@ -18,7 +14,6 @@ interface SignUpProps {
   nextClick: () => void;
 }
 const SignUp = ({ nextClick }: SignUpProps) => {
-  // const url = "https://mandarin.api.weniv.co.kr/user/login/";
   const navigate = useNavigate();
 
   const [email, setEmail] = useInput("");
@@ -43,6 +38,7 @@ const SignUp = ({ nextClick }: SignUpProps) => {
       const reqMsg = res.data.message;
       setEmailValid(reqMsg);
       if (reqMsg === "사용 가능한 이메일 입니다." && isValid === false) {
+        setEmailValid("");
         setIsValid(true);
       }
     } catch (err) {

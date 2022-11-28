@@ -65,7 +65,6 @@ const LoginPage = () => {
           required
           name="email"
           type="email"
-          value={email}
           width={275}
           onChange={onChangeEmail}
         />
@@ -75,7 +74,6 @@ const LoginPage = () => {
           required
           name="password"
           type="password"
-          value={password}
           width={275}
           onChange={onChangePassword}
         />

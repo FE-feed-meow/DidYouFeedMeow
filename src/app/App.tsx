@@ -18,6 +18,7 @@ import CatInfoPage from "../pages/catInfoPage/CatInfoPage";
 import CatList from "../components/catList/CatList";
 import CatNewItem from "../components/catNewsItem/CatNewItem";
 import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
+import ProfileEditPage from "../pages/profileEditPage/ProfileEditPage";
 
 const App = () => {
   const token = localStorage.getItem("token");
@@ -68,6 +69,14 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <RecordMapPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="profileEdit"
+              element={
+                <PrivateRoute>
+                  <ProfileEditPage />
                 </PrivateRoute>
               }
             />
