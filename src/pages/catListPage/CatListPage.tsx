@@ -5,6 +5,7 @@ import axios from "axios";
 import Header from "@components/header/Header";
 import Loading from "../../components/loading/Loading";
 import {
+  InitCatListWrap,
   Catlist,
   CatName,
   CatAddress,
@@ -25,8 +26,7 @@ const CatListPage = () => {
   const getCatInfo = async () => {
     await axios
       .get(
-        `${API_URL}/post/${
-          JSON.parse(userInfo).accountname
+        `${API_URL}/post/${JSON.parse(userInfo).accountname
         }/userpost/?limit=20`,
         {
           headers: {
@@ -70,13 +70,17 @@ const CatListPage = () => {
         <>
           <Header />
           <Title>내가 등록한 냥이</Title>
-          <CatListWrap
-            onScroll={() => {
-              console.log("스크롤!!!");
-            }}
-          >
-            {catListInfo}
-          </CatListWrap>
+          {catListInfo.length === 0 ? (
+            <InitCatListWrap>
+              <img src="assets/icons/icon-logo-gray.svg" alt="" />
+              <p>아직 등록된 냥이가 없어요</p>
+            </InitCatListWrap>
+          ) :
+            (<CatListWrap>
+              {catListInfo}
+            </CatListWrap>)
+          }
+
         </>
       )}
     </div>

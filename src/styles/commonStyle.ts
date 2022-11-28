@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const AllWrap = styled.div`
+  position: fixed;
   background-image: url(../assets/images/main-background.png);
   background-repeat: no-repeat;
   background-size: cover;
