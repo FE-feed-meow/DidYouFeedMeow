@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const ModalMain = styled.div`
   position: fixed;
   margin: 0 auto;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 390px;
-  height: 100%;
+  height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 100;
   animation: fadeIn 0.3s;

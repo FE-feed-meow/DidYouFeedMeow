@@ -8,13 +8,13 @@ const MapWrapper = styled.div`
 
 const ModalBg = styled.div`
   position: fixed;
-  top: 0;
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
   width: 390px;
   height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
-  z-index: 10;
+  z-index: 40;
 `;
 
 const PlusBtn = styled.button`
@@ -23,14 +23,7 @@ const PlusBtn = styled.button`
   position: absolute;
   top: 723px;
   right: 40px;
-  z-index: 10;
-`;
-
-const MenuBtn = styled.button`
-  position: absolute;
-  top: 15px;
-  left: 10px;
   z-index: 2;
 `;
 
-export { MapWrapper, ModalBg, PlusBtn, MenuBtn };
+export { MapWrapper, ModalBg, PlusBtn };

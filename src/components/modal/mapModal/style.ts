@@ -21,7 +21,7 @@ const ArticleWrap = styled.article`
   width: 100%;
   height: 260px;
   padding: 40px 30px;
-  background-image: url("assets/images/background.svg");
+  background-image: url(../assets/images/background.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

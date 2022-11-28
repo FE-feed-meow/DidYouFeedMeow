@@ -3,11 +3,11 @@ import styled from "styled-components";
 const ImgWrap = styled.div`
   margin-bottom: 30px;
   position: relative;
-  border-radius: 20px;
   overflow: hidden;
   img {
     width: 100%;
     height: 150px;
+    border-radius: 20px;
     background-color: #b5b5b5;
     object-fit: contain;
   }
