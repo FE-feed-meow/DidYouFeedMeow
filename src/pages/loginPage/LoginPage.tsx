@@ -13,8 +13,8 @@ import { ModalBg, TutorCloseBtn, H2, Join, ErrorMessage } from "./style";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [email, onChangeEmail] = useInput({ initialData: "" });
-  const [password, onChangePassword] = useInput({ initialData: "" });
+  const [email, onChangeEmail] = useInput("");
+  const [password, onChangePassword] = useInput("");
   const [logInError, setLogInError] = useState(false);
   const [tutorModal, setTutorModal] = React.useState<boolean>(true);
 
