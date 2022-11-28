@@ -51,9 +51,9 @@ const SearchInpBox = ({ setMyLocation, myLocation, setPosition, onSuccess }: any
       <MenuBtn type='button' onClick={() => { setMenuBoard(!menuBoard) }}>
         <img src="assets/icons/icon-menu.svg" alt="메뉴 버튼" />
       </MenuBtn>
-      {menuBoard === true ? <ModalBg ref={outSection} onClick={closeModal}>
+      {menuBoard === true && <ModalBg ref={outSection} onClick={closeModal}>
         <MenuBoard />
-      </ModalBg> : null}
+      </ModalBg>}
       <SearchInput
         type="text"
         placeholder='장소, 주소를 입력해주세요'

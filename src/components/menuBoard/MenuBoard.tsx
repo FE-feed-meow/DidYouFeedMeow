@@ -10,9 +10,9 @@ import {
   LogoutBtn,
 } from "./style";
 
-const userInfo: any = localStorage.getItem("userInfo");
 
 const MenuBoard = () => {
+  const userInfo: any = localStorage.getItem("userInfo");
   const [userImg, setUserImg] = React.useState<string>("");
   const [userName, setUserName] = React.useState<string>("");
   const [userAddr, setUserAddr] = React.useState<string>("");
@@ -24,9 +24,9 @@ const MenuBoard = () => {
   };
 
   useEffect(() => {
-    setUserName(JSON.parse(userInfo).username);
+    setUserName(JSON.parse(userInfo).intro.split('@@@')[0]);
     setUserImg(JSON.parse(userInfo).image);
-    setUserAddr("{userAddr}")
+    setUserAddr(`${JSON.parse(userInfo).intro.split('@@@')[1]} ${JSON.parse(userInfo).intro.split('@@@')[2]}`)
   }, [])
 
   return (

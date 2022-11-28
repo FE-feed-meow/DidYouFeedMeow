@@ -19,6 +19,7 @@ import CatListPage from "../pages/catListPage/CatListPage";
 import CatNewItem from "../components/catNewsItem/CatNewItem";
 import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
 import ProfileEditPage from "../pages/profileEditPage/ProfileEditPage";
+import TutorialBtn from '../components/tutorialButton/TutorialBtn';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <GlobalStyles />
       <BrowserRouter>
         <AllWrap>
+          <TutorialBtn />
           <MainWrap>
             <Routes>
               {/* public page */}

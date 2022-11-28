@@ -25,6 +25,7 @@ const RecordMapPage = () => {
   const [curAddress, setCurAddress] = React.useState("");
   const [saveMarker, setSaveMarker] = React.useState("");
   const [data, setData] = React.useState("");
+  const [tutorModal, setTutorModal] = React.useState<boolean>(false);
   const [catModal, setCatModal] = React.useState<boolean>(false);
   const outSection = useRef() as React.RefObject<HTMLDivElement>;
   const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -159,6 +160,7 @@ const RecordMapPage = () => {
             curAddress={curAddress}
             onSuccess={onSuccess}
           />
+
           <Map
             level={3}
             center={myLocation.center}
@@ -184,11 +186,11 @@ const RecordMapPage = () => {
               <MapMarker position={myLocation.center} />
             )}
             {saveMarker}
-            {catModal === true ? (
+            {catModal === true && (
               <ModalBg ref={outSection} onClick={closeModal}>
                 <CatInfoModal data={data} />
               </ModalBg>
-            ) : null}
+            )}
           </Map>
         </>
       )}
