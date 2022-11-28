@@ -1,8 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-use-before-define */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useCallback, useEffect, useState } from "react";
-import useInput from "hooks/useInput";
+import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
+
+import useInput from "hooks/useInput";
 import ErrorMessage from "./style";
 import Button from "../../atoms/button/Button";
 import Image from "../../atoms/image/Image";
@@ -14,24 +18,43 @@ interface SignUpProps {
   nextClick: () => void;
 }
 const SignUp = ({ nextClick }: SignUpProps) => {
-  const [isActive, setIsActive] = useState(false);
-  const [email, onChangeEmail] = useInput("");
+  // const url = "https://mandarin.api.weniv.co.kr/user/login/";
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useInput("");
   const [password, , setPassword] = useInput("");
   const [passwordCheck, , setPasswordCheck] = useInput("");
-  const [misMatchError, setMisMatchError] = useState(false);
+  const [mismatchError, setMismatchError] = useState(false);
+  const [isValid, setIsValid] = useState<boolean>(false);
+  const [emailValid, setEmailValid] = useState("");
 
-  useEffect(() => {
-    if (email && password && passwordCheck) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
+  // 이메일 유효성 검사
+  const handleCheckEmail = async () => {
+    const url = "https://mandarin.api.weniv.co.kr/user/emailvalid";
+    const config = {
+      user: { email: `${email}` },
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post(url, config);
+      const reqMsg = res.data.message;
+      setEmailValid(reqMsg);
+      if (reqMsg === "사용 가능한 이메일 입니다." && isValid === false) {
+        setIsValid(true);
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }, [email, password, passwordCheck]);
+  };
 
+  // 비밀번호 확인
   const onChangePassword = useCallback(
     (e: { target: { value: any } }) => {
       setPassword(e.target.value);
-      setMisMatchError(passwordCheck !== e.target.value);
+      setMismatchError(passwordCheck !== e.target.value);
     },
     [passwordCheck],
   );
@@ -39,15 +62,16 @@ const SignUp = ({ nextClick }: SignUpProps) => {
   const onChangePasswordCheck = useCallback(
     (e: { target: { value: any } }) => {
       setPasswordCheck(e.target.value);
-      setMisMatchError(password !== e.target.value);
+      setMismatchError(password !== e.target.value);
     },
     [password],
   );
 
-  const onSubmit = () => {
+  // 프로필 페이지로 이동
+  const goToSetProfile = () => {
     localStorage.setItem("email", email);
     localStorage.setItem("password", password);
-    nextClick();
+    navigate("/profile");
   };
 
   return (
@@ -60,58 +84,63 @@ const SignUp = ({ nextClick }: SignUpProps) => {
         src="assets/images/logo.svg"
       />
       <H2>회원가입</H2>
-      <form onSubmit={onSubmit}>
+      <div>
         <Inputs
           label="이메일"
           placeholder="이메일을 입력해주세요."
-          required
           id="email"
-          name="email"
           type="email"
-          value={email}
-          onChange={onChangeEmail}
           width={275}
+          value={email}
+          onChange={setEmail}
+          onBlur={handleCheckEmail}
+          required
         />
+        {emailValid && <ErrorMessage>* {emailValid}</ErrorMessage>}
         <Inputs
           label="비밀번호"
           placeholder="비밀번호를 설정하세요"
-          required
           id="password"
-          name="password"
           type="password"
+          width={275}
           value={password}
           onChange={onChangePassword}
-          width={275}
+          required
         />
         <Inputs
           label="비밀번호 확인"
           placeholder="설정한 비밀번호를 입력하세요"
-          required
           id="passwordCheck"
-          name="passwordCheck"
           type="password"
+          width={275}
           value={passwordCheck}
           onChange={onChangePasswordCheck}
-          width={275}
+          required
         />
-        {misMatchError && (
+        {mismatchError && (
           <ErrorMessage>* 비밀번호가 일치하지 않습니다.</ErrorMessage>
         )}
-        {isActive ? (
-          <Button type="submit" marginTop={36} bgColor="var(--main-color)">
-            다음
-          </Button>
-        ) : (
-          <Button
-            type="submit"
-            marginTop={36}
-            disabled
-            bgColor="var(--disabled-button-color)"
-          >
-            다음
-          </Button>
-        )}
-      </form>
+      </div>
+
+      {isValid ? (
+        <Button
+          type="submit"
+          marginTop={36}
+          bgColor="var(--main-color)"
+          onClick={goToSetProfile}
+        >
+          다음
+        </Button>
+      ) : (
+        <Button
+          type="submit"
+          marginTop={36}
+          disabled
+          bgColor="var(--disabled-button-color)"
+        >
+          다음
+        </Button>
+      )}
     </MiddleWrap>
   );
 };
