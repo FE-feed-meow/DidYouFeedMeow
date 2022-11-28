@@ -35,27 +35,14 @@ const ProfilePage = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // 토큰 유무 확인후 수정페이지로 이동
-  useEffect(() => {
-    if (token) {
-      navigate("/profileEdit");
-    }
-  }, []);
-
   // 이미지 업로드
   const imageUpload = async (file: any) => {
     const url = "https://mandarin.api.weniv.co.kr/image/uploadfile";
     const formData = new FormData();
     formData.append("image", file);
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    };
 
     try {
-      const res = await axios.post(url, formData, config);
+      const res = await axios.post(url, formData);
       setProfileImg(`https://mandarin.api.weniv.co.kr/${res.data.filename}`);
     } catch (err) {
       console.log(err);
@@ -123,23 +110,6 @@ const ProfilePage = () => {
     }
   };
 
-  // 로그인 함수
-  const onLogin = async () => {
-    const url = "https://mandarin.api.weniv.co.kr/user/login/";
-    const config = {
-      user: { email: `${userEmail}`, password: `${userPassword}` },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    try {
-      const res = await axios.post(url, config);
-      return res.data.user.token;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // 프로필 데이터 전송
   const onHandleJoin = async () => {
     const joinIntro = [intro, addressFirst, addressSecond].join("@@@");
@@ -159,20 +129,8 @@ const ProfilePage = () => {
       },
     };
 
-    // axios
-    //   .post(url, config)
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
     try {
       const res = axios.post(url, config);
-      console.log(res);
-
-      // 토큰 로컬스토리지에 넣어서 바로 로그인되게 하고 싶다 엉엉엉 ㅠ_ㅠ
-      // localStorage.setItem("token", await onLogin());
       // 회원가입때 사용한 email, pw 삭제
       localStorage.removeItem("email");
       localStorage.removeItem("password");

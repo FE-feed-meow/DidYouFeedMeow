@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,7 @@ import useInput from "hooks/useInput";
 import Inputs, { Input, Label } from "../../atoms/inputs/Inputs";
 import Header from "../../components/header/Header";
 import { MiddleWrap } from "../../styles/commonStyle";
-import { H2 } from "../loginPage/style";
+import { ErrorMessage, H2 } from "../loginPage/style";
 import Button from "../../atoms/button/Button";
 import {
   ColumnFlexBox,
@@ -18,9 +18,7 @@ import {
 } from "../profilePage/style";
 
 const ProfileEditPage = () => {
-  const url = "https://mandarin.api.weniv.co.kr/user/login/";
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
   const accountName = localStorage.getItem("accountname");
   const userInfo: any = localStorage.getItem("userInfo");
   const userintro = JSON.parse(userInfo).intro;
@@ -32,28 +30,22 @@ const ProfileEditPage = () => {
   const [intro, setIntro] = useInput(userIntro);
   const [addressFirst, setAddressFirst] = useInput(userAddr1);
   const [addressSecond, setAddressSecond] = useInput(userAddr2);
+  const [errorMsg, setErrorMsg] = useState("");
 
+  // 이미지 업로드
   const imageUpload = async (file: any) => {
+    const url = "https://mandarin.api.weniv.co.kr/image/uploadfile";
     const formData = new FormData();
     formData.append("image", file);
 
-    axios
-      .post(`${url}/image/uploadfile`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        setProfileImg(
-          `https://mandarin.api.weniv.co.kr/${response.data.filename}`,
-        );
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    try {
+      const res = await axios.post(url, formData);
+      setProfileImg(`https://mandarin.api.weniv.co.kr/${res.data.filename}`);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   // 파일 onChange 부분
   const onImgChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = e.target.files;
@@ -61,6 +53,7 @@ const ProfileEditPage = () => {
       const imgSrc = await imageUpload(fileList[0]);
     }
   };
+
   // 클릭시 파일 업로드 창 띄우기
   const handleClickFileInput = () => {
     fileInputRef.current?.click();
@@ -71,11 +64,23 @@ const ProfileEditPage = () => {
     return <ProfileImg src={profileImg} alt="사용자 프로필" />;
   }, [profileImg]);
 
+  // userInfo 업데이트 함수
+  const updateUserInfo = (name: string, introduce: string, img: string) => {
+    // eslint-disable-next-line prefer-const
+    let userInformation = JSON.parse(userInfo);
+    userInformation.username = name;
+    userInformation.intro = introduce;
+    userInformation.image = img;
+
+    localStorage.setItem("userInfo", JSON.stringify(userInformation));
+  };
+
   // 프로필 데이터 전송
   const onHandleSubmit = async () => {
     const joinIntro = [intro, addressFirst, addressSecond].join("@@@");
-
-    const reqData = {
+    const url = "https://mandarin.api.weniv.co.kr/user";
+    const token = localStorage.getItem("token");
+    const config = {
       user: {
         username: `${userName}`,
         accountname: `${accountName}`,
@@ -83,23 +88,27 @@ const ProfileEditPage = () => {
         image: `${profileImg}`,
       },
     };
-    axios
-      .put(`${url}/user`, reqData, {
+
+    try {
+      const res = axios.put(url, config, {
         headers: {
-          Authorization: `Bearer ${token}`,
           "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
-      })
-      .then((response) => {
-        // 성공하면 로컬의 accountname업데이트
-        // localStorage.setItem("accountname", response.user.accountname);
-        console.log(response);
-        navigate("/home");
-      })
-      .catch((e) => {
-        console.log(e);
       });
+      // 로컬스토리지 업데이트
+      updateUserInfo(userName, joinIntro, profileImg);
+      navigate("/home");
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    if (!userName || !intro || !addressFirst || !addressSecond) {
+      setErrorMsg("* 집사이름, 소개, 지역은 필수 요소 입니다.");
+    }
+  }, [userName, intro, addressFirst, addressSecond]);
 
   return (
     <>
@@ -151,7 +160,7 @@ const ProfileEditPage = () => {
                 type="text"
                 id="addressFirst"
                 width={132}
-                value={addressFirst}
+                value={addressFirst || ""}
                 onChange={setAddressFirst}
                 required
               />
@@ -161,18 +170,16 @@ const ProfileEditPage = () => {
                 type="text"
                 width={132}
                 id="addressSecond"
-                value={addressSecond}
+                value={addressSecond || ""}
                 onChange={setAddressSecond}
                 required
               />
             </RowFlexBox>
           </ColumnFlexBox>
-          <Button
-            marginTop={30}
-            bgColor="var(--main-color)"
-            type="submit"
-            // disabled={!isValid}
-          >
+          {!userName && !intro && !addressFirst && !addressSecond ? (
+            <ErrorMessage>{errorMsg}</ErrorMessage>
+          ) : null}
+          <Button marginTop={30} bgColor="var(--main-color)" type="submit">
             수정하기
           </Button>
         </form>

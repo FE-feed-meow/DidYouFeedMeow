@@ -16,6 +16,7 @@ const MenuBoard = () => {
   const [userImg, setUserImg] = React.useState<string>("");
   const [userName, setUserName] = React.useState<string>("");
   const [userAddr, setUserAddr] = React.useState<string>("");
+  const [userIntro, addr1, addr2] = JSON.parse(userInfo).intro.split("@@@");
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -26,7 +27,7 @@ const MenuBoard = () => {
   useEffect(() => {
     setUserName(JSON.parse(userInfo).username);
     setUserImg(JSON.parse(userInfo).image);
-    setUserAddr("{userAddr}");
+    setUserAddr(`${addr1} ${addr2}`);
   }, []);
 
   console.log(JSON.parse(userInfo).image.split("@@@"));
@@ -48,7 +49,7 @@ const MenuBoard = () => {
         <li>
           <MenuBoardBtn
             onClick={() => {
-              navigate("/profile");
+              navigate("/profileEdit");
             }}
           >
             집사 정보
