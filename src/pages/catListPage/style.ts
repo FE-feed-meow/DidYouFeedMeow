@@ -11,7 +11,7 @@ const Title = styled.h1`
 const CatListWrap = styled.ul`
   position: relative;
   max-height: 672px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0 40px;
   &::-webkit-scrollbar {
     width: 7px;
@@ -25,6 +25,27 @@ const CatListWrap = styled.ul`
   /* 스크롤바 뒷 배경 설정 */
   &::-webkit-scrollbar-track {
     background-color: #b5b5b5;
+  }
+`;
+
+const InitCatListWrap = styled(CatListWrap)`
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  img {
+    width: 116px;
+    height: 82px;
+    margin-bottom: 40px;
+  }
+  p {
+    font-family: "Shinb7Regular";
+    font-size: 24px;
+    color: #373737;
   }
 `;
 
@@ -83,4 +104,13 @@ const CatImg = styled.img`
   border-radius: 10px;
 `;
 
-export { Catlist, CatName, CatAddress, CatBirth, CatImg, Title, CatListWrap };
+export {
+  InitCatListWrap,
+  Catlist,
+  CatName,
+  CatAddress,
+  CatBirth,
+  CatImg,
+  Title,
+  CatListWrap,
+};

@@ -23,10 +23,10 @@ const MapTemplate = ({ setMyLocation, myLocation, setPosition, address, curAddre
       <PlusBtn type="button" onClick={() => { setMapModal(!mapModal) }}>
         <img src="assets/icons/icon-plus.svg" alt="플러스 버튼" />
       </PlusBtn>
-      {mapModal === true ?
+      {mapModal === true &&
         <ModalBg ref={outSection} onClick={closeModal}>
           <MapModal address={address} curAddress={curAddress} />
-        </ModalBg> : null}
+        </ModalBg>}
     </MapWrapper >
   )
 }
