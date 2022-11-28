@@ -161,6 +161,7 @@ const RegisterCatPage = ({ stateData }: any) => {
       setUserAddress(stateData.addressData);
       setCatName(stateData.nameData);
       setCatBirth(stateData.birthData);
+      console.log(stateData.birthData);
       setCatEtc(stateData.etcData);
     } else {
       let locationAddress = !location.state ? null : location.state;
@@ -219,7 +220,7 @@ const RegisterCatPage = ({ stateData }: any) => {
               options={option}
               getOption={getOption}
               width={88}
-              value={catBirth}
+              value={stateData ? stateData.birthData : catBirth}
             />
           </CatBox>
           <SubTxt>특이사항</SubTxt>
