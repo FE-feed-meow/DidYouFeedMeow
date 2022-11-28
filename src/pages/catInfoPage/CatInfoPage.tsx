@@ -10,6 +10,7 @@ import CatInfo from "../../components/catInfo/CatInfo";
 import CatFeed from "../../components/catFeed/CatFeed";
 import CatFoodPageModal from "../../components/modal/catFoodPageModal/CatFoodPageModal";
 import CatFeedNone from "../../components/catFeedNone/CatFeedNone";
+import Loading from '../../components/loading/Loading';
 
 export const Wrap = styled.div`
   padding: 15px 40px 37px;
@@ -37,6 +38,8 @@ const CatInfoPage = () => {
   const token = localStorage.getItem("token");
   const { catid } = useParams();
 
+  const [loading, setLoading] = React.useState<boolean>(true);
+
   const getFeedList = React.useCallback(async () => {
     const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments`;
     try {
@@ -48,6 +51,7 @@ const CatInfoPage = () => {
         },
       });
       setFeedList(res.data.comments);
+      setLoading(false)
     } catch (err) {
       console.log(err);
     }
@@ -64,29 +68,32 @@ const CatInfoPage = () => {
     getFeedList();
   }, []);
   return (
-    <>
-      <Header />
-      <Wrap>
-        <CatInfo />
-        {feedList.length > 0 &&
-        feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
-          .length > 0 ? (
-          <CatFeed feedList={feedList} />
-        ) : (
-          <CatFeedNone />
-        )}
-        <Button
-          type="button"
-          marginTop={15}
-          bgColor="var(--main-color)"
-          onClick={OpenModal}
-        >
-          밥 주기
-        </Button>
-        {onModal && <CatFoodPageModal CloseModal={CloseModal} />}
-      </Wrap>
-    </>
-  );
+    <div>
+      {loading ? (<Loading />) : (
+        <>
+          <Header />
+          <Wrap>
+            <CatInfo />
+            {feedList.length > 0 &&
+              feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
+                .length > 0 ? (
+              <CatFeed feedList={feedList} />
+            ) : (
+              <CatFeedNone />
+            )}
+            <Button
+              type="button"
+              marginTop={15}
+              bgColor="var(--main-color)"
+              onClick={OpenModal}
+            >
+              밥 주기
+            </Button>
+            {onModal && <CatFoodPageModal CloseModal={CloseModal} />}
+          </Wrap>
+        </>
+      )}
+    </div>)
 };
 
 export default CatInfoPage;

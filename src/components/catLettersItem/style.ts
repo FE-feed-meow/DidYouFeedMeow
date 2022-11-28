@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 772px;
+  height: 754px;
   padding: 0 40px;
   overflow-y: scroll;
   /* 스크롤바 설정 */
@@ -67,8 +67,6 @@ const ItemContentsImg = styled.img`
   margin-bottom: 20px;
 `;
 
-const IconsWrap = styled.div``;
-
 const LikeIcon = styled.span`
   font-size: 14px;
   margin-right: 20px;
@@ -99,7 +97,6 @@ export {
   UserAddress,
   ItemContents,
   ItemContentsImg,
-  IconsWrap,
   LikeIcon,
   CommentIcon,
 };

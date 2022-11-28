@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
 export const HeaderWrap = styled.div`
-  height: 48px;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  /* &::after {
-    content: "";
-    display: block;
-  } */
   img {
     cursor: pointer;
   }

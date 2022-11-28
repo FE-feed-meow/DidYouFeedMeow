@@ -45,6 +45,7 @@ const RecordMapPage = () => {
     setMyLocation({
       center: { lat: location.coords.latitude, lng: location.coords.longitude },
     });
+    setLoading(false);
   };
   // 실패시
   const onError = (error: { message: string }) => {
@@ -68,8 +69,7 @@ const RecordMapPage = () => {
   const getCatAddress = async () => {
     await axios
       .get(
-        `${API_URL}/post/${
-          JSON.parse(userInfo).accountname
+        `${API_URL}/post/${JSON.parse(userInfo).accountname
         }/userpost/?limit=20`,
         {
           headers: {
@@ -97,9 +97,8 @@ const RecordMapPage = () => {
                 img: response.data.post[i].image,
                 age: response.data.post[i].content.split("|")[2],
                 name: response.data.post[i].content.split("|")[0],
-                address: `${result[0].address_name}, ${
-                  response.data.post[i].content.split("|")[1].split(",")[1]
-                }`,
+                address: `${result[0].address_name}, ${response.data.post[i].content.split("|")[1].split(",")[1]
+                  }`,
                 lat: result[0].y,
                 lng: result[0].x,
               };
@@ -124,7 +123,6 @@ const RecordMapPage = () => {
               );
             });
             setSaveMarker(savedMarker);
-            setLoading(false);
           });
         }
       })
@@ -166,11 +164,7 @@ const RecordMapPage = () => {
             center={myLocation.center}
             style={{
               width: "390px",
-              height: "100%",
-              position: "absolute",
-              top: "0",
-              left: "50%",
-              transform: "translateX(-50%)",
+              height: "820px",
             }}
             onClick={(_t, mouseEvent) => {
               setPosition({

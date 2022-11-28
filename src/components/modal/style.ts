@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const ModalMain = styled.div`
   position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 390px;
+  height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 100;
 `;

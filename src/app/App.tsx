@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./style";
-import { AllWrap } from "../styles/commonStyle";
+import { AllWrap, MainWrap } from "../styles/commonStyle";
 import PrivateRoute from "../Route";
 import Splash from "../pages/splashPage/Splash";
 import LoginPage from "../pages/loginPage/LoginPage";
@@ -25,95 +25,96 @@ const App = () => {
       <GlobalStyles />
       <BrowserRouter>
         <AllWrap>
-          <Routes>
-            {/* public page */}
-            <Route path="/" element={<Splash />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/join" element={<JoinPage />} />
-            <Route path="/quiz" element={<JoinQuizPage />} />
+          <MainWrap>
+            <Routes>
+              {/* public page */}
+              <Route path="/" element={<Splash />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/join" element={<JoinPage />} />
+              <Route path="/quiz" element={<JoinQuizPage />} />
 
-            {/* private page */}
-            <Route
-              path="/profile"
-              element={
-                <PrivateRoute>
-                  <ProfilePage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/home"
-              element={
-                <PrivateRoute>
-                  <RecordMapPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/addCat"
-              element={
-                <PrivateRoute>
-                  <RegisterCatPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/catInfo/:catid"
-              element={
-                <PrivateRoute>
-                  <CatInfoPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/catInfoEdit/:catid"
-              element={
-                <PrivateRoute>
-                  <CatinfoEditPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/letters"
-              element={
-                <PrivateRoute>
-                  <CatLetterPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/letters/:lettersId"
-              element={
-                <PrivateRoute>
-                  <CatLettersItem />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/news"
-              element={
-                <PrivateRoute>
-                  <CatNewsPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/news/:newsId"
-              element={
-                <PrivateRoute>
-                  <CatNewItem />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/catList"
-              element={
-                <PrivateRoute>
-                  <CatListPage />
-                </PrivateRoute>
-              }
-            />
-            {/* <Route
+              {/* private page */}
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <ProfilePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute>
+                    <RecordMapPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/addCat"
+                element={
+                  <PrivateRoute>
+                    <RegisterCatPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/catInfo/:catid"
+                element={
+                  <PrivateRoute>
+                    <CatInfoPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/catInfoEdit/:catid"
+                element={
+                  <PrivateRoute>
+                    <CatinfoEditPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/letters"
+                element={
+                  <PrivateRoute>
+                    <CatLetterPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/letters/:lettersId"
+                element={
+                  <PrivateRoute>
+                    <CatLettersItem />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/news"
+                element={
+                  <PrivateRoute>
+                    <CatNewsPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/news/:newsId"
+                element={
+                  <PrivateRoute>
+                    <CatNewItem />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/catList"
+                element={
+                  <PrivateRoute>
+                    <CatListPage />
+                  </PrivateRoute>
+                }
+              />
+              {/* <Route
               path="/newsDetail:id"
               element={
                 <PrivateRoute>
@@ -121,7 +122,7 @@ const App = () => {
                 </PrivateRoute>
               }
             /> */}
-            {/* <Route
+              {/* <Route
               path="/letter:id"
               element={
                 <PrivateRoute>
@@ -129,8 +130,9 @@ const App = () => {
                 </PrivateRoute>
               }
             /> */}
-            <Route path="/*" element={<ErrorPage />} />
-          </Routes>
+              <Route path="/*" element={<ErrorPage />} />
+            </Routes>
+          </MainWrap>
         </AllWrap>
       </BrowserRouter>
     </>

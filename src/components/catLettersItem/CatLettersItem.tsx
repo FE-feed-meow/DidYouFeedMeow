@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '@components/header/Header'
-import { Wrapper, ItemWrap, ProfileWrap, UserImg, UserName, UserAddress, ItemContents, ItemContentsImg, IconsWrap, LikeIcon, CommentIcon } from './style';
+import { Wrapper, ItemWrap, ProfileWrap, UserImg, UserName, UserAddress, ItemContents, ItemContentsImg, LikeIcon, CommentIcon } from './style';
 
 const CatLettersItem = () => {
   return (
@@ -17,10 +17,8 @@ const CatLettersItem = () => {
           </ProfileWrap>
           <ItemContents>호원동 놀이터 고양이 요즘 안보이던데 근황아시는 분 계신가요? 구내염도 심하던데 밥은 잘 먹고 다니는지 걱정돼요 ㅠㅠ 이 고양이 보신 분 계시면 댓글 꼭 남겨주세요!</ItemContents>
           <ItemContentsImg src="../assets/images/cat-sample-img.jpeg" alt="고양이 사진" />
-          <IconsWrap>
-            <LikeIcon>24</LikeIcon>
-            <CommentIcon>8</CommentIcon>
-          </IconsWrap>
+          <LikeIcon>24</LikeIcon>
+          <CommentIcon>8</CommentIcon>
         </ItemWrap>
         <ItemWrap>
           <ProfileWrap>
@@ -32,10 +30,8 @@ const CatLettersItem = () => {
           </ProfileWrap>
           <ItemContents>츄르 무나합니다💛</ItemContents>
           <ItemContentsImg src="../assets/images/cat-sample-img2.jpeg" alt="고양이 사진" />
-          <IconsWrap>
-            <LikeIcon>12</LikeIcon>
-            <CommentIcon>20</CommentIcon>
-          </IconsWrap>
+          <LikeIcon>12</LikeIcon>
+          <CommentIcon>20</CommentIcon>
         </ItemWrap>
       </Wrapper>
     </>
