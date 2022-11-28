@@ -1,23 +1,24 @@
 import * as React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./style";
+import { PrivateRoute, PublicRoute } from "../Route";
 import { AllWrap, MainWrap } from "../styles/commonStyle";
-import PrivateRoute from "../Route";
 import Splash from "../pages/splashPage/Splash";
 import LoginPage from "../pages/loginPage/LoginPage";
 import JoinPage from "../pages/joinPage/JoinPage";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 import ProfilePage from "../pages/profilePage/ProfilePage";
-import JoinQuizPage from "../pages/joinQuizPage/JoinQuizPage";
+import JoinQuizPage from "../components/joinQuizPage/JoinQuizPage";
 import RecordMapPage from "../pages/recordMapPage/RecordMapPage";
 import RegisterCatPage from "../pages/registerCatPage/RegisterCatPage";
 import CatLetterPage from "../pages/catLetterPage/CatLetterPage";
-import CatLettersItem from '../components/catLettersItem/CatLettersItem';
+import CatLettersItem from "../components/catLettersItem/CatLettersItem";
 import CatNewsPage from "../pages/catNewsPage/CatNewsPage";
 import CatInfoPage from "../pages/catInfoPage/CatInfoPage";
-import CatListPage from '../pages/catListPage/CatListPage';
+import CatListPage from "../pages/catListPage/CatListPage";
 import CatNewItem from "../components/catNewsItem/CatNewItem";
 import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
+import ProfileEditPage from "../pages/profileEditPage/ProfileEditPage";
 
 const App = () => {
   return (
@@ -28,25 +29,54 @@ const App = () => {
           <MainWrap>
             <Routes>
               {/* public page */}
-              <Route path="/" element={<Splash />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/join" element={<JoinPage />} />
-              <Route path="/quiz" element={<JoinQuizPage />} />
-
-              {/* private page */}
               <Route
-                path="/profile"
+                path="/"
                 element={
-                  <PrivateRoute>
-                    <ProfilePage />
-                  </PrivateRoute>
+                  <PublicRoute>
+                    <Splash />
+                  </PublicRoute>
                 }
               />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute>
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/join"
+                element={
+                  <PublicRoute>
+                    <JoinPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/quiz"
+                element={
+                  <PublicRoute>
+                    <JoinQuizPage />
+                  </PublicRoute>
+                }
+              />
+              <Route path="/profile" element={<ProfilePage />} />
+
+              {/* private page */}
               <Route
                 path="/home"
                 element={
                   <PrivateRoute>
                     <RecordMapPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="profileEdit"
+                element={
+                  <PrivateRoute>
+                    <ProfileEditPage />
                   </PrivateRoute>
                 }
               />

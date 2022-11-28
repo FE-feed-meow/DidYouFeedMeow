@@ -3,14 +3,13 @@ import { useNavigate } from "react-router";
 
 import TermsModal from "@components/modal/termsModal/TermsModal";
 import Button from "../../atoms/button/Button";
-import Header from "../../components/header/Header";
-import QuizList from "../../components/quizList/QuizList";
+import Header from "../header/Header";
+import QuizList from "../quizList/QuizList";
 import { MiddleWrap } from "../../styles/commonStyle";
 import Image from "../../atoms/image/Image";
-import { H2 } from "../loginPage/style";
+import { H2 } from "../../pages/loginPage/style";
 
 const JoinQuizPage = () => {
-  const [onHome, setOnHome] = React.useState(false);
   const navigate = useNavigate();
   const [modalState, setModalState] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -44,7 +43,7 @@ const JoinQuizPage = () => {
 
   return (
     <>
-      <Header onHome={onHome} />
+      <Header />
       <MiddleWrap>
         {modalState && <TermsModal CloseModal={CloseModal} />}
         <Image

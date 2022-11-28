@@ -8,11 +8,12 @@ export interface InputsProps {
   width: number;
   maxLength?: number;
   label?: string;
-  placeholder?: string;
+  placeholder?: string | any;
   type?: string;
-  value?: string;
+  value?: string | any;
   required?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Inputs = ({
@@ -26,6 +27,7 @@ const Inputs = ({
   value,
   required = true,
   onChange,
+  onBlur,
 }: InputsProps) => {
   return (
     <Wrap>
@@ -41,6 +43,7 @@ const Inputs = ({
         value={value ?? value}
         required={required ?? required}
         onChange={onChange ?? onChange}
+        onBlur={onBlur ?? onBlur}
       />
     </Wrap>
   );
