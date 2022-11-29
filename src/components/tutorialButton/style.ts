@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 const TutorBtn = styled.button`
-  width: 300px;
+  width: 100%;
   position: fixed;
   top: 430px;
-  right: 180px;
+  right: -500px;
   font-size: 36px;
   &::after {
     content: url(../assets/icons/icon-manual.svg);
     vertical-align: middle;
     margin-left: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -21,6 +24,9 @@ const ModalBg = styled.div`
   height: 100%;
   background-color: rgba(25, 25, 25, 0.8);
   z-index: 40;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ModalCloseBtn = styled.button`

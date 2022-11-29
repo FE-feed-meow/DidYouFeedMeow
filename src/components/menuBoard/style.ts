@@ -31,11 +31,9 @@ const ProfileWrap = styled.button`
   h1 {
     font-family: "Shinb7Regular";
     font-size: 24px;
-    margin-left: 8px;
   }
   p {
     margin-top: 4px;
-    margin-left: 8px;
     font-family: "SpoqaHanSansNeo-Regular";
     font-size: 12px;
     color: #797979;
@@ -54,6 +52,13 @@ const MenuBoardUl = styled.ul`
   li + li {
     margin-top: 40px;
   }
+`;
+
+const UserInfoWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
 `;
 
 const MenuBoardBtn = styled.button`
@@ -88,6 +93,7 @@ export {
   AsideWrap,
   ProfileWrap,
   UserImg,
+  UserInfoWrap,
   MenuBoardUl,
   MenuBoardBtn,
   LogoutBtn,
