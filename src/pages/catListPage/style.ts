@@ -4,13 +4,13 @@ const Title = styled.h1`
   font-size: 28px;
   font-family: "Shinb7Regular";
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding-top: 15px;
 `;
 
 const CatListWrap = styled.ul`
   position: relative;
-  max-height: 672px;
+  max-height: 666px;
   overflow-y: auto;
   padding: 0 40px;
   &::-webkit-scrollbar {
@@ -25,6 +25,7 @@ const CatListWrap = styled.ul`
   /* 스크롤바 뒷 배경 설정 */
   &::-webkit-scrollbar-track {
     background-color: #b5b5b5;
+    border-radius: 10px;
   }
 `;
 
@@ -33,10 +34,7 @@ const InitCatListWrap = styled(CatListWrap)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 240px;
   img {
     width: 116px;
     height: 82px;

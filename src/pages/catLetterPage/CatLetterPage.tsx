@@ -13,9 +13,9 @@ import {
   LetterItemName,
 } from "./style";
 
-const userInfo: any = localStorage.getItem("userInfo");
 
 const CatLetterPage = () => {
+  const userInfo: any = localStorage.getItem("userInfo");
   const [userIntro, addr1, addr2] = JSON.parse(userInfo).intro.split("@@@");
   const navigate = useNavigate();
   const moveToLetterDetail = () => {

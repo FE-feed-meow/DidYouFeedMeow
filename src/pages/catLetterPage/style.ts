@@ -12,12 +12,12 @@ const LetterTitle = styled.h1`
 
 const LetterAddress = styled.p`
   font-size: 18px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 `;
 
 const LetterList = styled.ul`
   padding: 0 40px;
-  height: 648px;
+  height: 640px;
   overflow-y: scroll;
   /* 스크롤바 설정 */
   &::-webkit-scrollbar {
@@ -32,6 +32,7 @@ const LetterList = styled.ul`
   /* 스크롤바 뒷 배경 설정 */
   &::-webkit-scrollbar-track {
     background-color: #b5b5b5;
+    border-radius: 10px;
   }
 `;
 

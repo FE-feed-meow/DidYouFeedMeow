@@ -28,6 +28,7 @@ const ArticleWrap = styled.article`
   background-attachment: fixed;
   box-shadow: rgba(0, 0, 0, 0.1) 0 -4px 4px 0;
   animation: ${slideDown} 0.3s ease-in;
+  border-radius: 0 0 30px 30px;
   p {
     font-family: "SpoqaHanSansNeo-Regular";
     font-size: 14px;

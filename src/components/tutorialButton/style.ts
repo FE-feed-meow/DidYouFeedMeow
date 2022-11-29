@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 const TutorBtn = styled.button`
-  position: absolute;
-  top: 420px;
-  right: 230px;
+  width: 300px;
+  position: fixed;
+  top: 430px;
+  right: 180px;
   font-size: 36px;
   &::after {
     content: url(../assets/icons/icon-manual.svg);
