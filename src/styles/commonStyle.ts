@@ -10,6 +10,9 @@ export const AllWrap = styled.div`
   padding: 30px;
   width: 100%;
   height: 100vh;
+  @media screen and (max-width: 768px) {
+    background: none;
+  }
 `;
 
 export const MainWrap = styled.div`
