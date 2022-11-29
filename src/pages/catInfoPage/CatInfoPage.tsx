@@ -10,7 +10,7 @@ import CatInfo from "../../components/catInfo/CatInfo";
 import CatFeed from "../../components/catFeed/CatFeed";
 import CatFoodPageModal from "../../components/modal/catFoodPageModal/CatFoodPageModal";
 import CatFeedNone from "../../components/catFeedNone/CatFeedNone";
-import Loading from '../../components/loading/Loading';
+import Loading from "../../components/loading/Loading";
 
 export const Wrap = styled.div`
   padding: 15px 40px 37px;
@@ -39,9 +39,8 @@ const CatInfoPage = () => {
   const { catid } = useParams();
 
   const [loading, setLoading] = React.useState<boolean>(true);
-
   const getFeedList = React.useCallback(async () => {
-    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments`;
+    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments/?limit=100`;
     try {
       const res = await axios(url, {
         method: "GET",
@@ -51,7 +50,7 @@ const CatInfoPage = () => {
         },
       });
       setFeedList(res.data.comments);
-      setLoading(false)
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -69,14 +68,17 @@ const CatInfoPage = () => {
   }, []);
   return (
     <div>
-      {loading ? (<Loading />) : (
+      {loading ? (
+        <Loading />
+      ) : (
         <>
           <Header />
           <Wrap>
             <CatInfo />
+            {/* <CatFeed feedList={feedList} /> */}
             {feedList.length > 0 &&
-              feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
-                .length > 0 ? (
+            feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
+              .length > 0 ? (
               <CatFeed feedList={feedList} />
             ) : (
               <CatFeedNone />
@@ -93,7 +95,8 @@ const CatInfoPage = () => {
           </Wrap>
         </>
       )}
-    </div>)
+    </div>
+  );
 };
 
 export default CatInfoPage;

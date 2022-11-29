@@ -16,10 +16,17 @@ interface Feed {
 interface FeedProps {
   feedList: Feed[];
 }
+interface dates1 {
+  id: string;
+  date: string;
+  content: string;
+  author: authorProps;
+}
 
 const CatFeed = ({ feedList }: FeedProps) => {
   type dates = { id: number; date: string };
   const [newDateArray, setNewDateArray] = React.useState<dates[]>([]);
+  const [newFeedArray, setNewFeedArray] = React.useState<dates1[]>([]);
 
   // 현재 날짜
   const now = new Date();
@@ -37,27 +44,58 @@ const CatFeed = ({ feedList }: FeedProps) => {
     }
   };
 
+  // createdAt에 8시간 추가하기
+  const timeArray = () => {
+    if (feedList) {
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < feedList.length; i++) {
+        const time = new Date(feedList[i].createdAt);
+        const newDate = `${time.getFullYear()}-${
+          time.getMonth() + 1
+        }-${time.getDate()}`;
+        const newItem = {
+          id: feedList[i].id,
+          date: newDate,
+          content: feedList[i].content,
+          author: feedList[i].author,
+        };
+        setNewFeedArray((arrays) => [...arrays, newItem]);
+      }
+    }
+  };
+
+  console.log("feedList", feedList);
   useEffect(() => {
     newArray();
+    timeArray();
   }, [feedList]);
 
-  const result1 = newDateArray.filter(
+  // const result1 = newDateArray.filter(
+  //   (arr, index, callback) =>
+  //     index === callback.findIndex((loc) => loc.date === arr.date),
+  // );
+  const result2 = newFeedArray.filter(
     (arr, index, callback) =>
       index === callback.findIndex((loc) => loc.date === arr.date),
   );
 
+  // 중복 제거 된 newTimeArray
+  const removeDuplicates = newFeedArray.filter(
+    (arr, index, callback) =>
+      index === callback.findIndex((t) => t.id === arr.id),
+  );
   return (
     <FeedWrap>
-      {result1
+      {result2
         .filter((item) => item.date === nowDate)
         .map((item) => {
           return (
             <>
               <DateTxt key={item.id}>{item.date}</DateTxt>
               <FeedBox>
-                {feedList.length > 0
-                  ? feedList
-                      .filter((arr) => arr.createdAt.split("T")[0] === nowDate)
+                {removeDuplicates.length > 0
+                  ? removeDuplicates
+                      .filter((arr) => arr.date === nowDate)
                       .map((feed) => {
                         return (
                           <FeedCard
