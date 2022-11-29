@@ -18,7 +18,6 @@ const TermsModal = ({ CloseModal }: Props) => {
   return (
     <ModalMain>
       <ModalArea>
-        <CloseBtn CloseModal={CloseModal} />
         <ModalWrap>
           <TermsWrap>
             <TermsModalH1>약관을 읽어주세요</TermsModalH1>
