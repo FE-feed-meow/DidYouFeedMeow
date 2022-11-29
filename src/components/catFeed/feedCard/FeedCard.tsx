@@ -18,7 +18,7 @@ interface FeedProps {
   feed: {
     id: string;
     content: string;
-    createdAt: string;
+    date: string;
     author: authorProps;
   };
   feedAccountname: string;
