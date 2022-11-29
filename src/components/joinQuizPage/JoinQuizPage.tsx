@@ -11,7 +11,7 @@ import { H2 } from "../../pages/loginPage/style";
 
 const JoinQuizPage = () => {
   const navigate = useNavigate();
-  const [modalState, setModalState] = useState<boolean>(false);
+  const [modalState, setModalState] = useState<boolean>(true);
   const [isActive, setIsActive] = useState<boolean>(false);
   const [resultScore, setResultScore] = useState<number>(0);
 
@@ -43,9 +43,9 @@ const JoinQuizPage = () => {
 
   return (
     <>
+      {modalState && <TermsModal CloseModal={CloseModal} />}
       <Header />
       <MiddleWrap>
-        {modalState && <TermsModal CloseModal={CloseModal} />}
         <Image
           marginTop={18}
           width={113}
