@@ -13,10 +13,13 @@ export const AllWrap = styled.div`
 `;
 
 export const MainWrap = styled.div`
+  position: relative;
   margin: 0 auto;
   width: 390px;
   height: 820px;
   background: url(../assets/images/background.svg);
+  outline: 10px solid #e5e5e5;
+  border-radius: 30px;
 `;
 
 export const MiddleWrap = styled.div`

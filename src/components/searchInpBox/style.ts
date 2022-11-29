@@ -10,6 +10,7 @@ const SearchWrap = styled.div`
   padding: 0 30px;
   background-color: var(--background-color);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 4px 0;
+  border-radius: 30px 30px 0 0;
   z-index: 10;
 `;
 
@@ -29,6 +30,7 @@ const ModalBg = styled.div`
   height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 40;
+  border-radius: 30px;
 `;
 
 const SearchInput = styled.input`

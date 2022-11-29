@@ -21,6 +21,7 @@ const AsideWrap = styled.aside`
   background-size: cover;
   background-attachment: fixed;
   animation: ${slideLeft} 0.3s ease-in;
+  border-radius: 30px 0 0 30px;
 `;
 
 const ProfileWrap = styled.button`
@@ -39,6 +40,13 @@ const ProfileWrap = styled.button`
     font-size: 12px;
     color: #797979;
   }
+`;
+
+const UserImg = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 const MenuBoardUl = styled.ul`
@@ -76,4 +84,11 @@ const LogoutBtn = styled.button`
   }
 `;
 
-export { AsideWrap, ProfileWrap, MenuBoardUl, MenuBoardBtn, LogoutBtn };
+export {
+  AsideWrap,
+  ProfileWrap,
+  UserImg,
+  MenuBoardUl,
+  MenuBoardBtn,
+  LogoutBtn,
+};

@@ -9,7 +9,7 @@ const TutorialBtn = () => {
   }
 
   return (
-    <div>
+    <>
       <TutorBtn type='button' onClick={() => { setTutorModal(!tutorModal) }} >
         밥줬냥 설명서 보기
       </TutorBtn>
@@ -20,7 +20,7 @@ const TutorialBtn = () => {
           </ModalCloseBtn>
           <Tutorial />
         </ModalBg>}
-    </div >
+    </>
   )
 }
 

@@ -11,6 +11,7 @@ export const ModalMain = styled.div`
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 100;
   animation: fadeIn 0.3s;
+  border-radius: 30px;
 `;
 
 export const ModalArea = styled.div`

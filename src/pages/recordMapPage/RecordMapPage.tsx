@@ -167,6 +167,7 @@ const RecordMapPage = () => {
             style={{
               width: "390px",
               height: "820px",
+              borderRadius: "30px"
             }}
             onClick={(_t, mouseEvent) => {
               setPosition({

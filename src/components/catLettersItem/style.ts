@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 754px;
+  height: 736px;
   padding: 0 40px;
   overflow-y: scroll;
   /* 스크롤바 설정 */
@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   /* 스크롤바 뒷 배경 설정 */
   &::-webkit-scrollbar-track {
     background-color: #b5b5b5;
+    border-radius: 10px;
   }
 `;
 

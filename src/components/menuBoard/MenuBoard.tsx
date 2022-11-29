@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Image from "../../atoms/image/Image";
 
 import {
   AsideWrap,
   ProfileWrap,
+  UserImg,
   MenuBoardUl,
   MenuBoardBtn,
   LogoutBtn,
@@ -24,7 +24,7 @@ const MenuBoard = () => {
   };
 
   useEffect(() => {
-    setUserName(JSON.parse(userInfo).intro.split("@@@")[0]);
+    setUserName(JSON.parse(userInfo).username);
     setUserImg(JSON.parse(userInfo).image);
     setUserAddr(`${addr1} ${addr2}`);
   }, []);
@@ -36,7 +36,7 @@ const MenuBoard = () => {
           navigate("/profileEdit");
         }}
       >
-        <Image width={50} src={userImg} alt="프로필 이미지" />
+        <UserImg src={userImg} alt="프로필이미지" />
         <div>
           <h1>{userName}</h1>
           <p>{userAddr}</p>

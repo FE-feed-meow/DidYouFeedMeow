@@ -9,6 +9,7 @@ const ModalBg = styled.div`
   height: 820px;
   background-color: rgba(55, 55, 55, 0.5);
   z-index: 40;
+  border-radius: 30px;
 `;
 
 export default ModalBg;
