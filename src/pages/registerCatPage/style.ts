@@ -26,7 +26,7 @@ const UploadImgIcon = styled.label`
   bottom: 12px;
   right: 12px;
   position: absolute;
-  background-image: url(assets/icons/icon-plus-small.svg);
+  background-image: url(../assets/icons/icon-plus-small.svg);
   cursor: pointer;
 `;
 
