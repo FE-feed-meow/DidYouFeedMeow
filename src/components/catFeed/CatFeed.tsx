@@ -74,13 +74,12 @@ const CatFeed = ({ feedList }: FeedProps) => {
       index === callback.findIndex((loc) => loc.date === arr.date),
   );
 
-  console.log(result2);
   // 중복 제거 된 newTimeArray
   const removeDuplicates = newFeedArray.filter(
     (arr, index, callback) =>
       index === callback.findIndex((t) => t.id === arr.id),
   );
-  console.log(removeDuplicates);
+
   return (
     <FeedWrap>
       {result2
