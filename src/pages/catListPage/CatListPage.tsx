@@ -80,7 +80,6 @@ const CatListPage = () => {
               {catListInfo}
             </CatListWrap>)
           }
-
         </>
       )}
     </div>

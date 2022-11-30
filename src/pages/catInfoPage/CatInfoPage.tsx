@@ -75,10 +75,9 @@ const CatInfoPage = () => {
           <Header />
           <Wrap>
             <CatInfo />
-            {/* <CatFeed feedList={feedList} /> */}
             {feedList.length > 0 &&
-            feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
-              .length > 0 ? (
+              feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
+                .length > 0 ? (
               <CatFeed feedList={feedList} />
             ) : (
               <CatFeedNone />

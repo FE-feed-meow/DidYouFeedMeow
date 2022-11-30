@@ -34,7 +34,6 @@ const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
           "Content-type": "application/json",
         },
       });
-      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +51,6 @@ const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
           "Content-type": "application/json",
         },
       });
-      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -61,7 +59,7 @@ const DeleteModal = ({ CloseModal, feedId, deleteState }: Props) => {
   };
 
   const onDelete = () => {
-    // true면 빕 정보 삭제
+    // true면 밥 정보 삭제
     // false면 고양이 정보 삭제
     if (deleteState === true) {
       deleteFeed();

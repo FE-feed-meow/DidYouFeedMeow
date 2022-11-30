@@ -1,5 +1,4 @@
 import React from "react";
-import CloseBtn from "../../../atoms/button/closeBtn/CloseBtn";
 import {
   ModalMain,
   ModalArea,

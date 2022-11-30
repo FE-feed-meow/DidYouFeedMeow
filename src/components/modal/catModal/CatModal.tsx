@@ -10,7 +10,6 @@ import {
   CatInfoModify,
   CatInfoDelete,
 } from "./style";
-// import { CloseBtn } from "../catInfoModal/style";
 interface Props {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
