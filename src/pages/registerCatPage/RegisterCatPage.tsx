@@ -226,7 +226,6 @@ const RegisterCatPage = ({ stateData }: any) => {
             onChange={(e) => {
               setCatEtc(e.target.value);
             }}
-            value={catEtc}
           />
           {stateData ? (
             <Button
