@@ -102,8 +102,6 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
         },
         data: comment,
       });
-
-      console.log("data:", res.data.comment);
     } catch (err) {
       console.log(err);
     }

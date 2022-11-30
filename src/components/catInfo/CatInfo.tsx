@@ -45,7 +45,6 @@ const CatInfo = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         setCatDetail(response.data.post);
         setName(response.data.post.content.split("|")[0]);
         setAddress(response.data.post.content.split("|")[1]);

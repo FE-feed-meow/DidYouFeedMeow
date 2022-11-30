@@ -50,9 +50,8 @@ const CatFeed = ({ feedList }: FeedProps) => {
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < feedList.length; i++) {
         const time = new Date(feedList[i].createdAt);
-        const newDate = `${time.getFullYear()}-${
-          time.getMonth() + 1
-        }-${time.getDate()}`;
+        const newDate = `${time.getFullYear()}-${time.getMonth() + 1
+          }-${time.getDate()}`;
         const newItem = {
           id: feedList[i].id,
           date: newDate,
@@ -64,16 +63,11 @@ const CatFeed = ({ feedList }: FeedProps) => {
     }
   };
 
-  console.log("feedList", feedList);
   useEffect(() => {
     newArray();
     timeArray();
   }, [feedList]);
 
-  // const result1 = newDateArray.filter(
-  //   (arr, index, callback) =>
-  //     index === callback.findIndex((loc) => loc.date === arr.date),
-  // );
   const result2 = newFeedArray.filter(
     (arr, index, callback) =>
       index === callback.findIndex((loc) => loc.date === arr.date),
@@ -95,16 +89,16 @@ const CatFeed = ({ feedList }: FeedProps) => {
               <FeedBox>
                 {removeDuplicates.length > 0
                   ? removeDuplicates
-                      .filter((arr) => arr.date === nowDate)
-                      .map((feed) => {
-                        return (
-                          <FeedCard
-                            key={feed.id}
-                            feed={feed}
-                            feedAccountname={feed.author.accountname}
-                          />
-                        );
-                      })
+                    .filter((arr) => arr.date === nowDate)
+                    .map((feed) => {
+                      return (
+                        <FeedCard
+                          key={feed.id}
+                          feed={feed}
+                          feedAccountname={feed.author.accountname}
+                        />
+                      );
+                    })
                   : null}
               </FeedBox>
             </>

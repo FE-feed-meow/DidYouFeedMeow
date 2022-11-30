@@ -55,7 +55,6 @@ const DeleteText = styled.span`
 
 const BtnWrap = styled.div`
   width: 300px;
-  /* display: flex; */
 `;
 
 const DeleteBtn = styled.button`
