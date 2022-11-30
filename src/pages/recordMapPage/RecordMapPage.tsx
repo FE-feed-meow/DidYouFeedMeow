@@ -198,7 +198,7 @@ const RecordMapPage = () => {
             {tutorModal === true && (
               <>
                 <CloseBtn type='button' onClick={() => { setTutorModal(false) }}>
-                  <img src="assets/icons/icon-close-text.svg" alt="" />
+                  <img src="assets/icons/icon-close-text.svg" alt="닫기 버튼" />
                 </CloseBtn>
                 <AppTutorial />
               </>

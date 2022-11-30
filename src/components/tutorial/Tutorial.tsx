@@ -17,13 +17,13 @@ const Tutorial = () => {
     <Carousel>
       <Slider {...settings}>
         <div>
-          <img src="assets/images/tutorial_1.svg" alt="" />
+          <img src="assets/images/tutorial_1.svg" alt="웹 튜토리얼1" />
         </div>
         <div>
-          <img src="assets/images/tutorial_2.svg" alt="" />
+          <img src="assets/images/tutorial_2.svg" alt="웹 튜토리얼2" />
         </div>
         <div>
-          <img src="assets/images/tutorial_3.svg" alt="" />
+          <img src="assets/images/tutorial_3.svg" alt="웹 튜토리얼3" />
         </div>
       </Slider>
     </Carousel>

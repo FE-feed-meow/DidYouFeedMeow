@@ -16,7 +16,7 @@ const TutorialBtn = () => {
       {tutorModal === true &&
         <ModalBg>
           <ModalCloseBtn type='button' onClick={closeModal} >
-            <img src="assets/icons/icon-close.svg" alt="" />
+            <img src="assets/icons/icon-close.svg" alt="닫기 버튼" />
           </ModalCloseBtn>
           <Tutorial />
         </ModalBg>}
