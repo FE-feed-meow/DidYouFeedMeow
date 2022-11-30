@@ -7,6 +7,13 @@
 ```
 <br>
 
+## 🙋🏻‍♀️ 팀원 소개
+
+| 김도희 | 남위정 | 우혜빈 | 전유진 | 이예은 |
+| --- | --- | --- | --- | --- |
+| <img src="https://avatars.githubusercontent.com/u/102498600?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/99578007?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/98005356?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/94890646?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/leeyeun" height=180 width=180> |
+| 🔗 [GitHub](https://github.com/hee1231) | 🔗 [GitHub](https://github.com/Nam-Wijeong) | 🔗 [GitHub](https://github.com/Hyebin-woo) | 🔗 [GitHub](https://github.com/ujin16) | 🔗 [GitHub](https://github.com/leeyeun) |
+
 ## ⚙️ 기술 및 개발환경
 
 ### <**기술>**
