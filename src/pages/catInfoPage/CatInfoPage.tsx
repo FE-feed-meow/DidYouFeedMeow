@@ -25,8 +25,16 @@ interface Feed {
   createdAt: string;
   author: authorProps;
 }
+interface dates1 {
+  id: string;
+  date: string;
+  content: string;
+  author: authorProps;
+}
 
 const CatInfoPage = () => {
+  const [newFeedArray, setNewFeedArray] = React.useState<dates1[]>([]);
+
   const [onModal, setModal] = React.useState<boolean>(false);
   const OpenModal = () => {
     setModal(true);
@@ -40,7 +48,7 @@ const CatInfoPage = () => {
 
   const [loading, setLoading] = React.useState<boolean>(true);
   const getFeedList = React.useCallback(async () => {
-    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments/?limit=100`;
+    const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments`;
     try {
       const res = await axios(url, {
         method: "GET",
@@ -55,7 +63,6 @@ const CatInfoPage = () => {
       console.log(err);
     }
   }, [feedList]);
-
   // 현재 날짜
   const now = new Date();
   const year = now.getFullYear();
@@ -63,9 +70,36 @@ const CatInfoPage = () => {
   const date = now.getDate();
   const nowDate = `${year}-${month}-${date}`;
 
+  const timeArray = () => {
+    if (feedList) {
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < feedList.length; i++) {
+        const time = new Date(feedList[i].createdAt);
+        const newDate = `${time.getFullYear()}-${
+          time.getMonth() + 1
+        }-${time.getDate()}`;
+        const newItem = {
+          id: feedList[i].id,
+          date: newDate,
+          content: feedList[i].content,
+          author: feedList[i].author,
+        };
+        setNewFeedArray((arrays) => [...arrays, newItem]);
+      }
+    }
+  };
   React.useEffect(() => {
     getFeedList();
   }, []);
+  React.useEffect(() => {
+    timeArray();
+  }, [feedList]);
+
+  const removeDuplicates = newFeedArray.filter(
+    (arr, index, callback) =>
+      index === callback.findIndex((t) => t.id === arr.id),
+  );
+
   return (
     <div>
       {loading ? (
@@ -75,10 +109,13 @@ const CatInfoPage = () => {
           <Header />
           <Wrap>
             <CatInfo />
-            {feedList.length > 0 &&
-              feedList.filter((arr) => arr.createdAt.split("T")[0] === nowDate)
-                .length > 0 ? (
-              <CatFeed feedList={feedList} />
+            {removeDuplicates.length > 0 &&
+            removeDuplicates.filter((arr) => arr.date === nowDate).length >
+              0 ? (
+              <CatFeed
+                feedList={feedList}
+                removeDuplicates={removeDuplicates}
+              />
             ) : (
               <CatFeedNone />
             )}
