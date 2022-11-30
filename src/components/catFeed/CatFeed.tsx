@@ -12,10 +12,6 @@ interface Feed {
   createdAt: string;
   author: authorProps;
 }
-
-interface FeedProps {
-  feedList: Feed[];
-}
 interface dates1 {
   id: string;
   date: string;
@@ -23,10 +19,16 @@ interface dates1 {
   author: authorProps;
 }
 
-const CatFeed = ({ feedList }: FeedProps) => {
+interface FeedProps {
+  feedList: Feed[];
+  removeDuplicates: dates1[];
+}
+
+const CatFeed = ({ feedList, removeDuplicates }: FeedProps) => {
+  console.log("removeDuplicates", removeDuplicates);
+
   type dates = { id: number; date: string };
   const [newDateArray, setNewDateArray] = React.useState<dates[]>([]);
-  const [newFeedArray, setNewFeedArray] = React.useState<dates1[]>([]);
 
   // 현재 날짜
   const now = new Date();
@@ -44,40 +46,13 @@ const CatFeed = ({ feedList }: FeedProps) => {
     }
   };
 
-  // createdAt에 8시간 추가하기
-  const timeArray = () => {
-    if (feedList) {
-      // eslint-disable-next-line no-plusplus
-      for (let i = 0; i < feedList.length; i++) {
-        const time = new Date(feedList[i].createdAt);
-        const newDate = `${time.getFullYear()}-${
-          time.getMonth() + 1
-        }-${time.getDate()}`;
-        const newItem = {
-          id: feedList[i].id,
-          date: newDate,
-          content: feedList[i].content,
-          author: feedList[i].author,
-        };
-        setNewFeedArray((arrays) => [...arrays, newItem]);
-      }
-    }
-  };
-
   useEffect(() => {
     newArray();
-    timeArray();
   }, [feedList]);
 
-  const result2 = newFeedArray.filter(
+  const result2 = removeDuplicates.filter(
     (arr, index, callback) =>
       index === callback.findIndex((loc) => loc.date === arr.date),
-  );
-
-  // 중복 제거 된 newTimeArray
-  const removeDuplicates = newFeedArray.filter(
-    (arr, index, callback) =>
-      index === callback.findIndex((t) => t.id === arr.id),
   );
 
   return (
