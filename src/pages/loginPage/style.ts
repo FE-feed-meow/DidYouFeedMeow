@@ -18,6 +18,7 @@ const TutorCloseBtn = styled.button`
   position: absolute;
   top: 90px;
   right: 80px;
+  z-index: 100;
   @media screen and (max-width: 768px) {
     display: none;
   }
