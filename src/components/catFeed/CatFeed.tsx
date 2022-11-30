@@ -50,8 +50,9 @@ const CatFeed = ({ feedList }: FeedProps) => {
       // eslint-disable-next-line no-plusplus
       for (let i = 0; i < feedList.length; i++) {
         const time = new Date(feedList[i].createdAt);
-        const newDate = `${time.getFullYear()}-${time.getMonth() + 1
-          }-${time.getDate()}`;
+        const newDate = `${time.getFullYear()}-${
+          time.getMonth() + 1
+        }-${time.getDate()}`;
         const newItem = {
           id: feedList[i].id,
           date: newDate,
@@ -73,22 +74,24 @@ const CatFeed = ({ feedList }: FeedProps) => {
       index === callback.findIndex((loc) => loc.date === arr.date),
   );
 
+  console.log(result2);
   // 중복 제거 된 newTimeArray
   const removeDuplicates = newFeedArray.filter(
     (arr, index, callback) =>
       index === callback.findIndex((t) => t.id === arr.id),
   );
+  console.log(removeDuplicates);
   return (
     <FeedWrap>
       {result2
         .filter((item) => item.date === nowDate)
         .map((item) => {
           return (
-            <>
-              <DateTxt key={item.id}>{item.date}</DateTxt>
+            <article key={item.id}>
+              <DateTxt>{item.date}</DateTxt>
               <FeedBox>
-                {removeDuplicates.length > 0
-                  ? removeDuplicates
+                {removeDuplicates.length > 0 &&
+                  removeDuplicates
                     .filter((arr) => arr.date === nowDate)
                     .map((feed) => {
                       return (
@@ -98,10 +101,9 @@ const CatFeed = ({ feedList }: FeedProps) => {
                           feedAccountname={feed.author.accountname}
                         />
                       );
-                    })
-                  : null}
+                    })}
               </FeedBox>
-            </>
+            </article>
           );
         })}
     </FeedWrap>
