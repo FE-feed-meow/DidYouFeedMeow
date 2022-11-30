@@ -45,33 +45,37 @@ const FeedCard = ({ feed, feedAccountname }: FeedProps) => {
   const accountname = localStorage.getItem("accountname");
 
   return (
-    <CardWrap>
-      <FeedTime>{time}</FeedTime>
-      <Feedinfo>
-        <FeedName>{`${feedName} ${feedContent}`}</FeedName>
-        <FeedEtc>{etc}</FeedEtc>
-      </Feedinfo>
-      <IconBox>
-        {accountname === feedAccountname ? (
-          <button type="button" onClick={OpenModal}>
-            <Image
-              width={19}
-              height={19}
-              alt="밥 지우기"
-              src="../../../assets/icons/icon-delete.svg"
-            />
-          </button>
-        ) : null}
+    <>
+      {onModal && (
+        <DeleteModal
+          CloseModal={CloseModal}
+          feedId={feed.id}
+          deleteState={deleteState}
+        />
+      )}
 
-        {onModal && (
-          <DeleteModal
-            CloseModal={CloseModal}
-            feedId={feed.id}
-            deleteState={deleteState}
-          />
-        )}
-      </IconBox>
-    </CardWrap>
+      <CardWrap>
+        <FeedTime>{time}</FeedTime>
+        <Feedinfo>
+          <FeedName>{`${feedName} ${feedContent}`}</FeedName>
+          <FeedEtc>{etc}</FeedEtc>
+        </Feedinfo>
+        <IconBox>
+          {accountname === feedAccountname ? (
+            <button type="button" onClick={OpenModal}>
+              <Image
+                width={19}
+                height={19}
+                alt="밥 지우기"
+                src="../../../assets/icons/icon-delete.svg"
+              />
+            </button>
+          ) : null}
+
+        </IconBox>
+
+      </CardWrap>
+    </>
   );
 };
 

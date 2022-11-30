@@ -43,9 +43,9 @@ const JoinQuizPage = () => {
 
   return (
     <>
-      {modalState && <TermsModal CloseModal={CloseModal} />}
       <Header />
       <MiddleWrap>
+        {modalState && <TermsModal CloseModal={CloseModal} />}
         <Image
           marginTop={18}
           width={113}
@@ -73,6 +73,7 @@ const JoinQuizPage = () => {
             다음
           </Button>
         )}
+
       </MiddleWrap>
     </>
   );
