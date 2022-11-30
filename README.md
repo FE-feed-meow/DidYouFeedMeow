@@ -7,12 +7,16 @@
 ```
 <br>
 
-## 🙋🏻‍♀️ 팀원 소개
 
-| 김도희 | 남위정 | 우혜빈 | 전유진 | 이예은 |
-| --- | --- | --- | --- | --- |
-| <img src="https://avatars.githubusercontent.com/u/102498600?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/99578007?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/98005356?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/u/94890646?v=4" height=180 width=180> | <img src="https://avatars.githubusercontent.com/leeyeun" height=180 width=180> |
-| 🔗 [GitHub](https://github.com/hee1231) | 🔗 [GitHub](https://github.com/Nam-Wijeong) | 🔗 [GitHub](https://github.com/Hyebin-woo) | 🔗 [GitHub](https://github.com/ujin16) | 🔗 [GitHub](https://github.com/leeyeun) |
+## 👩🏻‍💻 팀원 소개
+
+|이예은|우혜빈|전유진|김도희|남위정|
+|:---:|:---:|:---:|:---:|:---:|
+|![image](https://user-images.githubusercontent.com/99578007/204809360-2d677882-929e-43a3-aa35-a811da8f7519.png)|![image](https://user-images.githubusercontent.com/99578007/204809255-58fcbd84-a7b5-4c7a-b9ee-5b189439d481.png)|![image](https://user-images.githubusercontent.com/99578007/204809436-8ffdf844-c615-4ef4-9169-fe522a214930.png)|![image](https://user-images.githubusercontent.com/99578007/204808956-d9d19363-c977-48a6-9403-b0a3444e4d5e.png)|![image](https://user-images.githubusercontent.com/99578007/204808689-29ca1f82-302a-4c07-ae4a-3b9ee551c8fa.png)|
+|<a href="https://github.com/leeyeun">🔗 leeyeun</a>|<a href="https://github.com/Hyebin-woo">🔗 Hyebin-woo</a>|<a href="https://github.com/ujin16">🔗 ujin16</a>|<a href="https://github.com/hee1231">🔗 hee1231</a>|<a href="https://github.com/Nam-Wijeong">🔗 Nam-Wijeong</a>|
+
+<br>
+
 
 ## ⚙️ 기술 및 개발환경
 
@@ -38,6 +42,10 @@
 
 - Notion:  [밥줬냥작업일지](#none)
 - Design:  [밥줬냥피그마](#none)
+- 브랜치 전략: git-flow
+
+### < **개발기간 >**
+- 2022.10 ~ 2022.11
 
 <br>
 <br>
@@ -68,6 +76,7 @@
 
 <br>
 <br>
+
 
 ## 🎨 UI 이미지
 <img src="https://user-images.githubusercontent.com/99578007/204724920-0e876862-0379-4502-9c97-5a0702872585.png" width=1200 />
