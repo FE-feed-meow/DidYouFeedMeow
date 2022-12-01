@@ -35,6 +35,7 @@ const RecordMapPage = () => {
     if (e.target === outSection.current && catModal) {
       setCatModal(false);
     }
+    setCatModal(false);
   };
 
   const token = localStorage.getItem("token");
@@ -120,7 +121,7 @@ const RecordMapPage = () => {
                     size: { width: 50, height: 50 },
                   }}
                   onClick={() => {
-                    setCatModal(!catModal);
+                    setCatModal(true);
                     setData(datas);
                   }}
                 />

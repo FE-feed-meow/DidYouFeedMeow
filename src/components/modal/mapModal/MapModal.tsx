@@ -28,6 +28,7 @@ const MapModal = ({ address, curAddress }: any) => {
       <Inputs
         width={330}
         placeholder='상세 주소를 입력하세요'
+        maxLength={15}
         type="text"
         onChange={onChange}
         value={detailAdd || ''}
