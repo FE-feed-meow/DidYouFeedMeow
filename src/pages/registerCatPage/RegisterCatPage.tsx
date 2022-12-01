@@ -192,7 +192,7 @@ const RegisterCatPage = ({ stateData }: any) => {
             type="text"
             label="주소"
             width={310}
-            maxLength={50}
+            maxLength={40}
             required={false}
             onChange={(e) => {
               setUserAddress(e.target.value);

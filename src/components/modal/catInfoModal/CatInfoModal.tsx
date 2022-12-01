@@ -12,7 +12,7 @@ import {
   CloseBtn
 } from "./style";
 
-const CatInfoModal = ({ data }: any) => {
+const CatInfoModal = ({ setCatModal, data }: any) => {
   const token = localStorage.getItem("token");
   const API_URL = "https://mandarin.api.weniv.co.kr";
 
@@ -78,7 +78,7 @@ const CatInfoModal = ({ data }: any) => {
           <ModalCatLocation>{data.address}<span>{data.age}</span></ModalCatLocation>
           <ModalCatFeedTime>마지막 식사{feedArr.length > 0 ? `는 ${getTimeDifference(feedArr[0].createdAt)}` : "가 아직 없어요"}</ModalCatFeedTime>
         </ModalCatInfoWrap>
-        <CloseBtn>
+        <CloseBtn onClick={() => { setCatModal(false) }}>
           <img src="assets/icons/icon-close.svg" alt="닫기 버튼" />
         </CloseBtn>
       </ArticleWrap>

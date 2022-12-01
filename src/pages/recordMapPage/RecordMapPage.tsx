@@ -35,7 +35,6 @@ const RecordMapPage = () => {
     if (e.target === outSection.current && catModal) {
       setCatModal(false);
     }
-    setCatModal(false);
   };
 
   const token = localStorage.getItem("token");
@@ -193,7 +192,7 @@ const RecordMapPage = () => {
             {saveMarker}
             {catModal === true && (
               <ModalBg ref={outSection} onClick={closeModal}>
-                <CatInfoModal data={data} />
+                <CatInfoModal setCatModal={setCatModal} data={data} />
               </ModalBg>
             )}
             {tutorModal === true && (
