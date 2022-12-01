@@ -1,4 +1,3 @@
-import Button from "@atoms/button/Button";
 import styled from "styled-components";
 
 const Wrap = styled.div`

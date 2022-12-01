@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { SelectWrap, Title, BtnSelect, UlOption, BtnOption } from "./style";
 
 export interface DropDownProps {
