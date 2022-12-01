@@ -39,7 +39,7 @@ const RegisterCatPage = ({ stateData }: any) => {
   const location = useLocation();
   const [userAddress, setUserAddress] = React.useState<string>("");
   const [catBirth, setCatBirth] = React.useState("잘몰라유..");
-  const [catEtc, setCatEtc] = React.useState("특이사항 없음");
+  const [catEtc, setCatEtc] = React.useState("");
   const [disabled, setDisabled] = React.useState<boolean>(true);
 
   const navigate = useNavigate();
@@ -227,6 +227,7 @@ const RegisterCatPage = ({ stateData }: any) => {
             onChange={(e) => {
               setCatEtc(e.target.value);
             }}
+            value={stateData ? stateData.etcData : catEtc}
           />
           {stateData ? (
             <Button
