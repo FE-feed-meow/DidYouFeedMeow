@@ -11,6 +11,7 @@ import CatFeed from "../../components/catFeed/CatFeed";
 import CatFoodPageModal from "../../components/modal/catFoodPageModal/CatFoodPageModal";
 import CatFeedNone from "../../components/catFeedNone/CatFeedNone";
 import Loading from "../../components/loading/Loading";
+import { FeedButton } from "./style";
 
 export const Wrap = styled.div`
   padding: 15px 40px 37px;
@@ -119,14 +120,7 @@ const CatInfoPage = () => {
             ) : (
               <CatFeedNone />
             )}
-            <Button
-              type="button"
-              marginTop={15}
-              bgColor="var(--main-color)"
-              onClick={OpenModal}
-            >
-              밥 주기
-            </Button>
+            <FeedButton onClick={OpenModal}>밥 주기</FeedButton>
             {onModal && <CatFoodPageModal CloseModal={CloseModal} />}
           </Wrap>
         </>
