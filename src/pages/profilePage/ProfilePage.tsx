@@ -5,7 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import useInput from "hooks/useInput";
-import Inputs, { Input, Label } from "../../atoms/inputs/Inputs";
+import Inputs from "../../atoms/inputs/Inputs";
+import { Input, Label } from '../../atoms/inputs/style';
 import Header from "../../components/header/Header";
 import { MiddleWrap } from "../../styles/commonStyle";
 import { ErrorMessage, H2 } from "../loginPage/style";
