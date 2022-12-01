@@ -23,7 +23,11 @@ const ModalCatImg = styled.img`
 `;
 
 const ModalCatInfoWrap = styled.div`
-  padding: 14px 30px;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
 `;
 
 const ModalCatNameWrap = styled.div`

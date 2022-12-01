@@ -120,7 +120,7 @@ const RecordMapPage = () => {
                     size: { width: 50, height: 50 },
                   }}
                   onClick={() => {
-                    setCatModal(!catModal);
+                    setCatModal(true);
                     setData(datas);
                   }}
                 />
@@ -192,7 +192,7 @@ const RecordMapPage = () => {
             {saveMarker}
             {catModal === true && (
               <ModalBg ref={outSection} onClick={closeModal}>
-                <CatInfoModal data={data} />
+                <CatInfoModal setCatModal={setCatModal} data={data} />
               </ModalBg>
             )}
             {tutorModal === true && (
