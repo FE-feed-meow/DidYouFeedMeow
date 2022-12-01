@@ -100,6 +100,7 @@ const CatImg = styled.img`
   min-width: 120px;
   height: 84px;
   border-radius: 10px;
+  object-fit: cover;
 `;
 
 export {

@@ -19,7 +19,7 @@ const ModalCatImg = styled.img`
   width: 100%;
   height: 170px;
   border-radius: 55px 55px 0 0;
-  object-fit: fill;
+  object-fit: cover;
 `;
 
 const ModalCatInfoWrap = styled.div`
