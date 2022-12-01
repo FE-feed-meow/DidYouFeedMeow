@@ -48,7 +48,6 @@ const TxtCatInfo = styled.p`
 const CatEtc = styled.p`
   margin: 15px 0 23px;
   width: 100%;
-  height: 80px;
   font-size: 16px;
   color: #373737;
   word-break: break-all;
