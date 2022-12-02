@@ -52,12 +52,13 @@
 **[목차]**
 
 1. [프로젝트 동기 및 기획](#1-프로젝트-동기-및-기획)
-2. [구현 기능](#2-구현-기능)
-3. [기술 및 개발환경](#3-기술-및-개발환경)
-4. [UI 이미지](#img)
-5. [구현 동작](#5-구현-동작)
-6. [개발 이슈](#6-개발-이슈)
-6. [링크](#7-노션-피그마-링크)
+2. [역할 분담](#2-역할-분담)
+3. [구현 기능](#3-구현-기능)
+4. [기술 및 개발환경](#4-기술-및-개발환경)
+5. [UI 이미지](#img)
+6. [구현 동작](#6-구현-동작)
+7. [개발 이슈](#7-개발-이슈)
+8. [링크](#8-노션-피그마-링크)
 
 <br>
 <br>
@@ -72,14 +73,24 @@
 
 **[기획 과정]**
 
+1) 플로우차트
+
 ![플로우차트](https://user-images.githubusercontent.com/94890646/205219136-0ad0df9c-fda5-46bf-b31a-61f740166260.jpg)
+
+2) 와이어프레임
 
 ![와이어프레임](https://user-images.githubusercontent.com/94890646/205219032-884a5afd-4989-4588-a095-98045301c917.png)
 
 <br>
 <br>
 
-## 2. 구현 기능
+## 2. 역할 분담
+![part](https://user-images.githubusercontent.com/94890646/205249494-a1b5418e-a6b9-40ca-804a-9b8dd508ee74.jpg)
+
+<br>
+<br>
+
+## 3. 구현 기능
 
 -   🔐  **계정**
     -   로그인 / 로그아웃
@@ -100,7 +111,7 @@
 <br>
 <br>
 
-## 3. 기술 및 개발환경
+## 4. 기술 및 개발환경
 
 #### [기술 - FE]
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=000000"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=styled-components&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/Router-CA4245?style=for-the-badge&logo=React Router&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
@@ -133,13 +144,13 @@
 <br>
 <br>
 
-## 4. <span id="img">UI 이미지</span>
+## 5. <span id="img">UI 이미지</span>
 <img src="https://user-images.githubusercontent.com/99578007/204724920-0e876862-0379-4502-9c97-5a0702872585.png" width=1200 />
 
 <br>
 <br>
 
-## 5. 구현 동작
+## 6. 구현 동작
 <br>
 <div>
 
@@ -172,7 +183,7 @@
 <br>
 <br>
 
-## 6. 개발 이슈
+## 7. 개발 이슈
 
 [👩🏻‍💻 김도희](https://misty-skink-bbb.notion.site/572d9c21df0142729ea38a94f556238a)<br>
 [👩🏻‍💻 남위정](https://misty-skink-bbb.notion.site/d42932a4e11b41389ad34853304609d5)<br>
@@ -183,7 +194,7 @@
 <br>
 <br>
 
-## 7. 노션, 피그마 링크
+## 8. 노션, 피그마 링크
 
 - [🐱 밥줬냥 Repo](https://github.com/FE-feed-meow/DidYouFeedMeow)   
 - [📖 밥줬냥 Notion](https://github.com/FE-feed-meow/DidYouFeedMeow)
