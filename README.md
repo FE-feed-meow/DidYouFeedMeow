@@ -1,35 +1,112 @@
-# 길고양이 급식소 관리 서비스: 밥줬냥
+<div align='center'>
+
+# 🍚 밥줬냥 🐈‍⬛ 
+
+</div>
+
+
+![썸네일 이미지](/assets/readme.png)   
+
+![프로젝트 바로가기 이미지](/assets/readme.png)
 
 ```
-😸 밥줬냥은 길 고양이들의 밥과 물, 간식을 시간대 별로 챙겨줄 수 있는 급식소 관리 서비스 입니다.
-📍 어디에 어떤 고양이가 살고 있는지 지도에 고양이 정보를 등록하고 위치를 확인할 수 있습니다.
-🐟 고양이의 밥과 물, 간식을 시간별로 매일 체크하고 특이사항 또는 건강상태 또한 서로 공유할 수 있습니다.
+[서비스 이용을 위한 test 계정]
+📧 ID: feedmeow@email.com
+🔒 PW: didhddidhd
 ```
+
+## 개요
+
+```
+🍚 "밥줬냥"은 안전한 길고양이 급식소 관리를 위한 서비스입니다.  
+📌 어디에 어떤 고양이가 살고 있는지 지도에 고양이 정보를 등록하고 위치를 확인할 수 있습니다.
+🐟 고양이의 밥과 물, 간식을 시간별로 매일 체크하고 특이사항 또는 건강상태를 서로 공유할 수 있습니다.
+🏘️ 동네냥 소식통 페이지에서 우리 동네 집사님들과 자유로운 소통을 할 수 있습니다.
+📰 밥줬냥 신문을 통해 관리자가 등록한 고양이 관련 다양한 이야기를 접할 수 있습니다.
+💛 내가 등록한 냥이 페이지에서 자신이 등록한 고양이들을 한 눈에 확인하고, 관리할 수 있습니다.
+```
+
+### 프로젝트 기간
+
+>2022.10 ~ 2022.11
+
+<br>
 <br>
 
+<div align='center'>
 
-## 👩🏻‍💻 팀원 소개
+## 🙌 안녕하세요. Team i-dle(아이들) 입니다!
+
+</div>
 
 |이예은|우혜빈|전유진|김도희|남위정|
 |:---:|:---:|:---:|:---:|:---:|
 |![image](https://user-images.githubusercontent.com/99578007/204809360-2d677882-929e-43a3-aa35-a811da8f7519.png)|![image](https://user-images.githubusercontent.com/99578007/204809255-58fcbd84-a7b5-4c7a-b9ee-5b189439d481.png)|![image](https://user-images.githubusercontent.com/99578007/204809436-8ffdf844-c615-4ef4-9169-fe522a214930.png)|![image](https://user-images.githubusercontent.com/99578007/204808956-d9d19363-c977-48a6-9403-b0a3444e4d5e.png)|![image](https://user-images.githubusercontent.com/99578007/204808689-29ca1f82-302a-4c07-ae4a-3b9ee551c8fa.png)|
 |<a href="https://github.com/leeyeun">🔗 leeyeun</a>|<a href="https://github.com/Hyebin-woo">🔗 Hyebin-woo</a>|<a href="https://github.com/ujin16">🔗 ujin16</a>|<a href="https://github.com/hee1231">🔗 hee1231</a>|<a href="https://github.com/Nam-Wijeong">🔗 Nam-Wijeong</a>|
 
+저희는 프론트엔드 주니어 개발자이자 MBTI I(내향형)인 사람들이 모여 만들어진 팀입니다.
+부트캠프 첫 날, 우리는 한 팀이 되어 만들고싶은 웹서비스 아이디어를 공유했습니다. 프론트엔드 개발 기초 지식조차 없던 우리는 함께 공부하고, 경험하며 막연했던 아이디어를 상세하게 구현해 낼 정도로 성장했습니다. 성장의  결과물을 "밥줬냥"을 통해 보여드리겠습니다.
+
+<br>
+
+**[목차]**
+
+1. [프로젝트 동기 및 기획](#1.-프로젝트-동기-및-기획)
+2. [구현 기능](#2.-구현-기능)
+3. [기술 및 개발환경](#3.-기술-및-개발환경)
+4. [UI 이미지](#4.-UI-이미지)
+5. [구현 동작](#5.-구현-동작)
+6. [개발 이슈](#6.-개발-이슈)
+6. [링크](#7.-노션-피그마-링크)
+
+<br>
 <br>
 
 
-## ⚙️ 기술 및 개발환경
 
-### <**기술>**
+## 1. 프로젝트 동기 및 기획
+**[동기]**
+	밥줬냥 프로젝트는 집을 오고 가면서, 혹은 여행을 갔다가 불쑥불쑥 마주치는 길 고양이들이 모두 건강히 우리 곁에 머물 수 있게 집사처럼 챙겨주는 따뜻한 마음에서 시작되었습니다. 내가 돌보는 동네 고양이들의 정보를 지도에 스팟으로 등록하고 밥과 간식을 시간별로 기록하며 길 고양이들이 무슨 일이 생길 경우 바로 달려갈 수 있는 캣맘, 캣대디가 될 수 있도록 기획하였습니다.
 
-- 배포 : [https://did-you-feed-meow.netlify.app/](https://did-you-feed-meow.netlify.app/)
-    - test_ID :  feedmeow@email.com
-    - test_PW :  didhddidhd
-- FrontEnd:  React, Styled-Components, TypeScript
-- BackEnd: 제공된 API 사용
-- Version
+**[기획 과정]**
 
-```jsx
+![플로우차트](https://user-images.githubusercontent.com/94890646/205219136-0ad0df9c-fda5-46bf-b31a-61f740166260.jpg)
+
+![와이어프레임](https://user-images.githubusercontent.com/94890646/205219032-884a5afd-4989-4588-a095-98045301c917.png)
+
+<br>
+<br>
+
+## 2. 구현 기능
+
+-   🔐  **계정**
+    -   로그인 / 로그아웃
+    -   고양이 상식 문제풀기 → 회원가입
+    -   회원 정보 수정
+    -   정규표현식으로 유효성 검증
+-   🏞  **지도 (Home)**
+    -   카카오 지도 api 연동으로 고양이 위치 정보 등록
+-   😸 **고양이 정보**
+    -   이미지 파일 업로드, 미리보기
+    -   등록 / 수정 / 삭제
+    -   고양이 목록보기
+-   🍚  **고양이 밥**
+    -   등록 / 삭제
+    -   밥 시간별로 보기
+-   📰  **고양이 신문 보기**
+
+<br>
+<br>
+
+## 3. 기술 및 개발환경
+
+#### [기술 - FE]
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=000000"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=styled-components&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/Router-CA4245?style=for-the-badge&logo=React Router&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/FIGMA-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
+
+-   BackEnd: 제공된 API 사용
+-   Version
+
+```
 "react": "^18.2.0",
 "react-router": "^6.3.0",
 "styled-components": "^5.3.5",
@@ -37,53 +114,31 @@
 "typescript": "^4.9.3",
 ```
 
-### < **개발환경 >**
+#### [개발환경]
 
+|개발환경|선택한 방식|
+|:---:|:---:|
+|브랜치 전략|git-flow|
+|이슈 관리|github-Issues|
+|구조 관리|아토믹 디자인 패턴|
+|정적 코드 분석 도구|ESLint|
+|Code Formatter|Prettier|
+|Communication|Github와 & Discord를 Webhook 연동|
+|Design|Figma|
+|배포 환경|Netlify| 
 
-- Notion:  [밥줬냥작업일지](#none)
-- Design:  [밥줬냥피그마](#none)
-- 브랜치 전략: git-flow
-
-### < **개발기간 >**
-- 2022.10 ~ 2022.11
-
-<br>
-<br>
-
-## 🚀 **프로젝트 동기**
-
-밥줬냥 프로젝트는 집을 오고 가면서, 혹은 여행을 갔다가 불쑥불쑥 마주치는 길 고양이들이 모두 건강히 우리 곁에 머물 수 있게 집사처럼 챙겨주는 따뜻한 마음에서 시작되었습니다.  내가 돌보는 동네 고양이들의 정보를 지도에 스팟으로 등록하고 밥과 간식을 시간별로 기록하며 길 고양이들이 무슨 일이 생길 경우 바로 달려갈 수 있는 캣맘, 캣대디가 될 수 있도록 기획하였습니다. 
-
-<br>
-
-## 💬 **구현 기능**
-
-- 🔐  **계정**
-    - 로그인 / 로그아웃
-    - 고양이 상식 문제풀기 → 회원가입
-    - 회원 정보 수정
-    - 정규표현식으로 유효성 검증
-- 🏞  **지도 (Home)**
-    - 카카오 지도 api 연동으로 고양이 위치 정보 등록
-- 😸 **고양이 정보**
-    - 이미지 파일 업로드, 미리보기
-    - 등록 / 수정 / 삭제
-    - 고양이 목록보기
-- 🍚  **고양이 밥**
-    - 등록 / 삭제
-    - 밥 시간별로 보기
-- 📰  **고양이 신문 보기**
 
 <br>
 <br>
 
 
-## 🎨 UI 이미지
+## 4. UI 이미지
 <img src="https://user-images.githubusercontent.com/99578007/204724920-0e876862-0379-4502-9c97-5a0702872585.png" width=1200 />
 
 <br>
+<br>
 
-## ⭐️ 구현 동작
+## 5. 구현 동작
 <br>
 <div>
 
@@ -112,3 +167,30 @@
 |<img src="https://user-images.githubusercontent.com/99578007/204723114-d5f0a56b-7be0-48bc-93fe-9df4c5aa3c76.gif" width=245 />|<img src="https://user-images.githubusercontent.com/99578007/204723711-89f52305-cbba-40c6-bf8a-08d44af75bd0.gif" width=245 />|<img src="https://user-images.githubusercontent.com/99578007/204723278-26e728d8-22c0-4a58-baa0-0b89c6556cfa.gif" width=245 /> 
 
 </div>
+
+<br>
+<br>
+
+## 6. 개발 이슈
+
+[👩🏻‍💻 김도희](https://misty-skink-bbb.notion.site/572d9c21df0142729ea38a94f556238a)<br>
+[👩🏻‍💻 남위정](https://misty-skink-bbb.notion.site/d42932a4e11b41389ad34853304609d5)<br>
+[👩🏻‍💻 우혜빈](https://misty-skink-bbb.notion.site/2d1570d8cead44ed9a4d6905b6675ed6)<br>
+[👩🏻‍💻 이예은](https://misty-skink-bbb.notion.site/7a98488eacde4b10b4ed2b05a06a403c)<br>
+[👩🏻‍💻 전유진](https://misty-skink-bbb.notion.site/99ed6e2a91144b4799b548c83a8494eb)
+
+<br>
+<br>
+
+## 7. 노션, 피그마 링크
+
+- [🐱 밥줬냥 Repo](https://github.com/FE-feed-meow/DidYouFeedMeow)   
+- [📖 밥줬냥 Notion](https://github.com/FE-feed-meow/DidYouFeedMeow)
+
+<br>
+<br>
+<br>
+<br>
+
+
+[TOP](#-밥줬냥)
