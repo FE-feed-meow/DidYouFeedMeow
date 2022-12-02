@@ -25,30 +25,12 @@ interface FeedProps {
 }
 
 const CatFeed = ({ feedList, removeDuplicates }: FeedProps) => {
-  console.log("removeDuplicates", removeDuplicates);
-
-  type dates = { id: number; date: string };
-  const [newDateArray, setNewDateArray] = React.useState<dates[]>([]);
-
   // 현재 날짜
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth() + 1;
   const date = now.getDate();
   const nowDate = `${year}-${month}-${date}`;
-
-  // 밥정보의 날짜를 분류
-  const newArray = () => {
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < feedList.length; i++) {
-      const newItem = { id: i, date: feedList[i].createdAt.split("T")[0] };
-      setNewDateArray((arrays) => [...arrays, newItem]);
-    }
-  };
-
-  useEffect(() => {
-    newArray();
-  }, [feedList]);
 
   const result2 = removeDuplicates.filter(
     (arr, index, callback) =>
