@@ -5,7 +5,7 @@
 </div>
 
 
-![썸네일 이미지](public/assets/images/readme.png)   
+![썸네일 이미지](public/assets/images/readme.png)
 
 ![프로젝트 바로가기 이미지](public/assets/images/readme_button.png)
 
