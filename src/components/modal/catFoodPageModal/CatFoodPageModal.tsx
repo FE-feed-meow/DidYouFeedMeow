@@ -31,6 +31,7 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
   const [whatDidFood, setWhatDidFood] = useState<string>("");
   const [etc, setEtc] = useState<string>("");
   const [text, setText] = useState<string>("");
+  const [disabled, setDisabled] = React.useState<boolean>(true);
 
   const currentTimer = () => {
     const date = new Date();
@@ -49,8 +50,14 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
   useEffect(() => {
     startTimer();
   }, []);
+
   useEffect(() => {
-    setText(`${selectTime}/${feedName}/${whatDidFood}/${etc}`);
+    if (feedName === "") {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+      setText(`${selectTime}/${feedName}/${whatDidFood}/${etc}`);
+    }
   }, [selectTime, feedName, whatDidFood, etc]);
 
   /* 버튼 클릭 */
@@ -199,7 +206,7 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
               placeholder="15자 이내여야 합니다."
               onChange={handleEtc}
             />
-            <CatFoodSubmitButton onClick={handleSubmitFood}>
+            <CatFoodSubmitButton onClick={handleSubmitFood} disabled={disabled}>
               저장하기
             </CatFoodSubmitButton>
           </CatFoodWrap>

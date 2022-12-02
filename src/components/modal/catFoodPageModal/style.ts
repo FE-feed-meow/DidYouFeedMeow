@@ -119,4 +119,7 @@ export const CatFoodSubmitButton = styled.button`
   border-radius: 44px;
   color: #ffffff;
   background-color: var(--main-color);
+  :disabled {
+    background: var(--disabled-button-color);
+  }
 `;
