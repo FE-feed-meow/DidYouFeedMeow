@@ -7,7 +7,7 @@
 
 ![썸네일 이미지](public/assets/images/readme.png)
 
-![프로젝트 바로가기 이미지](public/assets/images/readme_button.png)
+![프로젝트 바로가기 이미지]<img src=public/assets/images/readme_button.png  width="250" height="73.12"/>
 
 ```
 [서비스 이용을 위한 test 계정]
