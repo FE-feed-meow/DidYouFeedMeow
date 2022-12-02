@@ -41,7 +41,7 @@
 
 |이예은|우혜빈|전유진|김도희|남위정|
 |:---:|:---:|:---:|:---:|:---:|
-|![image](https://user-images.githubusercontent.com/99578007/204809360-2d677882-929e-43a3-aa35-a811da8f7519.png)|![image](https://user-images.githubusercontent.com/99578007/204809255-58fcbd84-a7b5-4c7a-b9ee-5b189439d481.png)|![image](https://user-images.githubusercontent.com/99578007/204809436-8ffdf844-c615-4ef4-9169-fe522a214930.png)|![image](https://user-images.githubusercontent.com/99578007/204808956-d9d19363-c977-48a6-9403-b0a3444e4d5e.png)|![image](https://user-images.githubusercontent.com/99578007/204808689-29ca1f82-302a-4c07-ae4a-3b9ee551c8fa.png)|
+<img src="https://user-images.githubusercontent.com/99578007/204809360-2d677882-929e-43a3-aa35-a811da8f7519.png" width="400">|<img src="https://user-images.githubusercontent.com/99578007/204809255-58fcbd84-a7b5-4c7a-b9ee-5b189439d481.png" width="400">|<img src="https://s3.ap-northeast-2.amazonaws.com/ujin16.shop/KakaoTalk_Photo_2022-12-02-15-30-01.jpeg" width="430">|<img src="https://s3.ap-northeast-2.amazonaws.com/ujin16.shop/KakaoTalk_Photo_2022-12-02-15-20-19.jpeg" width="400">|<img src="https://user-images.githubusercontent.com/99578007/204808689-29ca1f82-302a-4c07-ae4a-3b9ee551c8fa.png" width="400">|
 |<a href="https://github.com/leeyeun">🔗 leeyeun</a>|<a href="https://github.com/Hyebin-woo">🔗 Hyebin-woo</a>|<a href="https://github.com/ujin16">🔗 ujin16</a>|<a href="https://github.com/hee1231">🔗 hee1231</a>|<a href="https://github.com/Nam-Wijeong">🔗 Nam-Wijeong</a>|
 
 저희는 프론트엔드 주니어 개발자이자 MBTI I(내향형)인 사람들이 모여 만들어진 팀입니다.
