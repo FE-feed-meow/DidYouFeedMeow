@@ -31,6 +31,7 @@ const ProfileWrap = styled.button`
   h1 {
     font-family: "Shinb7Regular";
     font-size: 24px;
+    color: black;
   }
   p {
     margin-top: 4px;
@@ -65,6 +66,7 @@ const MenuBoardBtn = styled.button`
   font-family: "Shinb7Regular";
   font-size: 24px;
   padding: 0 10px;
+  color: black;
   &:hover {
     background: linear-gradient(
       0deg,
@@ -79,6 +81,7 @@ const LogoutBtn = styled.button`
   font-family: "Shinb7Regular";
   font-size: 24px;
   padding: 0 10px;
+  color: black;
   &:hover {
     background: linear-gradient(
       0deg,
