@@ -11,9 +11,7 @@
 ### 서비스 이용하기 click 👇
 
 <a href="https://did-you-feed-meow.netlify.app/" >
-
-<img src=public/assets/images/readme_button.png  width="250" height="73.12"/>
-
+<img width="250" src="https://user-images.githubusercontent.com/99578007/205419143-ca1fdf2d-ce14-4e17-8042-841f71baf30f.png">
 </a>
 
 <br>
