@@ -7,7 +7,17 @@
 
 ![썸네일 이미지](public/assets/images/readme.png)
 
+
+### 서비스 이용하기 click 👇
+
+<a href="https://did-you-feed-meow.netlify.app/" >
+
 <img src=public/assets/images/readme_button.png  width="250" height="73.12"/>
+
+</a>
+
+<br>
+<br>
 
 ```
 [서비스 이용을 위한 test 계정]
@@ -85,7 +95,7 @@
 <br>
 
 ## 2. 역할 분담
-![part](https://user-images.githubusercontent.com/94890646/205249494-a1b5418e-a6b9-40ca-804a-9b8dd508ee74.jpg)
+![part](https://s3.ap-northeast-2.amazonaws.com/ujin16.shop/part.jpg)
 
 <br>
 <br>
@@ -138,6 +148,7 @@
 |Code Formatter|Prettier|
 |Communication|Github와 & Discord를 Webhook 연동|
 |Design|Figma|
+|문서화|Notion|
 |배포 환경|Netlify| 
 
 
@@ -198,6 +209,7 @@
 
 - [🐱 밥줬냥 Repo](https://github.com/FE-feed-meow/DidYouFeedMeow)   
 - [📖 밥줬냥 Notion](https://github.com/FE-feed-meow/DidYouFeedMeow)
+- [🎨 밥줬냥 Figma](https://www.figma.com/file/1L694MZs7QHCTbeR21RYFF/feed-meow?node-id=525%3A1727&t=BppQvkfWVll8nZrW-0)
 
 <br>
 <br>
