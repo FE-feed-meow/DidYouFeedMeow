@@ -30,8 +30,9 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
   const [onClickTreat, setOnClickTreat] = React.useState<boolean>(false);
   const [whatDidFood, setWhatDidFood] = useState<string>("");
   const [etc, setEtc] = useState<string>("");
-
   const [text, setText] = useState<string>("");
+  const [disabled, setDisabled] = React.useState<boolean>(true);
+
   const currentTimer = () => {
     const date = new Date();
     const hours = String(date.getHours()).padStart(2, "0");
@@ -49,8 +50,14 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
   useEffect(() => {
     startTimer();
   }, []);
+
   useEffect(() => {
-    setText(`${selectTime}/${feedName}/${whatDidFood}/${etc}`);
+    if (feedName === "") {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+      setText(`${selectTime}/${feedName}/${whatDidFood}/${etc}`);
+    }
   }, [selectTime, feedName, whatDidFood, etc]);
 
   /* 버튼 클릭 */
@@ -86,7 +93,6 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
   const { catid } = useParams();
 
   const handleSubmitFood = async () => {
-    console.log("text", text);
     const url = `https://mandarin.api.weniv.co.kr/post/${catid}/comments`;
     const comment = {
       comment: {
@@ -103,10 +109,10 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
         },
         data: comment,
       });
-      console.log("data:", res.data.comment);
     } catch (err) {
       console.log(err);
     }
+
     CloseModal();
     window.location.reload();
   };
@@ -200,7 +206,7 @@ const CatFoodPageModal = ({ CloseModal }: Props) => {
               placeholder="15자 이내여야 합니다."
               onChange={handleEtc}
             />
-            <CatFoodSubmitButton onClick={handleSubmitFood}>
+            <CatFoodSubmitButton onClick={handleSubmitFood} disabled={disabled}>
               저장하기
             </CatFoodSubmitButton>
           </CatFoodWrap>

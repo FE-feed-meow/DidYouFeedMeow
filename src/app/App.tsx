@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./style";
-import { PrivateRoute, PublicRoute } from "../Route";
+import { PrivateRoute, PublicRoute } from "../Router/Route";
 import { AllWrap, MainWrap } from "../styles/commonStyle";
 import Splash from "../pages/splashPage/Splash";
 import LoginPage from "../pages/loginPage/LoginPage";
@@ -19,7 +19,7 @@ import CatListPage from "../pages/catListPage/CatListPage";
 import CatNewItem from "../components/catNewsItem/CatNewItem";
 import CatinfoEditPage from "../pages/catInfoEditPage/CatinfoEditPage";
 import ProfileEditPage from "../pages/profileEditPage/ProfileEditPage";
-import TutorialBtn from '../components/tutorialButton/TutorialBtn';
+import TutorialBtn from "../components/tutorialButton/TutorialBtn";
 
 const App = () => {
   return (

@@ -12,15 +12,19 @@ interface Feed {
   createdAt: string;
   author: authorProps;
 }
+interface dates1 {
+  id: string;
+  date: string;
+  content: string;
+  author: authorProps;
+}
 
 interface FeedProps {
   feedList: Feed[];
+  removeDuplicates: dates1[];
 }
 
-const CatFeed = ({ feedList }: FeedProps) => {
-  type dates = { id: number; date: string };
-  const [newDateArray, setNewDateArray] = React.useState<dates[]>([]);
-
+const CatFeed = ({ feedList, removeDuplicates }: FeedProps) => {
   // 현재 날짜
   const now = new Date();
   const year = now.getFullYear();
@@ -28,48 +32,34 @@ const CatFeed = ({ feedList }: FeedProps) => {
   const date = now.getDate();
   const nowDate = `${year}-${month}-${date}`;
 
-  // 밥정보의 날짜를 분류
-  const newArray = () => {
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < feedList.length; i++) {
-      const newItem = { id: i, date: feedList[i].createdAt.split("T")[0] };
-      setNewDateArray((arrays) => [...arrays, newItem]);
-    }
-  };
-
-  useEffect(() => {
-    newArray();
-  }, [feedList]);
-
-  const result1 = newDateArray.filter(
+  const result2 = removeDuplicates.filter(
     (arr, index, callback) =>
       index === callback.findIndex((loc) => loc.date === arr.date),
   );
 
   return (
     <FeedWrap>
-      {result1
+      {result2
         .filter((item) => item.date === nowDate)
         .map((item) => {
           return (
-            <>
-              <DateTxt key={item.id}>{item.date}</DateTxt>
+            <article key={item.id}>
+              <DateTxt>{item.date}</DateTxt>
               <FeedBox>
-                {feedList.length > 0
-                  ? feedList
-                      .filter((arr) => arr.createdAt.split("T")[0] === nowDate)
-                      .map((feed) => {
-                        return (
-                          <FeedCard
-                            key={feed.id}
-                            feed={feed}
-                            feedAccountname={feed.author.accountname}
-                          />
-                        );
-                      })
-                  : null}
+                {removeDuplicates.length > 0 &&
+                  removeDuplicates
+                    .filter((arr) => arr.date === nowDate)
+                    .map((feed) => {
+                      return (
+                        <FeedCard
+                          key={feed.id}
+                          feed={feed}
+                          feedAccountname={feed.author.accountname}
+                        />
+                      );
+                    })}
               </FeedBox>
-            </>
+            </article>
           );
         })}
     </FeedWrap>

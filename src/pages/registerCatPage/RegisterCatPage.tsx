@@ -39,7 +39,7 @@ const RegisterCatPage = ({ stateData }: any) => {
   const location = useLocation();
   const [userAddress, setUserAddress] = React.useState<string>("");
   const [catBirth, setCatBirth] = React.useState("잘몰라유..");
-  const [catEtc, setCatEtc] = React.useState("특이사항 없음");
+  const [catEtc, setCatEtc] = React.useState("");
   const [disabled, setDisabled] = React.useState<boolean>(true);
 
   const navigate = useNavigate();
@@ -66,7 +66,6 @@ const RegisterCatPage = ({ stateData }: any) => {
         },
       })
       .then((response) => {
-        console.log(response);
         setImgFile(
           `https://mandarin.api.weniv.co.kr/${response.data.filename}`,
         );
@@ -114,7 +113,6 @@ const RegisterCatPage = ({ stateData }: any) => {
         },
       })
       .then((response) => {
-        console.log(response);
         navigate(`/catInfo/${response.data.post.id}`);
       })
       .catch((error) => {
@@ -147,7 +145,6 @@ const RegisterCatPage = ({ stateData }: any) => {
         },
       })
       .then((response) => {
-        console.log(response);
         navigate(`/catInfo/${response.data.post.id}`);
       })
       .catch((error) => {
@@ -161,7 +158,6 @@ const RegisterCatPage = ({ stateData }: any) => {
       setUserAddress(stateData.addressData);
       setCatName(stateData.nameData);
       setCatBirth(stateData.birthData);
-      console.log(stateData.birthData);
       setCatEtc(stateData.etcData);
     } else {
       let locationAddress = !location.state ? null : location.state;
@@ -196,6 +192,7 @@ const RegisterCatPage = ({ stateData }: any) => {
             type="text"
             label="주소"
             width={310}
+            maxLength={40}
             required={false}
             onChange={(e) => {
               setUserAddress(e.target.value);
@@ -230,7 +227,7 @@ const RegisterCatPage = ({ stateData }: any) => {
             onChange={(e) => {
               setCatEtc(e.target.value);
             }}
-            value={catEtc}
+            value={stateData ? stateData.etcData : catEtc}
           />
           {stateData ? (
             <Button

@@ -4,7 +4,9 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import CatInfoModal from "@components/modal/catInfoModal/CatInfoModal";
 import MapTemplate from "@components/mapTemplate/MapTemplate";
 import Loading from "../../components/loading/Loading";
+import AppTutorial from '../../components/tutorial/appTutorial/AppTutorial';
 import ModalBg from "./style";
+
 
 interface LocationType {
   center: { lat: number; lng: number };
@@ -25,7 +27,6 @@ const RecordMapPage = () => {
   const [curAddress, setCurAddress] = React.useState("");
   const [saveMarker, setSaveMarker] = React.useState("");
   const [data, setData] = React.useState("");
-  const [tutorModal, setTutorModal] = React.useState<boolean>(false);
   const [catModal, setCatModal] = React.useState<boolean>(false);
   const outSection = useRef() as React.RefObject<HTMLDivElement>;
   const closeModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -117,7 +118,7 @@ const RecordMapPage = () => {
                     size: { width: 50, height: 50 },
                   }}
                   onClick={() => {
-                    setCatModal(!catModal);
+                    setCatModal(true);
                     setData(datas);
                   }}
                 />
@@ -189,9 +190,10 @@ const RecordMapPage = () => {
             {saveMarker}
             {catModal === true && (
               <ModalBg ref={outSection} onClick={closeModal}>
-                <CatInfoModal data={data} />
+                <CatInfoModal setCatModal={setCatModal} data={data} />
               </ModalBg>
             )}
+            <AppTutorial />
           </Map>
         </>
       )}

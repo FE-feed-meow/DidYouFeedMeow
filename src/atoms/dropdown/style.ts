@@ -5,7 +5,6 @@ const SelectWrap = styled.section``;
 const Title = styled.h4`
   font-family: "Shinb7Regular";
   font-size: 16px;
-  /* margin-bottom: 8px; */
 `;
 
 const BtnSelect = styled.button<{ width: number }>`

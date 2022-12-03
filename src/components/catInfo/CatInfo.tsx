@@ -33,7 +33,6 @@ const CatInfo = () => {
   const [address, setAddress] = React.useState("");
   const [birth, setBirth] = React.useState("");
   const [etc, setEtc] = React.useState("");
-
   const token = localStorage.getItem("token");
 
   const getCatInfo = async () => {
@@ -45,12 +44,15 @@ const CatInfo = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         setCatDetail(response.data.post);
         setName(response.data.post.content.split("|")[0]);
         setAddress(response.data.post.content.split("|")[1]);
         setBirth(response.data.post.content.split("|")[2]);
-        setEtc(response.data.post.content.split("|")[3]);
+        if (response.data.post.content.split("|")[3] === "") {
+          setEtc("특이사항 없음");
+        } else {
+          setEtc(response.data.post.content.split("|")[3]);
+        }
       })
       .catch((error) => {
         console.log(error);

@@ -25,6 +25,9 @@ const Carousel = styled.div`
   .slick-dots li.slick-active button:before {
     content: url("assets/icons/icon-slide-active.svg");
   }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export default Carousel;

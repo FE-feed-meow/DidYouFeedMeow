@@ -43,12 +43,12 @@ const TxtCatInfo = styled.p`
   font-size: 14px;
   color: #797979;
   margin-bottom: 18px;
+  word-break: break-all;
 `;
 
 const CatEtc = styled.p`
   margin: 15px 0 23px;
   width: 100%;
-  height: 80px;
   font-size: 16px;
   color: #373737;
   word-break: break-all;

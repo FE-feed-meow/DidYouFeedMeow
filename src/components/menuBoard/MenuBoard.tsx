@@ -5,6 +5,7 @@ import {
   AsideWrap,
   ProfileWrap,
   UserImg,
+  UserInfoWrap,
   MenuBoardUl,
   MenuBoardBtn,
   LogoutBtn,
@@ -37,10 +38,10 @@ const MenuBoard = () => {
         }}
       >
         <UserImg src={userImg} alt="프로필이미지" />
-        <div>
+        <UserInfoWrap>
           <h1>{userName}</h1>
           <p>{userAddr}</p>
-        </div>
+        </UserInfoWrap>
       </ProfileWrap>
       <MenuBoardUl>
         <li>

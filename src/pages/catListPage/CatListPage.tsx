@@ -72,7 +72,7 @@ const CatListPage = () => {
           <Title>내가 등록한 냥이</Title>
           {catListInfo.length === 0 ? (
             <InitCatListWrap>
-              <img src="assets/icons/icon-logo-gray.svg" alt="" />
+              <img src="assets/icons/icon-logo-gray.svg" alt="회색 로고 이미지" />
               <p>아직 등록된 냥이가 없어요</p>
             </InitCatListWrap>
           ) :
@@ -80,7 +80,6 @@ const CatListPage = () => {
               {catListInfo}
             </CatListWrap>)
           }
-
         </>
       )}
     </div>

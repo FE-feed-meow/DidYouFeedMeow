@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 const ImageFrames = keyframes`
- 0% {
+  0% {
       transform: rotate(5deg);
   }
   50% {

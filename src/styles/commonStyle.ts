@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const AllWrap = styled.div`
-  position: fixed;
   background-image: url(../assets/images/main-background.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,6 +9,9 @@ export const AllWrap = styled.div`
   padding: 30px;
   width: 100%;
   height: 100vh;
+  @media screen and (max-width: 768px) {
+    background: none;
+  }
 `;
 
 export const MainWrap = styled.div`

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ModalMain = styled.div`
-  position: fixed;
-  top: 30px;
+  position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 390px;

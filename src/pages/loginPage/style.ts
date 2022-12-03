@@ -9,12 +9,19 @@ const ModalBg = styled.div`
   height: 100%;
   background-color: rgba(25, 25, 25, 0.8);
   z-index: 100;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const TutorCloseBtn = styled.button`
   position: absolute;
   top: 90px;
   right: 80px;
+  z-index: 100;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const H2 = styled.h2`

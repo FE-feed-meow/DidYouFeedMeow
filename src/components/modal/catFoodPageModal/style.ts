@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-// interface Props {
-//   onClickFood: boolean;
-// }
-
 export const CatFoodWrap = styled.div`
   margin: 40px 40px;
 `;
@@ -69,12 +65,6 @@ export const CatFoodButton = styled.button`
     ClickState
       ? "linear-gradient(0deg, rgba(255, 240, 0, 0.5) 0%, rgba(255, 240, 0, 0.5) 50%,rgba(0, 0, 0, 0) 50%)"
       : "linear-gradient(0deg,#f0f0f0 0%,#f0f0f0 50%,rgba(0, 0, 0, 0) 50%))"};
-  /* background: linear-gradient(
-    0deg,
-    #f0f0f0 0%,
-    #f0f0f0 50%,
-    rgba(0, 0, 0, 0) 50%
-  ); */
   &:focus {
     background: linear-gradient(
       0deg,
@@ -103,10 +93,6 @@ export const CatFeedImage = styled.img`
   object-fit: none;
 `;
 
-export const CatWaterButton = styled(CatFoodButton)``;
-
-export const CatSnackButton = styled(CatFoodButton)``;
-
 export const CatFoodInput = styled.input`
   width: 220px;
   font-family: "SpoqaHanSansNeo-Regular";
@@ -133,4 +119,7 @@ export const CatFoodSubmitButton = styled.button`
   border-radius: 44px;
   color: #ffffff;
   background-color: var(--main-color);
+  :disabled {
+    background: var(--disabled-button-color);
+  }
 `;

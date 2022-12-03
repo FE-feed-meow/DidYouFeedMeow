@@ -93,13 +93,15 @@ const CatAddress = styled.p`
   font-size: 12px;
   font-family: "SpoqaHanSansNeo-Regular";
   color: #767676;
+  word-break: break-all;
 `;
 
 const CatImg = styled.img`
   width: 120px;
-  min-width: 120px;
+  min-width: 114px;
   height: 84px;
   border-radius: 10px;
+  object-fit: cover;
 `;
 
 export {
