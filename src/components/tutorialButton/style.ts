@@ -31,8 +31,8 @@ const ModalBg = styled.div`
 
 const ModalCloseBtn = styled.button`
   position: absolute;
-  top: 80px;
-  right: 180px;
+  top: 90px;
+  right: 80px;
 `;
 
 export { TutorBtn, ModalBg, ModalCloseBtn };
