@@ -64,6 +64,7 @@ const CatInfo = () => {
 
   return (
     <CatInfoWrap>
+      <h2 className="ir">등록한 냥이 정보</h2>
       <ImgWrap>
         <Image src={catDetail.image} alt="고양이 사진" />
       </ImgWrap>

@@ -57,6 +57,7 @@ const CatFeed = ({ feedList, removeDuplicates }: FeedProps) => {
 
   return (
     <FeedWrap>
+      <h2 className="ir">밥주기 목록</h2>
       {result2
         .filter((item) => item.date === nowDate)
         .map((item) => {
