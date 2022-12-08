@@ -4,9 +4,8 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import CatInfoModal from "@components/modal/catInfoModal/CatInfoModal";
 import MapTemplate from "@components/mapTemplate/MapTemplate";
 import Loading from "../../components/loading/Loading";
-import AppTutorial from '../../components/tutorial/appTutorial/AppTutorial';
+import AppTutorial from "../../components/tutorial/appTutorial/AppTutorial";
 import ModalBg from "./style";
-
 
 interface LocationType {
   center: { lat: number; lng: number };
@@ -71,7 +70,8 @@ const RecordMapPage = () => {
   const getCatAddress = async () => {
     await axios
       .get(
-        `${API_URL}/post/${JSON.parse(userInfo).accountname
+        `${API_URL}/post/${
+          JSON.parse(userInfo).accountname
         }/userpost/?limit=20`,
         {
           headers: {
@@ -99,8 +99,9 @@ const RecordMapPage = () => {
                 img: response.data.post[i].image,
                 age: response.data.post[i].content.split("|")[2],
                 name: response.data.post[i].content.split("|")[0],
-                address: `${result[0].address_name}, ${response.data.post[i].content.split("|")[1].split(",")[1]
-                  }`,
+                address: `${result[0].address_name}, ${
+                  response.data.post[i].content.split("|")[1].split(",")[1]
+                }`,
                 lat: result[0].y,
                 lng: result[0].x,
               };
@@ -143,7 +144,7 @@ const RecordMapPage = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ overflow: "hidden" }}>
       {loading ? (
         <Loading />
       ) : (
@@ -168,7 +169,7 @@ const RecordMapPage = () => {
             style={{
               width: "390px",
               height: "820px",
-              borderRadius: "30px"
+              borderRadius: "30px",
             }}
             onClick={(_t, mouseEvent) => {
               setPosition({
