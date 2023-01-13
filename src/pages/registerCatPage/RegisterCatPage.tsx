@@ -120,7 +120,7 @@ const RegisterCatPage = ({ stateData }: any) => {
       });
   };
 
-  const onDisable = useEffect(() => {
+  useEffect(() => {
     if (catName.length > 0 && imgFile !== null) {
       setDisabled(false);
     } else {
